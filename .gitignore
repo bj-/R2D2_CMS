@@ -219,3 +219,4 @@ pip-log.txt
 msg_die.htm
 restricted/
 script/*/
+includes/config.php
