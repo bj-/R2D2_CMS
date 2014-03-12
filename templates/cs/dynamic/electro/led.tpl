@@ -1,4 +1,3 @@
-Диоды
 <script>
 
 function ShowDetail(itemID, buttonID)
@@ -38,7 +37,7 @@ function ShowDetail(itemID, buttonID)
 <tr>
 	<td>
 		<a style="cursor:pointer; font-weight:bold;" onClick='ShowDetail("item_diod_{item_list.ID}", "button_diod_{item_list.ID}");'>
-			<span id="button_diod_{item_list.ID}">[+]<span>&nbsp;
+			<span id="button_led_{item_list.ID}">[+]<span>&nbsp;
 		</a>
 	<td style="font-weight:bold;">{item_list.NAME}</td>
 	<td>{item_list.COLOR}</td>
@@ -53,7 +52,7 @@ function ShowDetail(itemID, buttonID)
 		</div>
 	</td>
 </tr>
-<tr class="displayNone" id="item_diod_{item_list.ID}">
+<tr class="displayNone" id="item_led_{item_list.ID}">
 	<td colspan="12">
 		<table width="80%" cellspacing="0" cellpadding="0" align="center">
 			<tr><td>ID</td><td>{item_list.ID}</td></tr>

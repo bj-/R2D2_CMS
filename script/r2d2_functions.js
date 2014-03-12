@@ -26,6 +26,13 @@ function show_content(page_url, div_id) {
 		return false;
 };
 
+function assembly_filter_data(page_url, div_id, form_id)
+{
+
+	var s = $(form_id).serialize();
+	show_content(page_url + '?' + s, div_id);
+};
+
 function clear_field(fld, replaceval) {
 	//alert("clear" + fld + replaceval);
 	if (document.getElementById(fld).value == replaceval) {

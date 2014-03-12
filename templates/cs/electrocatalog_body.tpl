@@ -13,12 +13,16 @@
 
 <div id="diodes">...</div>
 <div id="transistors">...</div>
+<div id="leds_group">
+<div id="leds_filter">...</div>
 <div id="leds">...</div>
+</div>
 
 <script type="text/javascript">// <![CDATA[
 
 <!-- BEGIN switch_led -->
 show_content('/dynamic/electro/led.php', '#leds');
+show_content('/dynamic/electro/filter.php?type=led', '#leds_filter');
 <!-- END switch_led -->
 
 

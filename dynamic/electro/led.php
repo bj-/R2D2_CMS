@@ -39,9 +39,25 @@ init_userprefs($userdata);
 //$page =  substr($_GET["page"],0,11);
 $limit = intval(substr($_GET["limit"],0,2));
 
+
+// параметры фильтрации
+$filter = array();
+$s="";
+if ($s = get_filter_parameters("name", $_GET["name"], "like")) $filter[] = $s;
+if ($s = get_filter_parameters("color", $_GET["color"], "like")) $filter[] = $s;
+if ($s = get_filter_parameters("case", $_GET["case"], "like")) $filter[] = $s;
+if ($s = get_filter_parameters("mounting", $_GET["mount"], "like")) $filter[] = $s;
+
+
+if (count($filter))
+{
+	$filter_str = 'WHERE ' . implode(" AND ", $filter) . " ";
+}
+
 $sql = 'SELECT * '.
 		' FROM `' . TABLE_ELECTRO_LED . '` ' .
-		'ORDER BY color ASC' ; // .
+		$filter_str .
+		'ORDER BY color ASC'; // .
 //		'WHERE `cat_pid` >= "0" AND `cat_type` = "1" '.
 //		'GROUP BY RAND() '.
 //		'LIMIT 0, '.$limit.';';

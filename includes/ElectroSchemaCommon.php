@@ -23,4 +23,46 @@ function MakePropetyLinks($DataSheetPath, $type, $data)
 	return $ret;
 }
 
+// получаем параметры фильтра компонентов
+
+function get_filter_parameters($name, $value, $operator)
+{
+	// name = column name (ID)
+	// value = value (755)
+	// operator = >= , Like, < etc (like)
+	// ex: ID like "755"
+	 
+	// по этим занчениям фильтры не задаются
+	$notInFilter = array(
+		"Название...",
+		"Цвет...",
+		"Корпус...",
+		"Монтаж...",
+		""
+		);
+	
+	$value = trim($value);
+	$value = iconv("UTF-8", "CP1251", $value);
+	$value = substr($value,0,20);
+	$value = str_encode_char($value); //Экранируем апостроф
+	$value = str_replace('"', '', $value); //убираем двойные ковычки нафиг
+	
+	// если значени в списке недопустимых - ничего не возвращаем
+	if (in_array($value, $notInFilter))
+	{
+		return false;
+	}
+	
+	
+	if ($operator == "like")
+	{
+		return '`' . $name . '` like "%' . $value . '%"'; // собираем параметр фильтрации
+	}
+	else
+	{
+		return '`' .$name . '` ' . $operator . ' "' . $value . '"'; // собираем параметр фильтрации
+	}
+	
+};
+
 ?>
