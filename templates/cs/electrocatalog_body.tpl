@@ -2,28 +2,56 @@
 
 <p>Каталог электро деталей</p>
 
-<select>
-	<option>Все</option>
-	<option>Диод</option>
-	<option>Диодный мост</option>
-	<option>Транзистор</option>
+<select id="type_selection" onchange="change_type();">
+	<option value="all">Все</option>
+	<option value="diodes">Диод</option>
+	<option value="led">LED</option>
+	<option value="resistor">Резисторы</option>
+	<!--option value="all">Диодный мост</option-->
+	<!--option value="all">Транзистор</option-->
 </select>
 
 {ARTICLE}
 
+<div id="electrocat_filter"></div>
+<div id="electrocat_list"></div>
+
+<!--
 <div id="diodes">...</div>
 <div id="transistors">...</div>
+
+<div id="resistor_group">
+<div id="resistor_filter">...</div>
+<div id="resistor">...</div>
+</div>
+
 <div id="leds_group">
 <div id="leds_filter">...</div>
 <div id="leds">...</div>
 </div>
+-->
 
 <script type="text/javascript">// <![CDATA[
+function change_type()
+{
+	//var s = $("#type_selection option:selected").text();
+	var s = $("#type_selection").val();
+//	alert('/dynamic/electro/' + s + '.php');
+	
+	show_content('/dynamic/electro/' + s + '.php', '#electrocat_list');
+	show_content('/dynamic/electro/filter.php?type=' + s, '#electrocat_filter');
+}
 
+/*
 <!-- BEGIN switch_led -->
 show_content('/dynamic/electro/led.php', '#leds');
 show_content('/dynamic/electro/filter.php?type=led', '#leds_filter');
 <!-- END switch_led -->
+
+
+<!-- BEGIN switch_resistors -->
+show_content('/dynamic/electro/resistor.php', '#resistor');
+<!-- END switch_resistors -->
 
 
 <!-- BEGIN switch_diodes -->
@@ -33,7 +61,7 @@ show_content('/dynamic/electro/diodes.php', '#diodes');
 <!-- BEGIN switch_transistors -->
 show_content('/dynamic/electro/transistors.php', '#transistors');
 <!-- END switch_transistors -->
-
+*/
 </script>
 
 

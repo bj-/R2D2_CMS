@@ -74,11 +74,11 @@ while( $row = $db->sql_fetchrow($result) ) {
 
 
 $template->set_filenames(array(
-	'body' => 'dynamic/electro/led.tpl')
+	'body' => 'dynamic/electro/resistor.tpl')
 );
 
 // Paths
-$DataSheetPath = "Led";
+$DataSheetPath = "Resistor";
 
 
 

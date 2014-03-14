@@ -23,6 +23,7 @@ define('IN_R2D2', true);
 include("../../includes/config.php");
 //include($DRoot . '/db/extension.inc');
 include($DRoot . '/includes/common.'.$phpEx);
+include($DRoot . '/includes/ElectroSchemaCommon.'.$phpEx);
 
 
 //
@@ -64,14 +65,6 @@ $template->set_filenames(array(
 //	'GALLERY_CLASS' => "highslide-gallery175"
 //));
 
-
-// одрезаем нули справа и, затем, точку если она стала последней => получаем целое число если у него не было дроби
-function rTrimZeroAndDot($string)
-{
-	$ret = rtrim($string,"0");
-	$ret = rtrim($ret,".");
-	return $ret;
-}
 
 $i = 0;
 while ($elements_data[$i]["id"]) {

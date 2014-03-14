@@ -1,5 +1,14 @@
 <?php
 
+// одрезаем нули справа и, затем, точку если она стала последней => получаем целое число если у него не было дроби
+function rTrimZeroAndDot($string)
+{
+	$ret = rtrim($string,"0");
+	$ret = rtrim($ret,".");
+	return $ret;
+};
+
+
 function MakePropetyLinks($DataSheetPath, $type, $data)
 {
 
