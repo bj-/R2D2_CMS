@@ -26,8 +26,10 @@ function ShowDetail(itemID, buttonID)
 <table cellspacing="1" cellpadding="0" class="tbl" width="100%">
 <tr>
 	<th></th>
-	<th>Название</th>
-	<th>Цвет</th>
+	<th>Номинал</th>
+	<th>Тип</th>
+	<th>%</th>
+	<th>Ватт</th>
 	<th>Корп.</th>
 	<th>Уст.</th>
 	<th>Кол-во</th>
@@ -36,11 +38,13 @@ function ShowDetail(itemID, buttonID)
 <!-- BEGIN item_list -->
 <tr>
 	<td>
-		<a style="cursor:pointer; font-weight:bold;" onClick='ShowDetail("item_diod_{item_list.ID}", "button_diod_{item_list.ID}");'>
-			<span id="button_led_{item_list.ID}">[+]<span>&nbsp;
+		<a style="cursor:pointer; font-weight:bold;" onClick='ShowDetail("item_resistor_{item_list.ID}", "button_resistor_{item_list.ID}");'>
+			<span id="button_resistor_{item_list.ID}">[+]<span>&nbsp;
 		</a>
-	<td style="font-weight:bold;">{item_list.NAME}</td>
-	<td>{item_list.COLOR}</td>
+	<td style="font-weight:bold;">{item_list.VALUE}</td>
+	<td>{item_list.TYPE}</td>
+	<td>{item_list.TOLERANCE}</td>
+	<td>{item_list.POWER}</td>
 	<td>{item_list.CASE}</td>
 	<td>{item_list.MOUNTING}</td>
 	<td>{item_list.QUANTITY}</td>

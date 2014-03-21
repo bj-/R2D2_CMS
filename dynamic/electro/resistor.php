@@ -43,7 +43,7 @@ $limit = intval(substr($_GET["limit"],0,2));
 // параметры фильтрации
 $filter = array();
 $s="";
-if ($s = get_filter_parameters("name", $_GET["name"], "like")) $filter[] = $s;
+if ($s = get_filter_parameters("value", $_GET["value"], "like")) $filter[] = $s;
 if ($s = get_filter_parameters("color", $_GET["color"], "like")) $filter[] = $s;
 if ($s = get_filter_parameters("case", $_GET["case"], "like")) $filter[] = $s;
 if ($s = get_filter_parameters("mounting", $_GET["mount"], "like")) $filter[] = $s;
@@ -55,9 +55,9 @@ if (count($filter))
 }
 
 $sql = 'SELECT * '.
-		' FROM `' . TABLE_ELECTRO_LED . '` ' .
+		' FROM `' . TABLE_ELECTRO_RESISTOR . '` ' .
 		$filter_str .
-		'ORDER BY color ASC'; // .
+		'ORDER BY `value` ASC'; // .
 //		'WHERE `cat_pid` >= "0" AND `cat_type` = "1" '.
 //		'GROUP BY RAND() '.
 //		'LIMIT 0, '.$limit.';';
@@ -90,7 +90,7 @@ $DataSheetPath = "Resistor";
 $i = 0;
 while ($elements_data[$i]["id"]) {
 //	$gat_img = ($gallery_cat_data[$i]["cat_img"]) ? $gallery_path.$gallery_cat_data[$i]["cat_img"] : "/pic/ico/question_b.gif";
-	$UForwMin = rTrimZeroAndDot($elements_data[$i]["UForwMin"]);
+/*	$UForwMin = rTrimZeroAndDot($elements_data[$i]["UForwMin"]);
 	$UForwTyp = rTrimZeroAndDot($elements_data[$i]["UForwTyp"]);
 	$UForwMax = rTrimZeroAndDot($elements_data[$i]["UForwMax"]);
 
@@ -101,6 +101,9 @@ while ($elements_data[$i]["id"]) {
 	$WaweLenght = $elements_data[$i]["WaweLenghtMin"] . "-" .  $elements_data[$i]["WaweLenghtTyp"];
 	$Luminous = $elements_data[$i]["LuminousMin"] . "-" .  $elements_data[$i]["LuminousTyp"];
 	$mCd = $elements_data[$i]["mCdMin"] . "-" .  $elements_data[$i]["mCdTyp"];
+*/
+	$tolerance = rTrimZeroAndDot($elements_data[$i]["tolerance"]);
+	$power = rTrimZeroAndDot($elements_data[$i]["power"]);
 
 	$design = MakePropetyLinks($DataSheetPath, "design", $elements_data[$i]["design"]);
 	$photo = MakePropetyLinks($DataSheetPath, "photo", $elements_data[$i]["photo"]);
@@ -112,21 +115,13 @@ while ($elements_data[$i]["id"]) {
 */
 	$template->assign_block_vars('item_list', array(
 		'ID' => $elements_data[$i]["id"],
-		'COLOR' => $elements_data[$i]["color"],
-		'NAME' => $elements_data[$i]["name"],
-		'QUANTITY' => $elements_data[$i]["quantity"],
+		'VALUE' => $elements_data[$i]["value"],
+		'TYPE' => $elements_data[$i]["type"],
 		'MANUFACTURER' => $elements_data[$i]["manuf"],
-		'UFORWMIN' => $UForwMin,
-		'UFORWTYP' => $UForwTyp,
-		'UFORWMAX' => $UForwMax,
-		'ITYP' => $ITyp,
-		'IIMPMAX' => $IImpMax,
-		
+		'QUANTITY' => $elements_data[$i]["quantity"],
+		'TOLERANCE' => $tolerance,
 		'POWER' => $power,
-		'WAWELENGTH' => $WaweLenght,
-		'LUMINOUS' => $Luminous,
-		'MCD' => $mCd,
-		'ANGLE' => $elements_data[$i]["angle"],
+		'VOLTAGE' => $elements_data[$i]["voltage"],
 		'CASE' => $elements_data[$i]["case"],
 		'TWORK' => $elements_data[$i]["tWork"],
 		'MOUNTING' => $elements_data[$i]["mounting"],

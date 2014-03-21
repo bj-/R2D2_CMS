@@ -36,7 +36,7 @@ function ShowDetail(itemID, buttonID)
 <!-- BEGIN item_list -->
 <tr>
 	<td>
-		<a style="cursor:pointer; font-weight:bold;" onClick='ShowDetail("item_diod_{item_list.ID}", "button_diod_{item_list.ID}");'>
+		<a style="cursor:pointer; font-weight:bold;" onClick='ShowDetail("item_led_{item_list.ID}", "button_led_{item_list.ID}");'>
 			<span id="button_led_{item_list.ID}">[+]<span>&nbsp;
 		</a>
 	<td style="font-weight:bold;">{item_list.NAME}</td>

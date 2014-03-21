@@ -30,3 +30,27 @@
 </form>
 
 <!-- END filter_led -->
+
+
+<!-- BEGIN filter_resistor -->
+<p>Резисторы</p>
+<form id="filter_resistor">
+<table cellspacing="1" cellpadding="0" class="tbl" width="100%">
+<tr>
+	<th>Номинал</th>
+	<th>Ватт.</th>
+	<th>Корп.</th>
+	<th>Уст.</th>
+</tr>
+<tr>
+	<td><input id="filt_ressitor_value" name="value" type="text" value="От..." onclick="clear_field('filt_ressitor_value', 'От...')" onblur="unclear_field('filt_ressitor_value', 'От...')" onchange="assembly_filter_data('/dynamic/electro/led.php', '#resistor', '#filter_resistor');" /></td>
+
+
+	<td><input id="filt_ressitor_power" name="color" type="text" value="Ватт..." onclick="clear_field('filt_ressitor_power', 'Ватт...')" onblur="unclear_field('filt_ressitor_power', 'Ватт...')" onchange="assembly_filter_data('/dynamic/electro/led.php', '#resistor', '#filter_resistor');" /></td>
+	<td><input id="filt_ressitor_case" name="case" type="text" value="Корпус..." onclick="clear_field('filt_ressitor_case', 'Корпус...')" onblur="unclear_field('filt_ressitor_case', 'Корпус...')" onchange="assembly_filter_data('/dynamic/electro/led.php', '#resistor', '#filter_resistor');" /></td>
+	<td><input id="filt_ressitor_mount" name="mount" type="text" value="Монтаж..." onclick="clear_field('filt_ressitor_mount', 'Монтаж...')" onblur="unclear_field('filt_ressitor_mount', 'Монтаж...')" onchange="assembly_filter_data('/dynamic/electro/led.php', '#resistor', '#filter_resistor');" /></td>
+</tr>
+</table>
+</form>
+
+<!-- END filter_resistor -->

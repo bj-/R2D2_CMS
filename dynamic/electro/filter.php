@@ -37,17 +37,24 @@ init_userprefs($userdata);
 
 //$cat_id = substr($_GET["id"],0,11);
 //$page =  substr($_GET["page"],0,11);
-$type = intval(substr($_GET["limit"],0,15)); // тип фильтра
+$type = substr($_GET["type"],0,15); // тип фильтра
 
 
 $template->set_filenames(array(
 	'body' => 'dynamic/electro/filter.tpl')
 );
 
-
 if ($type == "led")
 {
+	// echo $_GET["type"];
 	$template->assign_block_vars('filter_led', array(
+	'ID' => $elements_data[$i]["id"],
+	));
+}
+else if ($type == "resistor")
+{
+	// echo $_GET["type"];
+	$template->assign_block_vars('filter_resistor', array(
 	'ID' => $elements_data[$i]["id"],
 	));
 }

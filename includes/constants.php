@@ -205,6 +205,7 @@ define('TABLE_CRUCH_CALENDAR', $table_prefix.'cruch_calendar');	// православный 
 // электро компаненты
 define('TABLE_ELECTRO_DIODES', $table_prefix.'electrocat_diod');	// православный календарь
 define('TABLE_ELECTRO_LED', $table_prefix.'electrocat_led');	// православный календарь
+define('TABLE_ELECTRO_RESISTOR', $table_prefix.'electrocat_resistor');	// православный календарь
 
 
 // Полуконстанты-заменители БД
