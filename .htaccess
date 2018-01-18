@@ -1,7 +1,7 @@
 # debug mode
-php_flag display_startup_errors on
-php_flag display_errors on
-php_flag html_errors on
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
 
 # work mode
 #ErrorDocument 404 /404.php
@@ -11,7 +11,10 @@ php_flag magic_quotes_runtime 0
 # for working uploadify script on fucking SpaceWeb.ru
 #SecFilterEngine Off
 
-AddDefaultCharset WINDOWS-1251
+#AddDefaultCharset WINDOWS-1251
+#AddCharset WINDOWS-1251 .php
+#AddType 'text/html; charset=WINDOWS-1251' php
+
 
 <IfModule mod_charset.c> 
   CharsetRecodeMultipartForms off 
@@ -36,5 +39,6 @@ RewriteRule ^(.[a-z])/leaders/(.*)$ /news.php?lang=$1&menuname=leaders&source=3&
 RewriteRule ^(.[a-z])/mediareview/(.*)$ /news.php?lang=$1&menuname=mediareview&source=3&id=$2
 RewriteRule ^(.[a-z])/gallery/(.*)$ /gallery.php?id=$2
 RewriteRule ^(.[a-z])/electro/(.*)$ /electrocatalog.php?id=$2
+#RewriteRule ^rm(.*)$ /rm/
 RewriteRule ^(.[a-z])/(.*)$ /article.php?lang=$1&id=$2
 #RewriteRule ^ru(.*)$ /test.php?lang=ru&article=$1
