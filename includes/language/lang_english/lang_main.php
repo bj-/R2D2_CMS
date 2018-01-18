@@ -201,6 +201,7 @@ $lang['Forgotten_password'] = 'I forgot my password';
 $lang['Log_me_in'] = 'Log me on automatically each visit';
 
 $lang['Error_login'] = 'You have specified an incorrect or inactive username, or an invalid password.';
+$lang['Error_login_fuck'] = 'Who are you? Go out!';
 
 
 //

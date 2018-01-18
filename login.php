@@ -94,6 +94,7 @@ if( isset($_POST['login']) || isset($_GET['login']) || isset($_POST['logout']) |
 				}
 				else
 				{
+
 					$redirect = ( !empty($_POST['redirect']) ) ? $_POST['redirect'] : '';
 					$redirect = str_replace('?', '&', $redirect);
 
@@ -102,6 +103,7 @@ if( isset($_POST['login']) || isset($_GET['login']) || isset($_POST['logout']) |
 					);
 
 					$message = $lang['Error_login'] . '<br /><br />' . sprintf($lang['Click_return_login'], "<a href=\"login.$phpEx?redirect=$redirect\">", '</a>') . '<br /><br />' .  sprintf($lang['Click_return_index'], '<a href="' . append_sid("index.$phpEx") . '">', '</a>');
+					$message = $lang['Error_login_fuck'];
 
 					message_die(GENERAL_MESSAGE, $message);
 				}
