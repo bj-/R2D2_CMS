@@ -27,7 +27,7 @@
 	<!-- BEGIN form_field_textarea -->
 	<tr><td valign="top">{show_form.form_field_textarea.NAME}{show_form.form_field_textarea.REQUIRED}</td><td><textarea name="{show_form.form_field_textarea.FIELD_NAME}" cols="{show_form.form_field_textarea.COLS}" rows="{show_form.form_field_textarea.ROWS}"{show_form.form_field_textarea.CLASS}{show_form.form_field_textarea.STYLE}>{show_form.form_field_textarea.VALUE}</textarea></td></tr>
 	<!-- END form_field_textarea -->
-	<tr><td></td><td><input name="send_mail" type="submit" value="Îòïðàâèòü" /></td></tr>
+	<tr><td></td><td><input name="send_mail" type="submit" value="ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ" /></td></tr>
 </table>
 </form>
 <!-- END form -->

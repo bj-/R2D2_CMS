@@ -67,60 +67,60 @@
 	});</script>
 <!-- /TinyMCE -->
 <!-- BEGIN switch_article_edit -->
-<!--Адрес статьи: <a href="{ARTICLE_PATH}">{ARTICLE_PATH}</a><br>
+<!--РђРґСЂРµСЃ СЃС‚Р°С‚СЊРё: <a href="{ARTICLE_PATH}">{ARTICLE_PATH}</a><br>
 <hr size="1" style="border: 1px solid #043198;"-->
 <!-- END switch_article_edit -->
 <form action="{SUBMIT_PATH}" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <col valign="top" width="120">
-<tr><td>Название:</td><td><input type="text" name="page_title" value="{PAGE_TITLE}" size="100"><br>
+<tr><td>РќР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="page_title" value="{PAGE_TITLE}" size="100"><br>
 <!-- BEGIN switch_news_edit -->
-<small>Название новости</small>
+<small>РќР°Р·РІР°РЅРёРµ РЅРѕРІРѕСЃС‚Рё</small>
 <!-- END switch_news_edit -->
 <!-- BEGIN switch_article_edit -->
-<small>Название статьи. Отображается в заголовке браузера.</small>
+<small>РќР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё. РћС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РІ Р·Р°РіРѕР»РѕРІРєРµ Р±СЂР°СѓР·РµСЂР°.</small>
 <!-- END switch_article_edit -->
 </td></tr>
-<tr><td>Дата:</td><td>
+<tr><td>Р”Р°С‚Р°:</td><td>
 	<script type="text/javascript" src="/script/jquery/js/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#datepicker').datetimepicker({
 				dateFormat: 'dd.mm.yy',
-				timeOnlyTitle: 'Выберите время',
-				timeText: 'Время',
-				hourText: 'Часы',
-				minuteText: 'Минуты',
-				secondText: 'Секунды',
-				currentText: 'Сегодня'
+				timeOnlyTitle: 'Р’С‹Р±РµСЂРёС‚Рµ РІСЂРµРјСЏ',
+				timeText: 'Р’СЂРµРјСЏ',
+				hourText: 'Р§Р°СЃС‹',
+				minuteText: 'РњРёРЅСѓС‚С‹',
+				secondText: 'РЎРµРєСѓРЅРґС‹',
+				currentText: 'РЎРµРіРѕРґРЅСЏ'
 			});
 		});
 	</script>
-<input type="text" id="datepicker" name="page_date" value="{PAGE_DATE}" size="20"><br><small>Дата добавления</small></td></tr>
+<input type="text" id="datepicker" name="page_date" value="{PAGE_DATE}" size="20"><br><small>Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ</small></td></tr>
 <!-- BEGIN switch_article_edit -->
-<tr><td>Название файла:</td><td><input type="text" name="page_path" value="{PAGE_PATH}" size="100"><br><small>На английском. Использовать только цифры, латинские буквы и "-", вместо пробелов использовать "_".</small></td></tr>
+<tr><td>РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°:</td><td><input type="text" name="page_path" value="{PAGE_PATH}" size="100"><br><small>РќР° Р°РЅРіР»РёР№СЃРєРѕРј. РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹, Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹ Рё "-", РІРјРµСЃС‚Рѕ РїСЂРѕР±РµР»РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ "_".</small></td></tr>
 	<!-- BEGIN switch_article_paragraf_edit -->
-<tr><td>Раздел:</td><td><select name="paragraf_id">{GENERAL_PAGE}{ARTICLE_PARAGRAF}</select><br><small><input type="checkbox" name="article_primary" value="1"{CHECK_PRIMARY_ARTICLE}>Основная статья раздела (Статья будет отображаться при входе в данный раздел)<br>Выберете раздел для данной статьи, отметте галочку если хотите сделать статью основной в разделе.</small></td></tr>
+<tr><td>Р Р°Р·РґРµР»:</td><td><select name="paragraf_id">{GENERAL_PAGE}{ARTICLE_PARAGRAF}</select><br><small><input type="checkbox" name="article_primary" value="1"{CHECK_PRIMARY_ARTICLE}>РћСЃРЅРѕРІРЅР°СЏ СЃС‚Р°С‚СЊСЏ СЂР°Р·РґРµР»Р° (РЎС‚Р°С‚СЊСЏ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РїСЂРё РІС…РѕРґРµ РІ РґР°РЅРЅС‹Р№ СЂР°Р·РґРµР»)<br>Р’С‹Р±РµСЂРµС‚Рµ СЂР°Р·РґРµР» РґР»СЏ РґР°РЅРЅРѕР№ СЃС‚Р°С‚СЊРё, РѕС‚РјРµС‚С‚Рµ РіР°Р»РѕС‡РєСѓ РµСЃР»Рё С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃС‚Р°С‚СЊСЋ РѕСЃРЅРѕРІРЅРѕР№ РІ СЂР°Р·РґРµР»Рµ.</small></td></tr>
 	<!-- END switch_article_paragraf_edit -->
-<tr><td colspan="2"><strong>Мета теги:</strong></td></tr>
-<tr><td>Описание:</td><td><input type="text" name="page_desc" value="{PAGE_DESC}" size="100"><br><small>Краткое описание статьи. Для поисковиков.</small></td></tr>
-<!--tr><td>Классификация:</td><td><input type="text" name="page_classification" value="{CLASSIFICATION}" size="100"></td></tr-->
-<tr><td>Ключевые слова:</td><td><input type="text" name="page_keywords" value="{PAGE_KEYWORDS}" size="100"><br><small>До 15 ключевых слов через пробел</small></td></tr>
+<tr><td colspan="2"><strong>РњРµС‚Р° С‚РµРіРё:</strong></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ:</td><td><input type="text" name="page_desc" value="{PAGE_DESC}" size="100"><br><small>РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ СЃС‚Р°С‚СЊРё. Р”Р»СЏ РїРѕРёСЃРєРѕРІРёРєРѕРІ.</small></td></tr>
+<!--tr><td>РљР»Р°СЃСЃРёС„РёРєР°С†РёСЏ:</td><td><input type="text" name="page_classification" value="{CLASSIFICATION}" size="100"></td></tr-->
+<tr><td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td><td><input type="text" name="page_keywords" value="{PAGE_KEYWORDS}" size="100"><br><small>Р”Рѕ 15 РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ С‡РµСЂРµР· РїСЂРѕР±РµР»</small></td></tr>
 <!--tr><td>S_CONTENT_DIRECTION:</td><td><input type="text" name="content_direction" value="{S_CONTENT_DIRECTION}"></td></tr-->
-<!--tr><td>Голосование:</td><td><input type="checkbox" name="article_vove" value="1"> Добавить голосование к статье (<a href="#">Редактировать опрос</a>)</td></tr-->
+<!--tr><td>Р“РѕР»РѕСЃРѕРІР°РЅРёРµ:</td><td><input type="checkbox" name="article_vove" value="1"> Р”РѕР±Р°РІРёС‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ Рє СЃС‚Р°С‚СЊРµ (<a href="#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕРїСЂРѕСЃ</a>)</td></tr-->
 <tr>
-	<td>Форма обратной связи:</td>
+	<td>Р¤РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё:</td>
 	<td>
 		{FORM_LIST}<br />
-		E-Mail: <input type="text" name="form_email" value="{FORM_EMAIL}"> Тема сообщения: <input type="text" name="form_subject" value="{FORM_SUBJECT}" size="49">
-		<!--br><small>Если указан E-Mail - внизу статьи будет добавлена форма обратной связи.</small-->
+		E-Mail: <input type="text" name="form_email" value="{FORM_EMAIL}"> РўРµРјР° СЃРѕРѕР±С‰РµРЅРёСЏ: <input type="text" name="form_subject" value="{FORM_SUBJECT}" size="49">
+		<!--br><small>Р•СЃР»Рё СѓРєР°Р·Р°РЅ E-Mail - РІРЅРёР·Сѓ СЃС‚Р°С‚СЊРё Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅР° С„РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё.</small-->
 	</td>
 </tr>
 <!-- END switch_article_edit -->
 
 <!-- BEGIN switch_news_edit -->
-<tr><td>Источник:</td><td><input type="text" name="page_source_name" value="{PAGE_SOURCE_NAME}" size="100"><br><small>название СМИ / сайта откуда взята новость.</small></td></tr>
-<tr><td>Фото:</td>
+<tr><td>РСЃС‚РѕС‡РЅРёРє:</td><td><input type="text" name="page_source_name" value="{PAGE_SOURCE_NAME}" size="100"><br><small>РЅР°Р·РІР°РЅРёРµ РЎРњР / СЃР°Р№С‚Р° РѕС‚РєСѓРґР° РІР·СЏС‚Р° РЅРѕРІРѕСЃС‚СЊ.</small></td></tr>
+<tr><td>Р¤РѕС‚Рѕ:</td>
 	<td>
 		<table>
 			<tr>
@@ -157,16 +157,16 @@
 	});
  });
 </script>
-					<small>Загрузить фотографию</small>
+					<small>Р—Р°РіСЂСѓР·РёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ</small>
 				</td>
 				<td valign="bottom">
-				&nbsp;&nbsp;&nbsp;<input name="delete_img" type="checkbox" value="1" /> Удалить фотографию<br /><br />
+				&nbsp;&nbsp;&nbsp;<input name="delete_img" type="checkbox" value="1" /> РЈРґР°Р»РёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ<br /><br />
 				</td>
 			</tr>
 		</table>
 	</td>
 </tr>
-<tr><td>Код видеоролика:</td><td><input type="text" name="page_video" value="{PAGE_VIDEO}" size="100"><br><small>название СМИ / сайта откуда взята новость.</small></td></tr>
+<tr><td>РљРѕРґ РІРёРґРµРѕСЂРѕР»РёРєР°:</td><td><input type="text" name="page_video" value="{PAGE_VIDEO}" size="100"><br><small>РЅР°Р·РІР°РЅРёРµ РЎРњР / СЃР°Р№С‚Р° РѕС‚РєСѓРґР° РІР·СЏС‚Р° РЅРѕРІРѕСЃС‚СЊ.</small></td></tr>
 <!-- END switch_news_edit -->
 
 </table>
@@ -184,8 +184,8 @@
 		<!-- Some integration calls -->
 		<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
 		<td>
-			<input type="submit" name="save" value="Сохранить" />
-			<input type="reset" name="reset" value="Убрать изменения" />
+			<input type="submit" name="save" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
+			<input type="reset" name="reset" value="РЈР±СЂР°С‚СЊ РёР·РјРµРЅРµРЅРёСЏ" />
 		</td>
 		<td align="right">
 			<a href="javascript:;" onmousedown="tinyMCE.get('elm1').show();">[WISYWIG]</a>
@@ -201,7 +201,7 @@
 		</tr></table>
 	</div>
 </form>
-<div id="upl_resp"><!--ответ скрипта--></div>
+<div id="upl_resp"><!--РѕС‚РІРµС‚ СЃРєСЂРёРїС‚Р°--></div>
 <script type="text/javascript">
 if (document.location.protocol == 'file:') {
 	alert("The examples might not work properly on the local file system due to security settings in your browser. Please use a real webserver.");

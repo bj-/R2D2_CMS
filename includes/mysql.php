@@ -65,7 +65,8 @@ class sql_db
 					$this->db_connect_id = $dbselect;
 				}
 			}
-			mysql_query('SET NAMES cp1251');
+			//mysql_query('SET NAMES cp1251');
+			mysql_query('SET NAMES utf8');
 			return $this->db_connect_id;
 		}
 		else
@@ -112,6 +113,7 @@ class sql_db
 		{
 			unset($this->row[$this->query_result]);
 			unset($this->rowset[$this->query_result]);
+//var_dump($this->query_result);
 			return $this->query_result;
 		}
 		else

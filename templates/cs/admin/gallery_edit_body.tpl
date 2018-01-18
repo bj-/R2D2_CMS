@@ -1,22 +1,22 @@
 <!-- 
 ===========================================
 
-				Фотогалерея
+				Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ
 
 ===========================================
 -->
 
 <!-- BEGIN swich_gallery -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
-<td><strong>Альбом:</strong> {swich_gallery.CAT}<br /> [ <a href="/admin/index.php?edit=photo&cat={PAGE_ID}">Фото</a> ] &nbsp; [ <a href="/admin/index.php?edit=video&cat={PAGE_ID}">Видео</a> ]</td>
+<td><strong>РђР»СЊР±РѕРј:</strong> {swich_gallery.CAT}<br /> [ <a href="/admin/index.php?edit=photo&cat={PAGE_ID}">Р¤РѕС‚Рѕ</a> ] &nbsp; [ <a href="/admin/index.php?edit=video&cat={PAGE_ID}">Р’РёРґРµРѕ</a> ]</td>
 <td align="right">
 <!-- BEGIN swich_gallery_upload -->
-<a href="/admin/index.php?edit=photo&imageprop=1&cat={PAGE_ID}" title="Редактировать альбом"><img src="/pic/ico/edit.gif" alt="Редактировать альбом" width="16" height="16" border="0" /></a> &nbsp; 
-<a style="cursor: pointer;" onClick="ShowDiv('upload_form')" title="Добавить фотографии"><img src="/pic/ico/camera_add.png" alt="Добавить фотографии" width="16" height="16" border="0" /></a><br>
+<a href="/admin/index.php?edit=photo&imageprop=1&cat={PAGE_ID}" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р°Р»СЊР±РѕРј"><img src="/pic/ico/edit.gif" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р°Р»СЊР±РѕРј" width="16" height="16" border="0" /></a> &nbsp; 
+<a style="cursor: pointer;" onClick="ShowDiv('upload_form')" title="Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёРё"><img src="/pic/ico/camera_add.png" alt="Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёРё" width="16" height="16" border="0" /></a><br>
 <!-- END swich_gallery_upload -->
 <!-- BEGIN swich_gallery_video_upload -->
-<a href="/admin/index.php?edit=video&imageprop=1&cat={PAGE_ID}" title="Редактировать альбом"><img src="/pic/ico/edit.gif" alt="Редактировать альбом" width="16" height="16" border="0" /></a> &nbsp; 
-<a style="cursor: pointer;" onClick="ShowDiv('upload_form')" title="Добавить фотографии"><img src="/pic/ico/film_add.png" alt="Добавить видео" width="16" height="16" border="0" /></a><br>
+<a href="/admin/index.php?edit=video&imageprop=1&cat={PAGE_ID}" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р°Р»СЊР±РѕРј"><img src="/pic/ico/edit.gif" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р°Р»СЊР±РѕРј" width="16" height="16" border="0" /></a> &nbsp; 
+<a style="cursor: pointer;" onClick="ShowDiv('upload_form')" title="Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёРё"><img src="/pic/ico/film_add.png" alt="Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ" width="16" height="16" border="0" /></a><br>
 <!-- END swich_gallery_video_upload -->
 </td></tr></table>
 <!-- BEGIN swich_gallery_upload -->
@@ -24,12 +24,12 @@
 <script src="/script/jquery/js/uploadify.v2.1.4.min.js" type="text/javascript"></script>
 <div id="upload_form" style="display: none;">
 <table><tr>
-<td width="70">Начать<br>загрузку</td>
-<td width="75">Очистить<br>список</td>
-<td width="70">Выбор<br>файлов</td>
+<td width="70">РќР°С‡Р°С‚СЊ<br>Р·Р°РіСЂСѓР·РєСѓ</td>
+<td width="75">РћС‡РёСЃС‚РёС‚СЊ<br>СЃРїРёСЃРѕРє</td>
+<td width="70">Р’С‹Р±РѕСЂ<br>С„Р°Р№Р»РѕРІ</td>
 </tr></table>
-<a href="javascript:$('#fileInput1').uploadifyUpload();"><img src="/pic/ico/cnruninstall_48x48.png" alt="Начать загрузку" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
-<a href="javascript:$('#fileInput1').uploadifyClearQueue();"><img src="/pic/ico/delete_48x48.png" alt="Очистить очередь" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
+<a href="javascript:$('#fileInput1').uploadifyUpload();"><img src="/pic/ico/cnruninstall_48x48.png" alt="РќР°С‡Р°С‚СЊ Р·Р°РіСЂСѓР·РєСѓ" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
+<a href="javascript:$('#fileInput1').uploadifyClearQueue();"><img src="/pic/ico/delete_48x48.png" alt="РћС‡РёСЃС‚РёС‚СЊ РѕС‡РµСЂРµРґСЊ" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
 <input id="fileInput1" name="fileInput1" type="file" />
 <script type="text/javascript">
  $(document).ready(function() {
@@ -69,7 +69,7 @@
 </script>
 </div>
 
-<div id="upl_resp"><!--ответ скрипта--></div>
+<div id="upl_resp"><!--РѕС‚РІРµС‚ СЃРєСЂРёРїС‚Р°--></div>
 <!-- END swich_gallery_upload -->
 <!-- BEGIN swich_gallery_video_upload -->
 <div id="upload_form" style="display: none;">
@@ -91,28 +91,28 @@ function parse_yt_video(input_id, div_id){
 				<td valign="top" style="width:130px">
 					<table>
 						<tr><td id="yt_cell"><a onclick="show_add_video_div('yt')" style="cursor:pointer">YouTube</a></td></tr>
-						<tr><td id="videosystem_cell"><a onclick="show_add_video_div('videosystem')" style="cursor:pointer">Другие системы</a></td></tr>
+						<tr><td id="videosystem_cell"><a onclick="show_add_video_div('videosystem')" style="cursor:pointer">Р”СЂСѓРіРёРµ СЃРёСЃС‚РµРјС‹</a></td></tr>
 					</table>
 				</td>
 				<td>
 					<div id="yt" style="display: block;">
-						Укажите адрес ролика с YouTube: <br /> Например: http://www.youtube.com/watch?v=5YGc4zOqozo
+						РЈРєР°Р¶РёС‚Рµ Р°РґСЂРµСЃ СЂРѕР»РёРєР° СЃ YouTube: <br /> РќР°РїСЂРёРјРµСЂ: http://www.youtube.com/watch?v=5YGc4zOqozo
 						<form action="/admin/index.php?edit=video&cat={PAGE_ID}" method="post" id="yt_parse_url" onsubmit="parse_yt_video('yt_video_url', 'yt')">
 							<table>
-								<tr><td>Адрес ролика:</td><td><input type="text" name="video_url" id="yt_video_url" value="" size="93"></td></tr>
-								<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="Получить данные о ролике" /></td></tr>
+								<tr><td>РђРґСЂРµСЃ СЂРѕР»РёРєР°:</td><td><input type="text" name="video_url" id="yt_video_url" value="" size="93"></td></tr>
+								<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЂРѕР»РёРєРµ" /></td></tr>
 							</table>
 						</form>
 					
 					</div>
 					<div id="videosystem" style="display: none;">
-						Другие системы:
+						Р”СЂСѓРіРёРµ СЃРёСЃС‚РµРјС‹:
 						<form action="/admin/index.php?edit=video&cat={PAGE_ID}" method="post">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tr><td width="130px">Название</td><td><input type="text" name="video_name" value="" size="93"></td></tr>
-							<tr><td>Описание</td><td><textarea cols="70" rows="5" name="video_desc"></textarea></td></tr>
-							<tr><td>Код ролика</td><td><textarea cols="70" rows="5" name="video_code"></textarea></td></tr>
-							<tr><td></td><td><input type="submit" name="video_add" value="Добавить"></td></tr>
+							<tr><td width="130px">РќР°Р·РІР°РЅРёРµ</td><td><input type="text" name="video_name" value="" size="93"></td></tr>
+							<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><textarea cols="70" rows="5" name="video_desc"></textarea></td></tr>
+							<tr><td>РљРѕРґ СЂРѕР»РёРєР°</td><td><textarea cols="70" rows="5" name="video_code"></textarea></td></tr>
+							<tr><td></td><td><input type="submit" name="video_add" value="Р”РѕР±Р°РІРёС‚СЊ"></td></tr>
 						</table>
 						</form>
 					</div>
@@ -121,7 +121,7 @@ function parse_yt_video(input_id, div_id){
 		</table>
 </div>
 
-<div id="upl_resp"><!--ответ скрипта--></div>
+<div id="upl_resp"><!--РѕС‚РІРµС‚ СЃРєСЂРёРїС‚Р°--></div>
 <!-- END swich_gallery_video_upload -->
 
 
@@ -283,7 +283,7 @@ hs.addSlideshow({
 <!-- BEGIN swich_gallery_edit_list -->
 <!-- =======================================+
 |											|
-|    Редактирование описаний фотографий		|
+|    Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕРїРёСЃР°РЅРёР№ С„РѕС‚РѕРіСЂР°С„РёР№		|
 |											|
 +=======================================- -->
 <form action="/admin/index.php?edit=photo&cat={PAGE_ID}" method="post">
@@ -294,11 +294,11 @@ hs.addSlideshow({
 <tr><td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <col valign="top">
 <col valign="top">
-<tr><td>Название:</td><td><input type="text" name="img_name[]" value="{swich_gallery_edit_list.gallery_img.IMG_NAME}" size="66" maxlength="255">
-&nbsp;&nbsp;<a href="/admin/index.php?edit=photo&imageprop=1&cat={PAGE_ID}&sgal_action=del-{swich_gallery_edit_list.gallery_img.IMG_ID}" title="Удалить"><img src="/pic/ico/delete.png" alt="Удалить" width="16" height="16" border="0"></a></td></tr>
-<tr><td>Описание:</td><td><textarea cols="50" rows="3" name="img_desc[]">{swich_gallery_edit_list.gallery_img.IMG_DESC}</textarea>
+<tr><td>РќР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="img_name[]" value="{swich_gallery_edit_list.gallery_img.IMG_NAME}" size="66" maxlength="255">
+&nbsp;&nbsp;<a href="/admin/index.php?edit=photo&imageprop=1&cat={PAGE_ID}&sgal_action=del-{swich_gallery_edit_list.gallery_img.IMG_ID}" title="РЈРґР°Р»РёС‚СЊ"><img src="/pic/ico/delete.png" alt="РЈРґР°Р»РёС‚СЊ" width="16" height="16" border="0"></a></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ:</td><td><textarea cols="50" rows="3" name="img_desc[]">{swich_gallery_edit_list.gallery_img.IMG_DESC}</textarea>
 <input type="hidden" name="img_id[]" value="{swich_gallery_edit_list.gallery_img.IMG_ID}"></td></tr>
-<tr><td><small>Имя файла:</small></td><td><small>{swich_gallery_edit_list.gallery_img.IMG_PATH}</small></td></tr>
+<tr><td><small>РРјСЏ С„Р°Р№Р»Р°:</small></td><td><small>{swich_gallery_edit_list.gallery_img.IMG_PATH}</small></td></tr>
 </table>
 </td>
 <td valign="top">
@@ -319,7 +319,7 @@ hs.addSlideshow({
 <!-- END gallery_img -->
 </table>
 <input type="hidden" name="img_total" value="{IMG_TOTAL}">
-<input type="submit" name="GalImgSave" value="Сохранить">
+<input type="submit" name="GalImgSave" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 </form>
 <!-- END swich_gallery_edit_list -->
 
@@ -328,7 +328,7 @@ hs.addSlideshow({
 <!-- BEGIN swich_gallery_video_edit_list -->
 <!-- ========================================+
 |															|
-|    Редактирование описаний видео				|
+|    Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕРїРёСЃР°РЅРёР№ РІРёРґРµРѕ				|
 |															|
 +========================================= -->
 <form action="/admin/index.php?edit=video&cat={PAGE_ID}" method="post">
@@ -339,10 +339,10 @@ hs.addSlideshow({
 	<col valign="top">
 	<col valign="top">
 	<tr>
-		<td>Название:</td>
+		<td>РќР°Р·РІР°РЅРёРµ:</td>
 		<td>
 			<input type="text" name="img_name[]" value="{swich_gallery_video_edit_list.gallery_video.IMG_NAME}" size="66" maxlength="255">
-			&nbsp;&nbsp;<a href="/admin/index.php?edit=video&imageprop=1&cat={PAGE_ID}&sgal_action=del-{swich_gallery_video_edit_list.gallery_video.IMG_ID}" title="Удалить"><img src="/pic/ico/delete.png" alt="Удалить" width="16" height="16" border="0"></a>
+			&nbsp;&nbsp;<a href="/admin/index.php?edit=video&imageprop=1&cat={PAGE_ID}&sgal_action=del-{swich_gallery_video_edit_list.gallery_video.IMG_ID}" title="РЈРґР°Р»РёС‚СЊ"><img src="/pic/ico/delete.png" alt="РЈРґР°Р»РёС‚СЊ" width="16" height="16" border="0"></a>
 		</td>
 		<td rowspan="2">
 			<a href="http://www.youtube.com/embed/{swich_gallery_video_edit_list.gallery_video.VIDEO_ID}?rel=0&amp;wmode=transparent" 
@@ -355,7 +355,7 @@ hs.addSlideshow({
 		</td>
 	</tr>
 <tr>
-	<td>Описание:</td>
+	<td>РћРїРёСЃР°РЅРёРµ:</td>
 	<td>
 		<textarea cols="50" rows="3" name="img_desc[]">{swich_gallery_video_edit_list.gallery_video.IMG_DESC}</textarea>
 		<input type="hidden" name="img_id[]" value="{swich_gallery_video_edit_list.gallery_video.IMG_ID}">
@@ -366,14 +366,14 @@ hs.addSlideshow({
 <!-- END gallery_video -->
 
 <input type="hidden" name="img_total" value="{IMG_TOTAL}">
-<input type="submit" name="GalImgSave" value="Сохранить">
+<input type="submit" name="GalImgSave" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 </form>
 <!-- END swich_gallery_video_edit_list -->
 
 
 <!-- BEGIN gallery_catlist -->
 
-<table width="100%" border="1" cellspacing="0" cellpadding="0"><tr><th>ID</th><th>PID</th><th>Галерея</th><th>Название, Описание, Путь</th><th width="50px">Ред.</th></tr>
+<table width="100%" border="1" cellspacing="0" cellpadding="0"><tr><th>ID</th><th>PID</th><th>Р“Р°Р»РµСЂРµСЏ</th><th>РќР°Р·РІР°РЅРёРµ, РћРїРёСЃР°РЅРёРµ, РџСѓС‚СЊ</th><th width="50px">Р РµРґ.</th></tr>
 	<col align="center">
 	<col align="center">
 	<col align="center">
@@ -382,34 +382,34 @@ hs.addSlideshow({
 	<td><a href="/admin/index.php?edit=photo&cat={gallery_catlist.gallery_catlist_row.CAT_ID}"><img src="{gallery_catlist.gallery_catlist_row.CAT_IMG}" alt="" border="0"></a></td>
 	<td><a href="/admin/index.php?edit=photo&cat={gallery_catlist.gallery_catlist_row.CAT_ID}">{gallery_catlist.gallery_catlist_row.CAT_NAME}</a><br>{gallery_catlist.gallery_catlist_row.CAT_DESC}<br>{gallery_catlist.gallery_catlist_row.CAT_PATH}</td>
 	<td width="50px" align="center">
-	<a href="/admin/index.php?edit=gallery&cat_edit={gallery_catlist.gallery_catlist_row.CAT_ID}"><img src="/pic/ico/edit.gif" alt="Редактировать" width="16" height="16" border="0"></a>&nbsp;
+	<a href="/admin/index.php?edit=gallery&cat_edit={gallery_catlist.gallery_catlist_row.CAT_ID}"><img src="/pic/ico/edit.gif" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" width="16" height="16" border="0"></a>&nbsp;
 	{gallery_catlist.gallery_catlist_row.CAT_DEL}
 	{gallery_catlist.gallery_catlist_row.CAT_ADD}
 	</td></tr>
 	<!-- END gallery_catlist_row -->
 </table>
 <br><br>
-<a href="/admin/index.php?edit=gallery&add=cat">Добавить галерею</a><br>
+<a href="/admin/index.php?edit=gallery&add=cat">Р”РѕР±Р°РІРёС‚СЊ РіР°Р»РµСЂРµСЋ</a><br>
 
 <!-- END gallery_catlist -->
 <!-- BEGIN swich_gallery_addcat -->
-Создание новой фотогалерии
+РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ С„РѕС‚РѕРіР°Р»РµСЂРёРё
 <form action="/admin/index.php?edit=gallery" method="post">
 <table>
 <col valign="top">
-<!--tr><td>Обложка</td><td><input type="text" name="cat_img" value="" size="100" maxlength="255"><br><small>Путь к файлу обложки. Если оставить пустым - при добавлении первой фотографии она станет обложкой</small></td></tr-->
-<tr><td>Название</td><td><input type="text" name="cat_name" value="" size="100" maxlength="255"><br><small>До 255 символов</small></td></tr>
-<tr><td>Описание</td><td><input type="text" name="cat_desc" value="" size="100" maxlength="255"><br><small>До 255 символов</small></td></tr>
-<tr><td>Путь</td><td><input type="text" name="cat_path" value="" size="50" maxlength="128"><br><small>Использовать только латинские буквы, цифры, знаки "-" и "_"</small></td></tr>
-<tr><td>Галерея</td><td><strong>{swich_gallery_addcat.CAT_PID_NAME}</strong><br><small>Название галерии в которой создаем новую галерею</small>
+<!--tr><td>РћР±Р»РѕР¶РєР°</td><td><input type="text" name="cat_img" value="" size="100" maxlength="255"><br><small>РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ РѕР±Р»РѕР¶РєРё. Р•СЃР»Рё РѕСЃС‚Р°РІРёС‚СЊ РїСѓСЃС‚С‹Рј - РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РїРµСЂРІРѕР№ С„РѕС‚РѕРіСЂР°С„РёРё РѕРЅР° СЃС‚Р°РЅРµС‚ РѕР±Р»РѕР¶РєРѕР№</small></td></tr-->
+<tr><td>РќР°Р·РІР°РЅРёРµ</td><td><input type="text" name="cat_name" value="" size="100" maxlength="255"><br><small>Р”Рѕ 255 СЃРёРјРІРѕР»РѕРІ</small></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><input type="text" name="cat_desc" value="" size="100" maxlength="255"><br><small>Р”Рѕ 255 СЃРёРјРІРѕР»РѕРІ</small></td></tr>
+<tr><td>РџСѓС‚СЊ</td><td><input type="text" name="cat_path" value="" size="50" maxlength="128"><br><small>РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, Р·РЅР°РєРё "-" Рё "_"</small></td></tr>
+<tr><td>Р“Р°Р»РµСЂРµСЏ</td><td><strong>{swich_gallery_addcat.CAT_PID_NAME}</strong><br><small>РќР°Р·РІР°РЅРёРµ РіР°Р»РµСЂРёРё РІ РєРѕС‚РѕСЂРѕР№ СЃРѕР·РґР°РµРј РЅРѕРІСѓСЋ РіР°Р»РµСЂРµСЋ</small>
 <input type="hidden" name="cat_pid" value="{swich_gallery_addcat.CAT_PID}"></td></tr>
 </table>
-<input type="submit" name="add_cat" value="Добавить">
+<input type="submit" name="add_cat" value="Р”РѕР±Р°РІРёС‚СЊ">
 </form>
 <!-- END swich_gallery_addcat -->
 
 <!-- BEGIN swich_gallery_editcat -->
-Редактирование фотогалерии
+Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С„РѕС‚РѕРіР°Р»РµСЂРёРё
 <form action="/admin/index.php?edit=gallery" method="post">
 <table>
 <col valign="top">
@@ -446,26 +446,26 @@ hs.addSlideshow({
 	});
  });
 </script>
-<!--small>Загрузить фотографию</small-->
+<!--small>Р—Р°РіСЂСѓР·РёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ</small-->
 </td><td>
 
 <table>
 <col valign="top">
-<!--tr><td>Обложка</td><td><input type="text" name="cat_img" value="" size="100" maxlength="255"><br><small>Путь к файлу обложки. Если оставить пустым - при добавлении первой фотографии она станет обложкой</small></td></tr-->
-<tr><td>Название</td><td><input type="text" name="cat_name" value="{swich_gallery_editcat.CAT_NAME}" size="100" maxlength="255"><br><small>До 255 символов</small></td></tr>
-<tr><td>Описание</td><td><input type="text" name="cat_desc" value="{swich_gallery_editcat.CAT_DESC}" size="100" maxlength="255"><br><small>До 255 символов</small></td></tr>
-<tr><td>Тип галереи</td><td><input type="radio" name="cat_type" value="0"{swich_gallery_editcat.CAT_TYPE_0}>удаленная, 
-<input type="radio" name="cat_type" value="1"{swich_gallery_editcat.CAT_TYPE_1}>обычная, 
-<input type="radio" name="cat_type" value="50"{swich_gallery_editcat.CAT_TYPE_50}>скрытая (галерея используется только в статьях)</td></tr>
-<tr><td>Путь</td><td>{swich_gallery_editcat.CAT_PATH}</td></tr>
-<!--tr><td>Галерея</td><td><strong>{swich_gallery_editcat.CAT_PID_NAME}</strong><br><small>Путь и название родительской галереи</small></td></tr-->
+<!--tr><td>РћР±Р»РѕР¶РєР°</td><td><input type="text" name="cat_img" value="" size="100" maxlength="255"><br><small>РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ РѕР±Р»РѕР¶РєРё. Р•СЃР»Рё РѕСЃС‚Р°РІРёС‚СЊ РїСѓСЃС‚С‹Рј - РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РїРµСЂРІРѕР№ С„РѕС‚РѕРіСЂР°С„РёРё РѕРЅР° СЃС‚Р°РЅРµС‚ РѕР±Р»РѕР¶РєРѕР№</small></td></tr-->
+<tr><td>РќР°Р·РІР°РЅРёРµ</td><td><input type="text" name="cat_name" value="{swich_gallery_editcat.CAT_NAME}" size="100" maxlength="255"><br><small>Р”Рѕ 255 СЃРёРјРІРѕР»РѕРІ</small></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><input type="text" name="cat_desc" value="{swich_gallery_editcat.CAT_DESC}" size="100" maxlength="255"><br><small>Р”Рѕ 255 СЃРёРјРІРѕР»РѕРІ</small></td></tr>
+<tr><td>РўРёРї РіР°Р»РµСЂРµРё</td><td><input type="radio" name="cat_type" value="0"{swich_gallery_editcat.CAT_TYPE_0}>СѓРґР°Р»РµРЅРЅР°СЏ, 
+<input type="radio" name="cat_type" value="1"{swich_gallery_editcat.CAT_TYPE_1}>РѕР±С‹С‡РЅР°СЏ, 
+<input type="radio" name="cat_type" value="50"{swich_gallery_editcat.CAT_TYPE_50}>СЃРєСЂС‹С‚Р°СЏ (РіР°Р»РµСЂРµСЏ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РІ СЃС‚Р°С‚СЊСЏС…)</td></tr>
+<tr><td>РџСѓС‚СЊ</td><td>{swich_gallery_editcat.CAT_PATH}</td></tr>
+<!--tr><td>Р“Р°Р»РµСЂРµСЏ</td><td><strong>{swich_gallery_editcat.CAT_PID_NAME}</strong><br><small>РџСѓС‚СЊ Рё РЅР°Р·РІР°РЅРёРµ СЂРѕРґРёС‚РµР»СЊСЃРєРѕР№ РіР°Р»РµСЂРµРё</small></td></tr-->
 </table>
 <input type="hidden" name="cat_id" value="{swich_gallery_editcat.CAT_ID}">
-<input type="submit" name="cat_save" value="Сохранить">
+<input type="submit" name="cat_save" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 </td></tr></table>
 
 </form>
-<div id="upl_resp"><!--ответ скрипта--></div>
+<div id="upl_resp"><!--РѕС‚РІРµС‚ СЃРєСЂРёРїС‚Р°--></div>
 <!-- END swich_gallery_editcat -->
 
 

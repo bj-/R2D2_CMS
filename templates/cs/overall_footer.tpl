@@ -3,11 +3,11 @@
 	</tr>
 </table>
 <!-- BEGIN page_header -->
-<!-- прочие страницы (не индекс) -->
+<!-- РїСЂРѕС‡РёРµ СЃС‚СЂР°РЅРёС†С‹ (РЅРµ РёРЅРґРµРєСЃ) -->
 <!-- END page_header -->
 
 <!-- BEGIN body_footer -->
-<!-- конец Контент -->
+<!-- РєРѕРЅРµС† РљРѕРЅС‚РµРЅС‚ -->
 <!-- END body_footer -->
 
 
@@ -16,9 +16,11 @@
 <!-- END admin_body_footer -->
 
 <!-- Bottom -->
-<table width="962" border="0" cellspacing="0" cellpadding="0" align="center" style="background-image: url(/templates/cs/images/bmenubar.gif);" class="maintable"><tr align="center">
-<td width="200" height="22" align="right"><span class="bottommenu">На хуй - это под браузером. Закрой его и посмотри.</span>&nbsp;</td>
-</tr></table>
+<table width="962" border="0" cellspacing="0" cellpadding="0" align="center" style="background-image: url(/templates/cs/images/bmenubar.gif);" class="maintable">
+	<tr align="center">
+		<td width="100%" height="22" align="right"><span class="bottommenu">РќР° С…СѓР№ - СЌС‚Рѕ РїРѕРґ Р±СЂР°СѓР·РµСЂРѕРј. Р—Р°РєСЂРѕР№ РµРіРѕ Рё РїРѕСЃРјРѕС‚СЂРё.</span>&nbsp;</td>
+	</tr>
+</table>
 
 
 <!--

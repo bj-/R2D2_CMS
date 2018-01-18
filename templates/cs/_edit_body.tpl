@@ -57,21 +57,21 @@
 </script>
 <!-- /TinyMCE -->
 <!-- BEGIN switch_article_edit -->
-<!--Адрес статьи: <a href="{ARTICLE_PATH}">{ARTICLE_PATH}</a><br>
+<!--РђРґСЂРµСЃ СЃС‚Р°С‚СЊРё: <a href="{ARTICLE_PATH}">{ARTICLE_PATH}</a><br>
 <hr size="1" style="border: 1px solid #043198;"-->
 <!-- END switch_article_edit -->
 <form method="post" action="{SUBMIT_PATH}">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <col valign="top" width="120">
-<tr><td>Название:</td><td><input type="text" name="page_title" value="{PAGE_TITLE}" size="100"><br>
+<tr><td>РќР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="page_title" value="{PAGE_TITLE}" size="100"><br>
 <!-- BEGIN switch_news_edit -->
-<small>Название новости</small>
+<small>РќР°Р·РІР°РЅРёРµ РЅРѕРІРѕСЃС‚Рё</small>
 <!-- END switch_news_edit -->
 <!-- BEGIN switch_article_edit -->
-<small>Название статьи. Отображается в заголовке браузера.</small>
+<small>РќР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё. РћС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РІ Р·Р°РіРѕР»РѕРІРєРµ Р±СЂР°СѓР·РµСЂР°.</small>
 <!-- END switch_article_edit -->
 </td></tr>
-<tr><td>Дата:</td><td>
+<tr><td>Р”Р°С‚Р°:</td><td>
 		<script type="text/javascript" src="/jquery/js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
 		<script type="text/javascript" src="/jquery/ui/i18n/jquery.ui.datepicker-ru.js"></script>
@@ -95,17 +95,17 @@
 				
 			});
 		</script>
-<input type="radio" name="date_sel" value="current_date"{CHECK_CURRENT_DATE}>Текущая; &nbsp; <input type="radio" name="date_sel" value="selected_date"{CHECK_SELECTED_DATE}>Указать: <input type="text" id="datepicker" name="page_date" value="{PAGE_DATE}" size="20"><br><small>Дата добавления</small></td></tr>
+<input type="radio" name="date_sel" value="current_date"{CHECK_CURRENT_DATE}>РўРµРєСѓС‰Р°СЏ; &nbsp; <input type="radio" name="date_sel" value="selected_date"{CHECK_SELECTED_DATE}>РЈРєР°Р·Р°С‚СЊ: <input type="text" id="datepicker" name="page_date" value="{PAGE_DATE}" size="20"><br><small>Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ</small></td></tr>
 <!-- BEGIN switch_article_edit -->
-<tr><td>Название файла:</td><td><input type="text" name="page_path" value="{PAGE_PATH}" size="100"><br><small>На английском. Использовать только цифры, латинские буквы и "-", вместо пробелов использовать "_".</small></td></tr>
-<tr><td>Раздел:</td><td><select name="paragraf_id">{ARTICLE_PARAGRAF}</select><br><small><input type="checkbox" name="article_primary" value="1"{CHECK_PRIMARY_ARTICLE}>Основная статья раздела (Статья будет отображаться при входе в данный раздел)<br>Выберете раздел для данной статьи, отметте галочку если хотите сделать статью основной в разделе.</small></td></tr>
-<tr><td colspan="2"><strong>Мета теги:</strong></td></tr>
-<tr><td>Описание:</td><td><input type="text" name="page_desc" value="{PAGE_DESC}" size="100"><br><small>Краткое описание статьи. Для поисковиков.</small></td></tr>
-<!--tr><td>Классификация:</td><td><input type="text" name="page_classification" value="{CLASSIFICATION}" size="100"></td></tr-->
-<tr><td>Ключевые слова:</td><td><input type="text" name="page_keywords" value="{PAGE_KEYWORDS}" size="100"><br><small>До 15 ключевых слов через пробел</small></td></tr>
+<tr><td>РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°:</td><td><input type="text" name="page_path" value="{PAGE_PATH}" size="100"><br><small>РќР° Р°РЅРіР»РёР№СЃРєРѕРј. РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹, Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹ Рё "-", РІРјРµСЃС‚Рѕ РїСЂРѕР±РµР»РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ "_".</small></td></tr>
+<tr><td>Р Р°Р·РґРµР»:</td><td><select name="paragraf_id">{ARTICLE_PARAGRAF}</select><br><small><input type="checkbox" name="article_primary" value="1"{CHECK_PRIMARY_ARTICLE}>РћСЃРЅРѕРІРЅР°СЏ СЃС‚Р°С‚СЊСЏ СЂР°Р·РґРµР»Р° (РЎС‚Р°С‚СЊСЏ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РїСЂРё РІС…РѕРґРµ РІ РґР°РЅРЅС‹Р№ СЂР°Р·РґРµР»)<br>Р’С‹Р±РµСЂРµС‚Рµ СЂР°Р·РґРµР» РґР»СЏ РґР°РЅРЅРѕР№ СЃС‚Р°С‚СЊРё, РѕС‚РјРµС‚С‚Рµ РіР°Р»РѕС‡РєСѓ РµСЃР»Рё С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃС‚Р°С‚СЊСЋ РѕСЃРЅРѕРІРЅРѕР№ РІ СЂР°Р·РґРµР»Рµ.</small></td></tr>
+<tr><td colspan="2"><strong>РњРµС‚Р° С‚РµРіРё:</strong></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ:</td><td><input type="text" name="page_desc" value="{PAGE_DESC}" size="100"><br><small>РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ СЃС‚Р°С‚СЊРё. Р”Р»СЏ РїРѕРёСЃРєРѕРІРёРєРѕРІ.</small></td></tr>
+<!--tr><td>РљР»Р°СЃСЃРёС„РёРєР°С†РёСЏ:</td><td><input type="text" name="page_classification" value="{CLASSIFICATION}" size="100"></td></tr-->
+<tr><td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td><td><input type="text" name="page_keywords" value="{PAGE_KEYWORDS}" size="100"><br><small>Р”Рѕ 15 РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ С‡РµСЂРµР· РїСЂРѕР±РµР»</small></td></tr>
 <!--tr><td>S_CONTENT_DIRECTION:</td><td><input type="text" name="content_direction" value="{S_CONTENT_DIRECTION}"></td></tr-->
-<!--tr><td>Голосование:</td><td><input type="checkbox" name="article_vove" value="1"> Добавить голосование к статье (<a href="#">Редактировать опрос</a>)</td></tr-->
-<tr><td>Форма обратной связи:</td><td>E-Mail: <input type="text" name="form_email"> Тема сообщения: <input type="text" name="form_subject" size="49"></td></tr>
+<!--tr><td>Р“РѕР»РѕСЃРѕРІР°РЅРёРµ:</td><td><input type="checkbox" name="article_vove" value="1"> Р”РѕР±Р°РІРёС‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ Рє СЃС‚Р°С‚СЊРµ (<a href="#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕРїСЂРѕСЃ</a>)</td></tr-->
+<tr><td>Р¤РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё:</td><td>E-Mail: <input type="text" name="form_email"> РўРµРјР° СЃРѕРѕР±С‰РµРЅРёСЏ: <input type="text" name="form_subject" size="49"></td></tr>
 <!-- END switch_article_edit -->
 </table>
 <input type="hidden" name="article_id" value="{ARTICLE_ID}">

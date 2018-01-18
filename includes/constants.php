@@ -27,7 +27,7 @@ if ( !defined('IN_R2D2') )
 
 // Debug Level
 //define('DEBUG', 1); // Debugging on
-define('DEBUG', 1); // Debugging off
+define('DEBUG', 0); // Debugging off
 
 
 // User Levels <- Do not change the values of USER or ADMIN
@@ -180,39 +180,39 @@ define('USERS_TABLE', 'users_global');
 //define('VOTE_RESULTS_TABLE', $table_prefix.'vote_results');
 //define('VOTE_USERS_TABLE', $table_prefix.'vote_voters');
 //define('CLUB_USER_CAR_TABLE', 'clubuserscar');
-//define('USERS_TABLE_TEMP', 'users_global_temp');					// íîâûé þçåð ñíà÷àëà èäåò â ýòó òàáëèöó.
-define('TABLE_ARTICLE', $table_prefix.'articles'); 					// ñòàòüè
-define('TABLE_ARTILE_GALLERY', $table_prefix.'mini_gallery');	// ëè÷íàÿ ãàëåðåÿ ñòàòüè
-define('TABLE_NEWS', $table_prefix.'news'); 						// íîâîñòè
-define('TABLE_LANG', $table_prefix.'lang');							// ÿçûê
-define('TABLE_TOPMENU', $table_prefix.'menu');					// ãëàâíîå ìåíþ
-define('TABLE_BLOCKS', $table_prefix.'blocks');						// äîïîëíèòåëüíûå áëîêè
-define('TABLE_GALLERY_CAT', $table_prefix.'gallery_cat');			// Ãàëåðåÿ	(êàòåãîðèè)
-define('TABLE_GALLERY_IMG', $table_prefix.'gallery_img');			// (ôîòîãðàôèè)
-define('TABLE_EVENTS', $table_prefix.'events');						// êàëåíäàðü ñîáûòèé
+//define('USERS_TABLE_TEMP', 'users_global_temp');					// Ð½Ð¾Ð²Ñ‹Ð¹ ÑŽÐ·ÐµÑ€ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð¸Ð´ÐµÑ‚ Ð² ÑÑ‚Ñƒ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ.
+define('TABLE_ARTICLE', $table_prefix.'articles'); 					// ÑÑ‚Ð°Ñ‚ÑŒÐ¸
+define('TABLE_ARTILE_GALLERY', $table_prefix.'mini_gallery');	// Ð»Ð¸Ñ‡Ð½Ð°Ñ Ð³Ð°Ð»ÐµÑ€ÐµÑ ÑÑ‚Ð°Ñ‚ÑŒÐ¸
+define('TABLE_NEWS', $table_prefix.'news'); 						// Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+define('TABLE_LANG', $table_prefix.'lang');							// ÑÐ·Ñ‹Ðº
+define('TABLE_TOPMENU', $table_prefix.'menu');					// Ð³Ð»Ð°Ð²Ð½Ð¾Ðµ Ð¼ÐµÐ½ÑŽ
+define('TABLE_BLOCKS', $table_prefix.'blocks');						// Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð±Ð»Ð¾ÐºÐ¸
+define('TABLE_GALLERY_CAT', $table_prefix.'gallery_cat');			// Ð“Ð°Ð»ÐµÑ€ÐµÑ	(ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸)
+define('TABLE_GALLERY_IMG', $table_prefix.'gallery_img');			// (Ñ„Ð¾Ñ‚Ð¾Ð³Ñ€Ð°Ñ„Ð¸Ð¸)
+define('TABLE_EVENTS', $table_prefix.'events');						// ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹
 
-define('TABLE_FORMS', $table_prefix.'forms');						// Ôîðìû îòïðàâêè ñîîáùåíèé
+define('TABLE_FORMS', $table_prefix.'forms');						// Ð¤Ð¾Ñ€Ð¼Ñ‹ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹
 define('TABLE_FORMS_FIELDS', $table_prefix.'forms_fields');						// 
 
-define('TABLE_EMPLOYERS', $table_prefix.'employers');				// ðàáîòîäàòåëè
-define('TABLE_EMPLOYERS_VACANCY', $table_prefix.'employers_vacancy');				// âàêàíñèè ðàáîòîäàòåëåé
+define('TABLE_EMPLOYERS', $table_prefix.'employers');				// Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ð¸
+define('TABLE_EMPLOYERS_VACANCY', $table_prefix.'employers_vacancy');				// Ð²Ð°ÐºÐ°Ð½ÑÐ¸Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¹
 
-define('TABLE_NNZ_PEOPLE', $table_prefix.'nnz_people');				// Ñîòðóäíèêè Íèåíøàíöà
-
-
-define('TABLE_CRUCH_CALENDAR', $table_prefix.'cruch_calendar');	// ïðàâîñëàâíûé êàëåíäàðü
-
-// ýëåêòðî êîìïàíåíòû
-define('TABLE_ELECTRO_DIODES', $table_prefix.'electrocat_diod');	// ïðàâîñëàâíûé êàëåíäàðü
-define('TABLE_ELECTRO_LED', $table_prefix.'electrocat_led');	// ïðàâîñëàâíûé êàëåíäàðü
-define('TABLE_ELECTRO_RESISTOR', $table_prefix.'electrocat_resistor');	// ïðàâîñëàâíûé êàëåíäàðü
+define('TABLE_NNZ_PEOPLE', $table_prefix.'nnz_people');				// Ð¡Ð¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¸ ÐÐ¸ÐµÐ½ÑˆÐ°Ð½Ñ†Ð°
 
 
-// Ïîëóêîíñòàíòû-çàìåíèòåëè ÁÄ
-$user_award_id[1] = 'Çàìå÷àíèå';
-$user_award_id[2] = 'Ïðåäóïðåæäåíèå';
-$user_award_id[3] = 'Ñòðîãîå ïðåäóïðåæäåíèå';
+define('TABLE_CRUCH_CALENDAR', $table_prefix.'cruch_calendar');	// Ð¿Ñ€Ð°Ð²Ð¾ÑÐ»Ð°Ð²Ð½Ñ‹Ð¹ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ
+
+// ÑÐ»ÐµÐºÑ‚Ñ€Ð¾ ÐºÐ¾Ð¼Ð¿Ð°Ð½ÐµÐ½Ñ‚Ñ‹
+define('TABLE_ELECTRO_DIODES', $table_prefix.'electrocat_diod');	// Ð¿Ñ€Ð°Ð²Ð¾ÑÐ»Ð°Ð²Ð½Ñ‹Ð¹ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ
+define('TABLE_ELECTRO_LED', $table_prefix.'electrocat_led');	// Ð¿Ñ€Ð°Ð²Ð¾ÑÐ»Ð°Ð²Ð½Ñ‹Ð¹ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ
+define('TABLE_ELECTRO_RESISTOR', $table_prefix.'electrocat_resistor');	// Ð¿Ñ€Ð°Ð²Ð¾ÑÐ»Ð°Ð²Ð½Ñ‹Ð¹ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ
+
+
+// ÐŸÐ¾Ð»ÑƒÐºÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ñ‹-Ð·Ð°Ð¼ÐµÐ½Ð¸Ñ‚ÐµÐ»Ð¸ Ð‘Ð”
+$user_award_id[1] = 'Ð—Ð°Ð¼ÐµÑ‡Ð°Ð½Ð¸Ðµ';
+$user_award_id[2] = 'ÐŸÑ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ';
+$user_award_id[3] = 'Ð¡Ñ‚Ñ€Ð¾Ð³Ð¾Ðµ Ð¿Ñ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ';
 $user_award_id[4] = 'R/O';
-$user_award_id[5] = 'Îòêëþ÷åíèå';
+$user_award_id[5] = 'ÐžÑ‚ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ';
 
 ?>

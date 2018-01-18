@@ -1,9 +1,9 @@
 <form action="?action=edit&form_id={FORM_ID}" method="post">
 <input name="field_id" type="hidden" value="{FIELD_ID}" />
 <table>
-	<tr><td>Название</td><td><input name="field_name" type="text" value="{FIELD_NAME}" size="60" maxlength="255" /></td></tr>
+	<tr><td>РќР°Р·РІР°РЅРёРµ</td><td><input name="field_name" type="text" value="{FIELD_NAME}" size="60" maxlength="255" /></td></tr>
 	<tr>
-		<td>Тип поля</td>
+		<td>РўРёРї РїРѕР»СЏ</td>
 		<td>
 			<select name="field_type" id="field_type" onchange="change_size(document.getElementById('field_type').value)">
 				<!-- BEGIN field_type_list -->
@@ -12,32 +12,32 @@
 			</select>
 		</td>
 	</tr>
-	<tr><td>Значение по умолчанию</td><td><input name="field_val" type="text" value="{FIELD_VAL}" size="60" maxlength="255" /></td></tr>
+	<tr><td>Р—РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ</td><td><input name="field_val" type="text" value="{FIELD_VAL}" size="60" maxlength="255" /></td></tr>
 	<tr>
-		<td>Размер</td>
+		<td>Р Р°Р·РјРµСЂ</td>
 		<td>
 			<div id="t_field" style="display:none">
 				<input name="field_size" type="text" value="{FIELD_SIZE}" size="10" maxlength="10" />
 			</div>
 			<div id="t_textarea" style="display:none">
-				Ширина: <input name="field_size_width" type="text" value="{FIELD_SIZE_WIDTH}" size="5" maxlength="5" /> &nbsp; &nbsp; Высота: <input name="field_size_height" type="text" value="{FIELD_SIZE_HEIGHT}" size="5" maxlength="5" />
+				РЁРёСЂРёРЅР°: <input name="field_size_width" type="text" value="{FIELD_SIZE_WIDTH}" size="5" maxlength="5" /> &nbsp; &nbsp; Р’С‹СЃРѕС‚Р°: <input name="field_size_height" type="text" value="{FIELD_SIZE_HEIGHT}" size="5" maxlength="5" />
 			</div>
 		</td>
 	</tr>
-	<tr><td>Макс длина</td><td><input name="field_maxlen" id="field_maxlen" type="text" value="{FIELD_MAXLEN}" size="10" maxlength="5" /></td></tr>
-	<tr><td>Обязательное</td><td><input name="field_require" type="checkbox" value="1"{FIELD_REQUIRED} /></td></tr>
+	<tr><td>РњР°РєСЃ РґР»РёРЅР°</td><td><input name="field_maxlen" id="field_maxlen" type="text" value="{FIELD_MAXLEN}" size="10" maxlength="5" /></td></tr>
+	<tr><td>РћР±СЏР·Р°С‚РµР»СЊРЅРѕРµ</td><td><input name="field_require" type="checkbox" value="1"{FIELD_REQUIRED} /></td></tr>
 	<tr><td>CSS Class</td><td><input name="field_class" type="text" value="{FIELD_CLASS}" size="60" maxlength="255" /></td></tr>
 	<tr><td>CSS Style</td><td><input name="field_style" type="text" value="{FIELD_STYLE}" size="60" maxlength="255" /></td></tr>
-	<tr><td></td><td><input name="save_field" type="submit" value="Сохранить"></td></tr>
+	<tr><td></td><td><input name="save_field" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"></td></tr>
 </table>
 </form>
 <script language="JavaScript" type="text/javascript">
 function change_size(opt_id) {
-	if (opt_id == 4) { // текстареа = 4, см. конфиг.
+	if (opt_id == 4) { // С‚РµРєСЃС‚Р°СЂРµР° = 4, СЃРј. РєРѕРЅС„РёРі.
 		document.getElementById('t_field').style.display="none"; 
 		document.getElementById('t_textarea').style.display="block"; 
 		
-		// Меняем макс длину вводимого текста при смене типа поля
+		// РњРµРЅСЏРµРј РјР°РєСЃ РґР»РёРЅСѓ РІРІРѕРґРёРјРѕРіРѕ С‚РµРєСЃС‚Р° РїСЂРё СЃРјРµРЅРµ С‚РёРїР° РїРѕР»СЏ
 		if (document.getElementById('field_maxlen').value == "250") {
 			document.getElementById('field_maxlen').value = "3000"
 		};
@@ -46,7 +46,7 @@ function change_size(opt_id) {
 		document.getElementById('t_textarea').style.display="none"; 
 		document.getElementById('t_field').style.display="block"; 
 
-		// Меняем макс длину вводимого текста при смене типа поля
+		// РњРµРЅСЏРµРј РјР°РєСЃ РґР»РёРЅСѓ РІРІРѕРґРёРјРѕРіРѕ С‚РµРєСЃС‚Р° РїСЂРё СЃРјРµРЅРµ С‚РёРїР° РїРѕР»СЏ
 		if (document.getElementById('field_maxlen').value == "3000") {
 			document.getElementById('field_maxlen').value = "250"
 		};

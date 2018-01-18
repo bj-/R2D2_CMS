@@ -8,7 +8,7 @@ if ( !defined('IN_R2D2') or $userdata['user_level'] < 1)
 $id = intval(substr($_GET["menu_id"],0,11));
 
 $post_menu_id = 	intval(substr($_POST["menu_id"],0,11));
-$post_menu_name = ($_POST["menu_name"]) ? substr($_POST["menu_name"],0,255) : "Без Названия";
+$post_menu_name = ($_POST["menu_name"]) ? substr($_POST["menu_name"],0,255) : "Р‘РµР· РќР°Р·РІР°РЅРёСЏ";
 $post_menu_pid = ($_POST["menu_pid"]) ? intval(substr($_POST["menu_pid"],0,3)) : "0";
 $post_menu_group = ($_POST["menu_group"]) ? intval(substr($_POST["menu_group"],0,3)) : "0";
 $post_sortorder = ($_POST["sortorder"]) ? intval(substr($_POST["sortorder"],0,11)) : "0";
@@ -21,31 +21,31 @@ $post_menu_class = 	($_POST["menu_class"]) ? substr($_POST["menu_class"],0,255) 
 
 
 $menu_group_list = array(
-								0=>"Главное меню", 
-								1=>"Меню слева", 
-								2=>"Меню справа", 
-								3=>"Нижнее меню", 
-								90=>"Технический раздел", 
-								99=>"Технический раздел", 
+								0=>"Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ", 
+								1=>"РњРµРЅСЋ СЃР»РµРІР°", 
+								2=>"РњРµРЅСЋ СЃРїСЂР°РІР°", 
+								3=>"РќРёР¶РЅРµРµ РјРµРЅСЋ", 
+								90=>"РўРµС…РЅРёС‡РµСЃРєРёР№ СЂР°Р·РґРµР»", 
+								99=>"РўРµС…РЅРёС‡РµСЃРєРёР№ СЂР°Р·РґРµР»", 
 								);
 $menu_type_list = array(
-								0=>"основная", 
-								1=>'внешняя target="_blank"', 
-								2=>"жесткая", 
-								3=>"меню без ссылки", 
+								0=>"РѕСЃРЅРѕРІРЅР°СЏ", 
+								1=>'РІРЅРµС€РЅСЏСЏ target="_blank"', 
+								2=>"Р¶РµСЃС‚РєР°СЏ", 
+								3=>"РјРµРЅСЋ Р±РµР· СЃСЃС‹Р»РєРё", 
 								);
 								
 //
-// Дерево главного меню.
+// Р”РµСЂРµРІРѕ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ.
 //
 function admin_buildtopmenu_table ($pid, $menu_desc, $lvl, $m_group) {
 	global $topmenu_pids, $topmenu_data, $url_lang, $localhost, $blank_tree_top_menu, $template, $theme, $menu_group_list, $menu_type_list;
-	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // метка для конструктора меню 1 - это топ меню и первый вход в функцию, 2 - это топ меню (требуется для добавления доп элементов разделителей и пр.)
-	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // если надо вывести меню просто списком.
+	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // РјРµС‚РєР° РґР»СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РјРµРЅСЋ 1 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ Рё РїРµСЂРІС‹Р№ РІС…РѕРґ РІ С„СѓРЅРєС†РёСЋ, 2 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ (С‚СЂРµР±СѓРµС‚СЃСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕРї СЌР»РµРјРµРЅС‚РѕРІ СЂР°Р·РґРµР»РёС‚РµР»РµР№ Рё РїСЂ.)
+	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // РµСЃР»Рё РЅР°РґРѕ РІС‹РІРµСЃС‚Рё РјРµРЅСЋ РїСЂРѕСЃС‚Рѕ СЃРїРёСЃРєРѕРј.
 	$i = 0;
 	$ret = "";
 	while ($topmenu_pids[$pid][$i]) {
-		$c_id = $topmenu_pids[$pid][$i];								// длину названия переменной уменьшаем (удобства ради)
+		$c_id = $topmenu_pids[$pid][$i];								// РґР»РёРЅСѓ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅРѕР№ СѓРјРµРЅСЊС€Р°РµРј (СѓРґРѕР±СЃС‚РІР° СЂР°РґРё)
 		
 		if ($topmenu_data[$c_id]['link_type'] == 3) {
 			$url = '';
@@ -57,8 +57,8 @@ function admin_buildtopmenu_table ($pid, $menu_desc, $lvl, $m_group) {
 //			$menu_name = '<a href="'.$url.'/">'.$topmenu_data[$c_id]["menu_name"].'</a>';
 		};
 		
-		$menu_img = ($topmenu_data[$c_id]["menu_img"]) ? '<a href="/templates/'.$theme["template_name"].'/images/'.$topmenu_data[$c_id]["menu_img"].'" title="Меню графическое - посмотреть картинку (учитывайте что цвет картинки может совпадать с дефолтным цветом бэкграунда в браузере)."><img src="/pic/ico/photo_16x16.png" width="16" height="16" border="0" alt="Меню графическое - посмотреть картинку." /></a>' : "";
-		$menu_class = ($topmenu_data[$c_id]["menu_class"]) ? '<img src="/pic/ico/style_16x16.png" alt="Пункту меню назначен CSS класс - '.$topmenu_data[$c_id]["menu_class"].'" width="16" height="16" border="0" />' : "";
+		$menu_img = ($topmenu_data[$c_id]["menu_img"]) ? '<a href="/templates/'.$theme["template_name"].'/images/'.$topmenu_data[$c_id]["menu_img"].'" title="РњРµРЅСЋ РіСЂР°С„РёС‡РµСЃРєРѕРµ - РїРѕСЃРјРѕС‚СЂРµС‚СЊ РєР°СЂС‚РёРЅРєСѓ (СѓС‡РёС‚С‹РІР°Р№С‚Рµ С‡С‚Рѕ С†РІРµС‚ РєР°СЂС‚РёРЅРєРё РјРѕР¶РµС‚ СЃРѕРІРїР°РґР°С‚СЊ СЃ РґРµС„РѕР»С‚РЅС‹Рј С†РІРµС‚РѕРј Р±СЌРєРіСЂР°СѓРЅРґР° РІ Р±СЂР°СѓР·РµСЂРµ)."><img src="/pic/ico/photo_16x16.png" width="16" height="16" border="0" alt="РњРµРЅСЋ РіСЂР°С„РёС‡РµСЃРєРѕРµ - РїРѕСЃРјРѕС‚СЂРµС‚СЊ РєР°СЂС‚РёРЅРєСѓ." /></a>' : "";
+		$menu_class = ($topmenu_data[$c_id]["menu_class"]) ? '<img src="/pic/ico/style_16x16.png" alt="РџСѓРЅРєС‚Сѓ РјРµРЅСЋ РЅР°Р·РЅР°С‡РµРЅ CSS РєР»Р°СЃСЃ - '.$topmenu_data[$c_id]["menu_class"].'" width="16" height="16" border="0" />' : "";
 
 		$link_type = ($topmenu_data[$c_id]["link_type"]) ? $topmenu_data[$c_id]["link_type"]. " - ".$menu_type_list[$topmenu_data[$c_id]["link_type"]] : $menu_type_list[0];
 
@@ -83,7 +83,7 @@ function admin_buildtopmenu_table ($pid, $menu_desc, $lvl, $m_group) {
 		));
 
 		$menu_group = $topmenu_data[$c_id]["menu_group"] . " - ".$menu_group_list[$topmenu_data[$c_id]["menu_group"]];
-		// Добавляем разделитель групп меню
+		// Р”РѕР±Р°РІР»СЏРµРј СЂР°Р·РґРµР»РёС‚РµР»СЊ РіСЂСѓРїРї РјРµРЅСЋ
 		if ($m_group <> $topmenu_data[$c_id]["menu_group"]) {
 			$template->assign_block_vars('swich_menu_list.menu_list.menu_sep', array(
 				'MENU_GROUP' => $menu_group
@@ -92,7 +92,7 @@ function admin_buildtopmenu_table ($pid, $menu_desc, $lvl, $m_group) {
 			$m_group = $topmenu_data[$c_id]["menu_group"];
 		};
 		
-		// следующий уровень
+		// СЃР»РµРґСѓСЋС‰РёР№ СѓСЂРѕРІРµРЅСЊ
 		$lvl++;
 		$tree .= admin_buildtopmenu_table($c_id, $menu_desc, $lvl, $m_group);
 		$lvl--;
@@ -116,14 +116,14 @@ if (@$_POST['menu_save'] and $post_menu_id == "") {
 			'VALUES ("'.$post_menu_pid.'", "'.$post_menu_group.'", "'.$post_sortorder.'", "'.$post_menu_path.'", "'.$post_menu_name.'", "'.$post_menu_desc.'", '.$insert_link_type.', '.$insert_menu_img.', '.$insert_menu_class.');';
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'Ошибка добавления пункта меню', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ РїСѓРЅРєС‚Р° РјРµРЅСЋ', '', __LINE__, __FILE__, $sql);
 		}
 	else {
 		$template->assign_block_vars('swich_save', array());
 	};
 
-	echo "<strong>Добавлено</strong>";
-	menutree(); // Ребилдим меню
+	echo "<strong>Р”РѕР±Р°РІР»РµРЅРѕ</strong>";
+	menutree(); // Р РµР±РёР»РґРёРј РјРµРЅСЋ
 
 }
 elseif (@$_GET['menu_remove']) {
@@ -131,7 +131,7 @@ elseif (@$_GET['menu_remove']) {
 	$sql = "DELETE FROM `".TABLE_TOPMENU."` WHERE `menu_id` = ".intval($_GET['menu_remove']).";";
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'Ошибка удаления пункта меню', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ РїСѓРЅРєС‚Р° РјРµРЅСЋ', '', __LINE__, __FILE__, $sql);
 		}
 	else {
 		$template->assign_block_vars('swich_save', array());
@@ -144,7 +144,7 @@ elseif (@$_POST['menu_save']) {
 	$update_menu_img = ($post_menu_img) ? '`menu_img` = "'.$post_menu_img.'", ' : '`menu_img` = NULL, ';
 	$update_menu_class = ($post_menu_class) ? '`menu_class` = "'.$post_menu_class.'", ' : '`menu_class` = NULL, ';
 
-	// Сбрасываем парента если он совпадает с собственным id
+	// РЎР±СЂР°СЃС‹РІР°РµРј РїР°СЂРµРЅС‚Р° РµСЃР»Рё РѕРЅ СЃРѕРІРїР°РґР°РµС‚ СЃ СЃРѕР±СЃС‚РІРµРЅРЅС‹Рј id
 	$post_menu_pid = ($post_menu_id == $post_menu_pid) ? "0" : $post_menu_pid;
 
 	$sql = 'UPDATE `'.TABLE_TOPMENU.'` SET  '.
@@ -161,19 +161,19 @@ elseif (@$_POST['menu_save']) {
 
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'Ошибка сохранения пункта меню', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РїСѓРЅРєС‚Р° РјРµРЅСЋ', '', __LINE__, __FILE__, $sql);
 		}
 	else {
 		$template->assign_block_vars('swich_save', array());
 	};
 
-	echo "<strong>Сохранено</strong>";
-	menutree();  // Ребилдим меню
+	echo "<strong>РЎРѕС…СЂР°РЅРµРЅРѕ</strong>";
+	menutree();  // Р РµР±РёР»РґРёРј РјРµРЅСЋ
 };
 
 
 //
-// Редактирование либо просмотр
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р»РёР±Рѕ РїСЂРѕСЃРјРѕС‚СЂ
 //
 
 $template->set_filenames(array(
@@ -187,13 +187,13 @@ if ((@$_GET['menu_id'] and $_GET['edit']=='menu') or $_GET["action"] == "addmenu
 			'WHERE menu_id="'.$id.'";';
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'База статей отсутствует', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'Р‘Р°Р·Р° СЃС‚Р°С‚РµР№ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 	};
 	$menu_edit_data = $db->sql_fetchrow($result);
 
-	$root_paragraf = ($menu_edit_data["menu_pid"] == 0) ? "<option value='0' selected>Корневой раздел</option>" : "<option value='0'>Корневой раздел</option>";	
+	$root_paragraf = ($menu_edit_data["menu_pid"] == 0) ? "<option value='0' selected>РљРѕСЂРЅРµРІРѕР№ СЂР°Р·РґРµР»</option>" : "<option value='0'>РљРѕСЂРЅРµРІРѕР№ СЂР°Р·РґРµР»</option>";	
 
-	// редактирование пункта меню
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСѓРЅРєС‚Р° РјРµРЅСЋ
 	$template->assign_block_vars('swich_menu_edit', array(
 		'MENU_NAME' => $menu_edit_data["menu_name"],
 		'MENU_ID' => $menu_edit_data["menu_id"],
@@ -210,7 +210,7 @@ if ((@$_GET['menu_id'] and $_GET['edit']=='menu') or $_GET["action"] == "addmenu
 	));
 }
 elseif ($_GET['edit']=='menu') {
-	// таблица меню
+	// С‚Р°Р±Р»РёС†Р° РјРµРЅСЋ
 	$template->assign_block_vars('swich_menu_list', array());
 	admin_buildtopmenu_table(0,"", 0, -1);
 

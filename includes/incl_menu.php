@@ -19,7 +19,7 @@
 
  
 //
-//отсылка почты из формы
+//РѕС‚СЃС‹Р»РєР° РїРѕС‡С‚С‹ РёР· С„РѕСЂРјС‹
 //
 
 if ( !defined('IN_R2D2') )
@@ -33,11 +33,11 @@ function buildmenu($pid, $menutype) {
 	
 //	echo $menutype;
 	/*
-		$menutype	= группа меню (menu group)
-		 $group		= группа меню
-		 $startlvl	= parent ID с которого начинать строить меню
-		 $levels		= глубина (количество уровней)
-		 $target		= указатель на шаблон который использовать
+		$menutype	= РіСЂСѓРїРїР° РјРµРЅСЋ (menu group)
+		 $group		= РіСЂСѓРїРїР° РјРµРЅСЋ
+		 $startlvl	= parent ID СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ СЃС‚СЂРѕРёС‚СЊ РјРµРЅСЋ
+		 $levels		= РіР»СѓР±РёРЅР° (РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№)
+		 $target		= СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С€Р°Р±Р»РѕРЅ РєРѕС‚РѕСЂС‹Р№ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
 	*/
 	global $template;
 	global $topmenu_pids, $topmenu_data, $url_lang;
@@ -48,16 +48,16 @@ function buildmenu($pid, $menutype) {
 //print_r($topmenu_pids);
 //echo '</pre>';
 
-	if ($menutype == 0) 	{ // Главное меню
+	if ($menutype == 0) 	{ // Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ
 		$menu_group_name = 'topmenu';
 	}
-	elseif ($menutype == 1) { // Вспомогательнео меню (слева)
+	elseif ($menutype == 1) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃР»РµРІР°)
 		$menu_group_name = 'leftmenu';
 	}
-	elseif ($menutype == 2) { // Вспомогательнео меню (справа)
+	elseif ($menutype == 2) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃРїСЂР°РІР°)
 		$menu_group_name = 'rightmenu';
 	}
-	elseif ($menutype == 3) { // Вспомогательнео меню (снизу)
+	elseif ($menutype == 3) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃРЅРёР·Сѓ)
 		$menu_group_name = 'bottommenu';
 	};
 
@@ -81,7 +81,7 @@ function buildmenu($pid, $menutype) {
 					$url = "/" .$url_lang."/".get_full_url($c_id) . "/";
 				};
 				$url_target = ($topmenu_data[$c_id]['link_type'] == '1') ? ' target="_blank" ': "";
-
+//var_dump($topmenu_data);
 				$tag_a_open = ($topmenu_data[$c_id]['link_type'] == '3') ? "" : '<a class="'.$topmenu_data[$c_id]['menu_class'].'" href="'.$url . '" title="'.$topmenu_data[$c_id]['menu_name'].'" '.$url_target.'>';
 				$tag_a_close = ($topmenu_data[$c_id]['link_type'] == '3') ? "" : "</a>";				
 //				$url_class = ($topmenu_data[$c_id]['link_type'] == '3') ? "label" : "";
@@ -100,14 +100,14 @@ function buildmenu($pid, $menutype) {
 					'CLASS' => $topmenu_data[$c_id]['menu_class'],
 				));
 				
-				// сепаратор для меню.
+				// СЃРµРїР°СЂР°С‚РѕСЂ РґР»СЏ РјРµРЅСЋ.
 				if ($topmenu_pids[$pid][$i+1]) {
 					$template->assign_block_vars($menu_group_name.'.menulist.menu_sep',array(
 						'CLASS' => $topmenu_data[$topmenu_pids[$pid][$i+1]]['menu_class'],
 					));
 				};
 				
-				if ($topmenu_pids[$c_id][0]) {	// Подменю
+				if ($topmenu_pids[$c_id][0]) {	// РџРѕРґРјРµРЅСЋ
 					$template->assign_block_vars($menu_group_name.'.menulist.menu_sub_1',array());
 
 					$i2=0;
@@ -135,23 +135,23 @@ function buildmenu($pid, $menutype) {
 		$i++;
 	};
 
-	if ($menutype == 0) 	{ // Главное меню
+	if ($menutype == 0) 	{ // Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ
 		$template->assign_var_from_handle('TOP_MENU', 'menu'.$menu_group_name);
 	}
-	elseif ($menutype == 1) { // Вспомогательнео меню (слева)
+	elseif ($menutype == 1) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃР»РµРІР°)
 		$template->assign_var_from_handle('LEFT_MENU', 'menu'.$menu_group_name);
 	}
-	elseif ($menutype == 2) { // Вспомогательнео меню (справа)
+	elseif ($menutype == 2) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃРїСЂР°РІР°)
 		$template->assign_var_from_handle('RIGHT_MENU', 'menu'.$menu_group_name);
 	}
-	elseif ($menutype == 3) { // Вспомогательнео меню (снизу)
+	elseif ($menutype == 3) { // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРµРѕ РјРµРЅСЋ (СЃРЅРёР·Сѓ)
 		$template->assign_var_from_handle('BOTTOM_MENU', 'menu'.$menu_group_name);
 	};
 	
 	return $ret;
 
 };
-
+//echo "ddddС‹РІРїРІС‹РїРІС‹";
 
 ?>
 

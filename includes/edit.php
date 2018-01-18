@@ -1,5 +1,5 @@
 <?php
-// Редактирование текстов (статей)
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‚РµРєСЃС‚РѕРІ (СЃС‚Р°С‚РµР№)
 
 if ( !defined('IN_R2D2') )
 {
@@ -22,7 +22,7 @@ if (@$_GET['add']) {
 	$template->assign_block_vars('switch_add', array());
 };
 
-$general_page = ($article_data[0]["paragraf_id"] == 0) ? "<option value='0' selected>Главная страница</option>" : "";
+$general_page = ($article_data[0]["paragraf_id"] == 0) ? "<option value='0' selected>Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</option>" : "";
 $template->assign_vars(array(
 //	'ARTICLE_PATH' => "/" . $url . "/",
 	'PAGE_ID' => $page_id,

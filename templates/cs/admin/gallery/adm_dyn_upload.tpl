@@ -2,12 +2,12 @@
 <script type="text/javascript" src="/script/jquery/js/swfobject.js"></script>
 <script src="/script/jquery/js/uploadify.v2.1.4.min.js" type="text/javascript"></script>
 <table><tr>
-<td width="70">Начать<br>загрузку</td>
-<td width="75">Очистить<br>список</td>
-<td width="70">Выбор<br>файлов</td>
+<td width="70">РќР°С‡Р°С‚СЊ<br>Р·Р°РіСЂСѓР·РєСѓ</td>
+<td width="75">РћС‡РёСЃС‚РёС‚СЊ<br>СЃРїРёСЃРѕРє</td>
+<td width="70">Р’С‹Р±РѕСЂ<br>С„Р°Р№Р»РѕРІ</td>
 </tr></table>
-<a href="javascript:$('#fileInput1').uploadifyUpload();"><img src="/pic/ico/cnruninstall_48x48.png" alt="Начать загрузку" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
-<a href="javascript:$('#fileInput1').uploadifyClearQueue();"><img src="/pic/ico/delete_48x48.png" alt="Очистить очередь" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
+<a href="javascript:$('#fileInput1').uploadifyUpload();"><img src="/pic/ico/cnruninstall_48x48.png" alt="РќР°С‡Р°С‚СЊ Р·Р°РіСЂСѓР·РєСѓ" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
+<a href="javascript:$('#fileInput1').uploadifyClearQueue();"><img src="/pic/ico/delete_48x48.png" alt="РћС‡РёСЃС‚РёС‚СЊ РѕС‡РµСЂРµРґСЊ" width="48" height="48" border="0"></a> &nbsp; &nbsp; &nbsp; 
 <input id="fileInput1" name="fileInput1" type="file" />
 <script type="text/javascript">
  $(document).ready(function() {
@@ -68,29 +68,29 @@ function parse_yt_video(input_id, div_id){
 				<td valign="top" style="width:130px">
 					<table>
 						<tr><td id="yt_cell"><a onclick="show_add_video_div('yt')" style="cursor:pointer">YouTube</a></td></tr>
-						<tr><td id="videosystem_cell"><a onclick="show_add_video_div('videosystem')" style="cursor:pointer">Другие системы</a></td></tr>
+						<tr><td id="videosystem_cell"><a onclick="show_add_video_div('videosystem')" style="cursor:pointer">Р”СЂСѓРіРёРµ СЃРёСЃС‚РµРјС‹</a></td></tr>
 					</table>
 				</td>
 				<td>
 					<div id="yt" style="display: block;">
-						Укажите адрес ролика с YouTube: <br /> Например: http://www.youtube.com/watch?v=5YGc4zOqozo
+						РЈРєР°Р¶РёС‚Рµ Р°РґСЂРµСЃ СЂРѕР»РёРєР° СЃ YouTube: <br /> РќР°РїСЂРёРјРµСЂ: http://www.youtube.com/watch?v=5YGc4zOqozo
 						<form action="?edit=video&cat={PAGE_ID}" method="post" id="yt_parse_url" onsubmit="parse_yt_video('yt_video_url', 'yt')">
 							<input name="galtype" id="galtype" type="hidden" value="{GALTYPE}" />
 							<table>
-								<tr><td>Адрес ролика:</td><td><input type="text" name="video_url" id="yt_video_url" value="" size="70"></td></tr>
-								<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="Получить данные о ролике" /></td></tr>
+								<tr><td>РђРґСЂРµСЃ СЂРѕР»РёРєР°:</td><td><input type="text" name="video_url" id="yt_video_url" value="" size="70"></td></tr>
+								<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЂРѕР»РёРєРµ" /></td></tr>
 							</table>
 						</form>
 					
 					</div>
 					<div id="videosystem" style="display: none;">
-						Другие системы:
+						Р”СЂСѓРіРёРµ СЃРёСЃС‚РµРјС‹:
 						<form action="?edit=video&cat={PAGE_ID}" method="post">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-							<tr><td width="130px">Название</td><td><input type="text" name="video_name" value="" size="70"></td></tr>
-							<tr><td>Описание</td><td><textarea cols="53" rows="5" name="video_desc"></textarea></td></tr>
-							<tr><td>Код ролика</td><td><textarea cols="53" rows="5" name="video_code"></textarea></td></tr>
-							<tr><td></td><td><input type="submit" name="video_add" value="Добавить"></td></tr>
+							<tr><td width="130px">РќР°Р·РІР°РЅРёРµ</td><td><input type="text" name="video_name" value="" size="70"></td></tr>
+							<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><textarea cols="53" rows="5" name="video_desc"></textarea></td></tr>
+							<tr><td>РљРѕРґ СЂРѕР»РёРєР°</td><td><textarea cols="53" rows="5" name="video_code"></textarea></td></tr>
+							<tr><td></td><td><input type="submit" name="video_add" value="Р”РѕР±Р°РІРёС‚СЊ"></td></tr>
 						</table>
 						</form>
 					</div>
@@ -101,16 +101,16 @@ function parse_yt_video(input_id, div_id){
 <form action="/admin/index.php?edit=video&cat={PAGE_ID}" method="post">
 <input name="redirect_url" type="hidden" value="{REDIRECT_URL}" />
 <table border="0" cellspacing="0" cellpadding="0">
-<tr><td width="130px">Название</td><td><input type="text" name="video_name" value="" size="93"></td></tr>
-<tr><td>Описание</td><td><textarea cols="70" rows="5" name="video_desc"></textarea></td></tr>
-<tr><td>Код ролика</td><td><textarea cols="70" rows="5" name="video_code"></textarea></td></tr>
-<tr><td></td><td><input type="submit" name="video_add" value="Добавить"></td></tr>
+<tr><td width="130px">РќР°Р·РІР°РЅРёРµ</td><td><input type="text" name="video_name" value="" size="93"></td></tr>
+<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><textarea cols="70" rows="5" name="video_desc"></textarea></td></tr>
+<tr><td>РљРѕРґ СЂРѕР»РёРєР°</td><td><textarea cols="70" rows="5" name="video_code"></textarea></td></tr>
+<tr><td></td><td><input type="submit" name="video_add" value="Р”РѕР±Р°РІРёС‚СЊ"></td></tr>
 </table>
 </form>
 -->
 
 <!-- END switch_upload_video -->
 <!-- BEGIN no_right -->
-<p>Недостаточно прав для загрузки</p>
+<p>РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё</p>
 <!-- END no_right -->
 <div id="upl_resp"></div>

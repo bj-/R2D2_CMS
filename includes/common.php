@@ -165,7 +165,7 @@ while ( $row = $db->sql_fetchrow($result) )
 }
 
 
-// текущий язык
+// С‚РµРєСѓС‰РёР№ СЏР·С‹Рє
 $sql = "SELECT *
 	FROM " . TABLE_LANG;
 if( !($result = $db->sql_query($sql)) )
@@ -182,18 +182,18 @@ $user_lang = $site_lang[$board_config['default_lang']]['lang_id'];
 
 
 
-// подгружаем моды
+// РїРѕРґРіСЂСѓР¶Р°РµРј РјРѕРґС‹
 if (@$mod_blocks) {
 	include $DRoot."/mod/blocks.php";
 };
 
-// Дерево меню
+// Р”РµСЂРµРІРѕ РјРµРЅСЋ
 function menutree() {
 	global $db, $topmenu_pids, $topmenu_data, $paragraf_id;
 $sql = "SELECT * FROM " . TABLE_TOPMENU . " ORDER BY `menu_group`, `sortorder`, `menu_id` ASC";
 
 if ( !($result = $db->sql_query($sql)) ) {
-	message_die(GENERAL_ERROR, 'Пункты меню отсутсвуют', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'РџСѓРЅРєС‚С‹ РјРµРЅСЋ РѕС‚СЃСѓС‚СЃРІСѓСЋС‚', '', __LINE__, __FILE__, $sql);
 	};
 
 $topmenu_data = array();
@@ -239,7 +239,7 @@ if( $board_config['board_disable'] && !defined("IN_ADMIN") && !defined("IN_LOGIN
 
 
 //
-// Подключаем дополнительные моды
+// РџРѕРґРєР»СЋС‡Р°РµРј РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РјРѕРґС‹
 //
 if (@$mod_article_list) {
 	include $DRoot . "/mod/article_list.php";

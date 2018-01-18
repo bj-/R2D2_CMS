@@ -35,16 +35,16 @@ init_userprefs($userdata);
 // End session management
 //
 
-$show_article = TRUE; // флаг задающий показ текста статьи
+$show_article = TRUE; // С„Р»Р°Рі Р·Р°РґР°СЋС‰РёР№ РїРѕРєР°Р· С‚РµРєСЃС‚Р° СЃС‚Р°С‚СЊРё
 
 //
-// собираем страницу со статьей
+// СЃРѕР±РёСЂР°РµРј СЃС‚СЂР°РЅРёС†Сѓ СЃРѕ СЃС‚Р°С‚СЊРµР№
 //
 $get_article = $_GET['id'];
-$get_lang = substr($_GET['lang'],0, 3); // обрезаем id языка до 3 символов для борьбы и инжекшенами
+$get_lang = substr($_GET['lang'],0, 3); // РѕР±СЂРµР·Р°РµРј id СЏР·С‹РєР° РґРѕ 3 СЃРёРјРІРѕР»РѕРІ РґР»СЏ Р±РѕСЂСЊР±С‹ Рё РёРЅР¶РµРєС€РµРЅР°РјРё
 $article_sgal = TRUE;
 
-// ищем ID раздела странички если не указан файл. если путь в каком-то месте неверный - возвращаем ошибку
+// РёС‰РµРј ID СЂР°Р·РґРµР»Р° СЃС‚СЂР°РЅРёС‡РєРё РµСЃР»Рё РЅРµ СѓРєР°Р·Р°РЅ С„Р°Р№Р». РµСЃР»Рё РїСѓС‚СЊ РІ РєР°РєРѕРј-С‚Рѕ РјРµСЃС‚Рµ РЅРµРІРµСЂРЅС‹Р№ - РІРѕР·РІСЂР°С‰Р°РµРј РѕС€РёР±РєСѓ
 function get_paragraf_id($paragraf_name, $pid) {
 	global $paragraf_id, $current_paragraf_id_list;
 //	echo "sdfsdfsdf";
@@ -58,18 +58,18 @@ function get_paragraf_id($paragraf_name, $pid) {
  			$ret = get_paragraf_id($sub_paragraf_name, $current_paragraf_id);
 			}
 		else {
-			$ret = ($current_paragraf_id) ? $current_paragraf_id : -1;	// если путь в каком-то месте неверный или ведет в никуда - возвращаем ошибку (-1) и далее ее обработаем
+			$ret = ($current_paragraf_id) ? $current_paragraf_id : -1;	// РµСЃР»Рё РїСѓС‚СЊ РІ РєР°РєРѕРј-С‚Рѕ РјРµСЃС‚Рµ РЅРµРІРµСЂРЅС‹Р№ РёР»Рё РІРµРґРµС‚ РІ РЅРёРєСѓРґР° - РІРѕР·РІСЂР°С‰Р°РµРј РѕС€РёР±РєСѓ (-1) Рё РґР°Р»РµРµ РµРµ РѕР±СЂР°Р±РѕС‚Р°РµРј
 		}; 
 	};
  	return $ret;
 };
 
-// парсим путь
+// РїР°СЂСЃРёРј РїСѓС‚СЊ
 $article_name = substr($get_article, strrpos($get_article, "/")+1);
 if ($article_name) {
 	$current_article_id = substr($article_name, strrpos($article_name, "-")+1);
 	$current_article_id = substr($current_article_id, 0, strpos($current_article_id, "."));
-	$current_article_id = substr($current_article_id,0, 11); // обрезаем id статьи до 11 символов для борьбы и инжекшенами
+	$current_article_id = substr($current_article_id,0, 11); // РѕР±СЂРµР·Р°РµРј id СЃС‚Р°С‚СЊРё РґРѕ 11 СЃРёРјРІРѕР»РѕРІ РґР»СЏ Р±РѕСЂСЊР±С‹ Рё РёРЅР¶РµРєС€РµРЅР°РјРё
 	$paragraf_url = substr($get_article, 0, strrpos($get_article, "/")+1);
 	get_paragraf_id($paragraf_url, 0);
 //	$in_paragraf_root = TRUE; //$get_article;
@@ -80,7 +80,7 @@ else {
 };
 
 
-// Берем статью из БД
+// Р‘РµСЂРµРј СЃС‚Р°С‚СЊСЋ РёР· Р‘Р”
 if (@$current_paragraf_id){
 	$article_where = ' `primary_article` = "1" and `paragraf_id` = "'.$current_paragraf_id.'"';
 };
@@ -93,7 +93,7 @@ $sql = 'SELECT * '.
 		'WHERE '.$article_where.' and `article_lang` = "'.$user_lang.'"';
 
 if ( !($result = $db->sql_query($sql)) ) {
-	message_die(GENERAL_ERROR, 'База статей отсутствует', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'Р‘Р°Р·Р° СЃС‚Р°С‚РµР№ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 	};
 
 $article_data = array();
@@ -103,13 +103,13 @@ while( $row = $db->sql_fetchrow($result) ) {
 
 if (!$article_data[0]["article_id"]) {
 	$no_article = TRUE;
-//	message_die(GENERAL_ERROR, 'Запрошенная статья не найдена ' . $add, '', __LINE__, __FILE__, $sql);
+//	message_die(GENERAL_ERROR, 'Р—Р°РїСЂРѕС€РµРЅРЅР°СЏ СЃС‚Р°С‚СЊСЏ РЅРµ РЅР°Р№РґРµРЅР° ' . $add, '', __LINE__, __FILE__, $sql);
 }
 else {
 	$current_paragraf_id = $article_data[0]["paragraf_id"];
 };
 
-// выбираем данные о форме, если она есть и если указан емейл
+// РІС‹Р±РёСЂР°РµРј РґР°РЅРЅС‹Рµ Рѕ С„РѕСЂРјРµ, РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ Рё РµСЃР»Рё СѓРєР°Р·Р°РЅ РµРјРµР№Р»
 if ($article_data[0]["form_id"] and $article_data[0]["form_email"]) {
 	$sql = 'SELECT * '.
 			'FROM `' . TABLE_FORMS_FIELDS . '` '.
@@ -117,7 +117,7 @@ if ($article_data[0]["form_id"] and $article_data[0]["form_email"]) {
 			'ORDER BY `field_sort` ASC;';
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'База статей отсутствует', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'Р‘Р°Р·Р° СЃС‚Р°С‚РµР№ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 	};
 
 	$form_data = array();
@@ -126,7 +126,7 @@ if ($article_data[0]["form_id"] and $article_data[0]["form_email"]) {
 	};
 };
 
-//Формирование пути раздела данной статьи
+//Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РїСѓС‚Рё СЂР°Р·РґРµР»Р° РґР°РЅРЅРѕР№ СЃС‚Р°С‚СЊРё
 //print_r($config);
 $i = 0;
 $paragraf_title_patch = "";
@@ -134,23 +134,23 @@ $url = "";
 while (@$current_paragraf_id_list[$i]) {
 	$url = $url_lang."/".get_full_url($current_paragraf_id_list[$i]);
 	$paragraf_title_patch .= '<a class="paragraf_title_link" href="/'.$url.'/">'. $topmenu_data[$current_paragraf_id_list[$i]]['menu_name'] .'</a>';
-	if (@$current_paragraf_id_list[$i+1]) { // добавляем >> между ссылками
+	if (@$current_paragraf_id_list[$i+1]) { // РґРѕР±Р°РІР»СЏРµРј >> РјРµР¶РґСѓ СЃСЃС‹Р»РєР°РјРё
 		$paragraf_title_patch .= $config["paragraf_title_sep"];
 	};
 	$i++;
 };
 
 if ($userdata['user_level'] >0) {
-	$edit = '<a href="/admin/article_edit.php?add=1" title="Создать новую статью"><img src="/pic/ico/page_add.gif" alt="Создать новую статью" width="16" height="16" border="0"></a> ';
+	$edit = '<a href="/admin/article_edit.php?add=1" title="РЎРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ СЃС‚Р°С‚СЊСЋ"><img src="/pic/ico/page_add.gif" alt="РЎРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ СЃС‚Р°С‚СЊСЋ" width="16" height="16" border="0"></a> ';
 	$edit .= ($article_data[0]["article_id"] and $article_data[0]["article_edit_type"]<9) ? '<a href="/admin/article_edit.php?id='.$article_data[0]["article_id"].'&edit=1" title="'.$lang['Edit_post'].'"><img src="/pic/ico/edit.gif" alt="'.$lang['Edit_post'].'" width="16" height="16" border="0"></a> ' : "";
-	$edit .= ($article_data[0]["article_id"]) ? '<a href="/admin/article_prop.php?&id='.$article_data[0]["article_id"].'" title="Настройки статьи"><img src="/pic/ico/document-properties.png" alt="Настройки статьи" width="16" height="16" border="0"></a> ' : "";
+	$edit .= ($article_data[0]["article_id"]) ? '<a href="/admin/article_prop.php?&id='.$article_data[0]["article_id"].'" title="РќР°СЃС‚СЂРѕР№РєРё СЃС‚Р°С‚СЊРё"><img src="/pic/ico/document-properties.png" alt="РќР°СЃС‚СЂРѕР№РєРё СЃС‚Р°С‚СЊРё" width="16" height="16" border="0"></a> ' : "";
 };
 
 //
 // Start output of page
 //
 define('SHOW_ONLINE', true);
-$page_title = (@$no_article) ? "Статья не найдена" : $article_data[0]["article_title"];
+$page_title = (@$no_article) ? "РЎС‚Р°С‚СЊСЏ РЅРµ РЅР°Р№РґРµРЅР°" : $article_data[0]["article_title"];
 $page_classification = $article_data[0]["article_classification"];
 $page_desc = $article_data[0]["article_desc"];
 $page_keywords = $article_data[0]["article_keywords"];
@@ -172,7 +172,7 @@ $page_form_email = $article_data[0]["form_email"];
 $page_form_subj = $article_data[0]["form_subject"];
 
 $page_path = $article_data[0]["article_name"];
-$page_text = (@$no_article) ? "<p><h2>Запрошенная статья не найдена</h2></p><p>Жалоба администратору сайта уже написана автоматически, спасибо за помощь.</p>" : $article_data[0]["article_text"];
+$page_text = (@$no_article) ? "<p><h2>Р—Р°РїСЂРѕС€РµРЅРЅР°СЏ СЃС‚Р°С‚СЊСЏ РЅРµ РЅР°Р№РґРµРЅР°</h2></p><p>Р–Р°Р»РѕР±Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЃР°Р№С‚Р° СѓР¶Рµ РЅР°РїРёСЃР°РЅР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё, СЃРїР°СЃРёР±Рѕ Р·Р° РїРѕРјРѕС‰СЊ.</p>" : $article_data[0]["article_text"];
 
 $smGal_status = $article_data[0]["article_sgal_on"];
 
@@ -186,12 +186,13 @@ $template->set_filenames(array(
 $template->assign_block_vars('switch_left_menu', array());
 
 /*==============================================
-   отправка сообщения из формы обратной связи
+   РѕС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ РёР· С„РѕСЂРјС‹ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё
  ==============================================*/
 if ($article_data[0]["form_email"]) {
 	if ($_POST['send_mail']) {
 		include $DRoot . "/includes/msend.php";
 		$page_text = ($show_article) ? $page_text : "";
+		//$page_text = "";
 		}
 	else {
 		$show_form = TRUE;
@@ -207,7 +208,7 @@ $template->assign_vars(array(
 	'EDIT' => @$edit
 	));
 
-// Вставляем форму в страницу, если форма имеется. и если нет флага об отправленном соощении.
+// Р’СЃС‚Р°РІР»СЏРµРј С„РѕСЂРјСѓ РІ СЃС‚СЂР°РЅРёС†Сѓ, РµСЃР»Рё С„РѕСЂРјР° РёРјРµРµС‚СЃСЏ. Рё РµСЃР»Рё РЅРµС‚ С„Р»Р°РіР° РѕР± РѕС‚РїСЂР°РІР»РµРЅРЅРѕРј СЃРѕРѕС‰РµРЅРёРё.
 if (count($form_data) and @$show_form) {
 	$template->assign_block_vars('show_form', array());
 	$i = 0;
@@ -279,7 +280,7 @@ if (count($form_data) and @$show_form) {
 	};
 };
 
-// Показываем подменю на странице, если таковое указано в пропертях страницы.
+// РџРѕРєР°Р·С‹РІР°РµРј РїРѕРґРјРµРЅСЋ РЅР° СЃС‚СЂР°РЅРёС†Рµ, РµСЃР»Рё С‚Р°РєРѕРІРѕРµ СѓРєР°Р·Р°РЅРѕ РІ РїСЂРѕРїРµСЂС‚СЏС… СЃС‚СЂР°РЅРёС†С‹.
 if (TRUE) {
 //	echo "<pre>";
 //	print_r($topmenu_data);
@@ -288,8 +289,12 @@ if (TRUE) {
 	$i = 0;
 	while ($topmenu_pids[$current_paragraf_id][$i]) {
 		$c_id = $topmenu_pids[$current_paragraf_id][$i];
-
-		$menu_path = ($topmenu_data[$c_id]["link_type"]) ? $topmenu_data[$c_id]["link_type"] : '/'.$url_lang.'/' . get_full_url($c_id) . '/';
+		
+/*		echo "<pre>";
+		var_dump ($topmenu_data);
+		echo "</pre>";
+*/
+		$menu_path = ($topmenu_data[$c_id]["link_type"]) ? $topmenu_data[$c_id]["menu_path"] : '/'.$url_lang.'/' . get_full_url($c_id) . '/';
 		
 		$template->assign_block_vars('submenu.submenu_list', array(
 			'MENU_NAME' => $topmenu_data[$c_id]["menu_name"],
@@ -301,8 +306,8 @@ if (TRUE) {
 };
 
 
-// миниГалерея
-// переключалка 
+// РјРёРЅРёР“Р°Р»РµСЂРµСЏ
+// РїРµСЂРµРєР»СЋС‡Р°Р»РєР° 
 if ($article_data[0]["article_sgal_on"]) {
 	$sql_sgal = 'SELECT * FROM '.TABLE_ARTILE_GALLERY.' WHERE `article_id` = "' .$article_data[0]["article_id"].'" and `source_id` = "1" AND `img_path` IS NOT NULL;';
 	$sgal_source_id = 1;
@@ -327,7 +332,7 @@ if ($article_data[0]["article_sgal_on"]) {
 	$sql = $sql_sgal;
 	
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'ошибка доступа к таблице минигалереи', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РѕС€РёР±РєР° РґРѕСЃС‚СѓРїР° Рє С‚Р°Р±Р»РёС†Рµ РјРёРЅРёРіР°Р»РµСЂРµРё', '', __LINE__, __FILE__, $sql);
 		};
 
 	$smGal_data = array();

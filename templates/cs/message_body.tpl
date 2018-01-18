@@ -1,6 +1,6 @@
 <p><strong>{MESSAGE_TITLE}</strong></p>
 <p>{MESSAGE_TEXT}</p>
-<p>Перейти на главную страницу <b><a href="{U_INDEX}">{L_INDEX}</a></b></p>
+<p>РџРµСЂРµР№С‚Рё РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ <b><a href="{U_INDEX}">{L_INDEX}</a></b></p>
 
 <!-- BEGIN swich_debug -->
 <p><strong>DEBUG MODE:</strong>

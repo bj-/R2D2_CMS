@@ -1,5 +1,5 @@
 //
-// показать скрыть блок
+// РїРѕРєР°Р·Р°С‚СЊ СЃРєСЂС‹С‚СЊ Р±Р»РѕРє
 //
 function ShowDiv (div_id) {
 		document.getElementById(div_id).style.display="block"; 
@@ -9,21 +9,22 @@ function HideDiv (div_id) {
 };
 
 //
-// загрузка контента в div
+// Р·Р°РіСЂСѓР·РєР° РєРѕРЅС‚РµРЅС‚Р° РІ div
 //
 function show_content(page_url, div_id) {
-//alert(page_url + "===" + div_id);
+//document.write(page_url + "==-=" + div_id);
 		$.ajax({
 			url: page_url,
 			cache: false,
 			beforeSend: function() {
-					$(div_id).html('Загрузка...');
+					$(div_id).html('Р—Р°РіСЂСѓР·РєР°...');
 				},
 				success: function(html){
 					$(div_id).html(html);
 				}
 			});
 		return false;
+//*/
 };
 
 function assembly_filter_data(page_url, div_id, form_id)

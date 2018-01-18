@@ -19,7 +19,7 @@
 
  
 //
-//отсылка почты из формы
+//РѕС‚СЃС‹Р»РєР° РїРѕС‡С‚С‹ РёР· С„РѕСЂРјС‹
 //
 if ( !defined('IN_R2D2') )
 {
@@ -32,7 +32,7 @@ if ( !defined('IN_R2D2') )
 	TABLE_ARTICLE . '` WHERE `article_id` = "'.$article_data[0]["article_id"].'" and `article_lang` = "'.$user_lang.'"';
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'База статей отсутствует', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'Р‘Р°Р·Р° СЃС‚Р°С‚РµР№ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 		};
 
 
@@ -42,7 +42,7 @@ if ( !defined('IN_R2D2') )
 		};
 		
 	if (!$article_data[0]["article_id"]) {
-		message_die(GENERAL_ERROR, 'Запрошенная статья не найдена ' . $add, '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'Р—Р°РїСЂРѕС€РµРЅРЅР°СЏ СЃС‚Р°С‚СЊСЏ РЅРµ РЅР°Р№РґРµРЅР° ' . $add, '', __LINE__, __FILE__, $sql);
 		};
 */
 
@@ -50,12 +50,12 @@ if ( !defined('IN_R2D2') )
 	$t_val = array("", "", "");
 
 	if ($article_data[0]["form_id"]) {
-		// если включена форма из билдера
-		// выбираем поля этой формы.
+		// РµСЃР»Рё РІРєР»СЋС‡РµРЅР° С„РѕСЂРјР° РёР· Р±РёР»РґРµСЂР°
+		// РІС‹Р±РёСЂР°РµРј РїРѕР»СЏ СЌС‚РѕР№ С„РѕСЂРјС‹.
 		$sql = 'SELECT * FROM `' . TABLE_FORMS_FIELDS . '` WHERE `form_id` = "'.$article_data[0]["form_id"].'";';
 
 		if ( !($result = $db->sql_query($sql)) ) {
-			message_die(GENERAL_ERROR, 'Таблица полей форм отсутствует', '', __LINE__, __FILE__, $sql);
+			message_die(GENERAL_ERROR, 'РўР°Р±Р»РёС†Р° РїРѕР»РµР№ С„РѕСЂРј РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 		};
 
 		$form_field_data = array();
@@ -65,10 +65,10 @@ if ( !defined('IN_R2D2') )
 
 		if (!$form_field_data[0]["field_id"]) {
 			$add = " form_id=".$article_data[0]["form_id"].";article_id=".$article_data[0]["article_id"];
-			message_die(GENERAL_ERROR, 'У формы нет полей' . $add, '', __LINE__, __FILE__, $sql);
+			message_die(GENERAL_ERROR, 'РЈ С„РѕСЂРјС‹ РЅРµС‚ РїРѕР»РµР№' . $add, '', __LINE__, __FILE__, $sql);
 		};
 		
-		// собираем тело письма.
+		// СЃРѕР±РёСЂР°РµРј С‚РµР»Рѕ РїРёСЃСЊРјР°.
 		$msend_message = "";
 		$i = 0;
 		while ($form_field_data[$i]["field_id"]) {
@@ -79,9 +79,9 @@ if ( !defined('IN_R2D2') )
 		$msend_message = '<table border="0" cellpadding="0" cellspacing="3">'.$msend_message.'</table>';
 	}
 	else {
-		// кастомные формы
+		// РєР°СЃС‚РѕРјРЅС‹Рµ С„РѕСЂРјС‹
 
-		// проверяем и обрезаем введенные значения
+		// РїСЂРѕРІРµСЂСЏРµРј Рё РѕР±СЂРµР·Р°РµРј РІРІРµРґРµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 		$msend_emailform_company		 = htmlspecialchars(str_replace($s_val, $t_val, 				substr($_POST['emailform_company'], 	0, 255)));
 		$msend_emailform_name			 = htmlspecialchars(str_replace($s_val, $t_val, 				substr($_POST['emailform_name'], 		0, 255)));
 		$emailform_address				 = htmlspecialchars(str_replace($s_val, $t_val, strip_tags(	substr($_POST['emailform_address'], 	0, 255))));
@@ -92,25 +92,25 @@ if ( !defined('IN_R2D2') )
 		$msend_emailform_text			 = htmlspecialchars(str_replace($s_val, $t_val, strip_tags(	substr($_POST['emailform_text'], 		0, 5000))));
 		$msend_emailform_concurse		 = htmlspecialchars(str_replace($s_val, $t_val, strip_tags(	substr($_POST['emailform_cuncurse'], 	0, 255))));
 	
-		// Формируем кусочки тела письма:
-		$msend_emailform_concurse = ($msend_emailform_concurse) ? "<tr><td>Конкурс: </td><td>" . $msend_emailform_concurse . "</td></tr>" : "";
-		$msend_emailform_company = ($msend_emailform_company) ? "<tr><td>Компания: </td><td>" . $msend_emailform_company . "</td></tr>" : "" ;
-		$msend_emailform_name = ($msend_emailform_name) ? "<tr><td>ФИО: </td><td>" . $msend_emailform_name . "\n" : "<tr><td>ФИО: </td><td>Анонимно</td></tr>";
-		$emailform_address = ($emailform_address) ? "<tr><td>Адрес: </td><td>" . $emailform_address . "</td></tr>" : "";
-		$emailform_city_district = ($emailform_city_district) ? "<tr><td>Район города: </td><td>" . $emailform_city_district . "</td></tr>" : "";
-		$emailform_house_manage_company = ($emailform_house_manage_company) ? "Управляющая компания: </td><td>" . $emailform_house_manage_company . "</td></tr>" : "";
-		$msend_emailform_phone = ($msend_emailform_phone) ? "<tr><td>Телефон: </td><td>" . $msend_emailform_phone . "</td></tr>" : "<tr><td>Телефон: </td><td>не указан</td></tr>";
-		$msend_emailform_email = ($msend_emailform_email) ? "<tr><td>E-Mail: </td><td>" . $msend_emailform_email . "</td></tr>" : "<tr><td>E-Mail: </td><td>не указан</td></tr>";
-		$msend_emailform_text = ($msend_emailform_text) ? "<tr><td>Сообщение: </td><td>" . $msend_emailform_text . "</td></tr>" : "<tr><td>Сообщение: </td><td>-</td></tr>";
+		// Р¤РѕСЂРјРёСЂСѓРµРј РєСѓСЃРѕС‡РєРё С‚РµР»Р° РїРёСЃСЊРјР°:
+		$msend_emailform_concurse = ($msend_emailform_concurse) ? "<tr><td>РљРѕРЅРєСѓСЂСЃ: </td><td>" . $msend_emailform_concurse . "</td></tr>" : "";
+		$msend_emailform_company = ($msend_emailform_company) ? "<tr><td>РљРѕРјРїР°РЅРёСЏ: </td><td>" . $msend_emailform_company . "</td></tr>" : "" ;
+		$msend_emailform_name = ($msend_emailform_name) ? "<tr><td>Р¤РРћ: </td><td>" . $msend_emailform_name . "\n" : "<tr><td>Р¤РРћ: </td><td>РђРЅРѕРЅРёРјРЅРѕ</td></tr>";
+		$emailform_address = ($emailform_address) ? "<tr><td>РђРґСЂРµСЃ: </td><td>" . $emailform_address . "</td></tr>" : "";
+		$emailform_city_district = ($emailform_city_district) ? "<tr><td>Р Р°Р№РѕРЅ РіРѕСЂРѕРґР°: </td><td>" . $emailform_city_district . "</td></tr>" : "";
+		$emailform_house_manage_company = ($emailform_house_manage_company) ? "РЈРїСЂР°РІР»СЏСЋС‰Р°СЏ РєРѕРјРїР°РЅРёСЏ: </td><td>" . $emailform_house_manage_company . "</td></tr>" : "";
+		$msend_emailform_phone = ($msend_emailform_phone) ? "<tr><td>РўРµР»РµС„РѕРЅ: </td><td>" . $msend_emailform_phone . "</td></tr>" : "<tr><td>РўРµР»РµС„РѕРЅ: </td><td>РЅРµ СѓРєР°Р·Р°РЅ</td></tr>";
+		$msend_emailform_email = ($msend_emailform_email) ? "<tr><td>E-Mail: </td><td>" . $msend_emailform_email . "</td></tr>" : "<tr><td>E-Mail: </td><td>РЅРµ СѓРєР°Р·Р°РЅ</td></tr>";
+		$msend_emailform_text = ($msend_emailform_text) ? "<tr><td>РЎРѕРѕР±С‰РµРЅРёРµ: </td><td>" . $msend_emailform_text . "</td></tr>" : "<tr><td>РЎРѕРѕР±С‰РµРЅРёРµ: </td><td>-</td></tr>";
 
-		// кастомные чекбоксы
+		// РєР°СЃС‚РѕРјРЅС‹Рµ С‡РµРєР±РѕРєСЃС‹
 		$msend_chk = "";
 		$i = 0;
 		while ($_POST['emailform_customfield_chk'][$i] and $i < 50) {
 			$msend_chk .= htmlspecialchars(str_replace($s_val, $t_val, substr($_POST['emailform_customfield_chk'][$i], 0, 255))) . '<br>';
 			$i++;
 		};
-		$msend_chk = ($msend_chk) ? '<tr><td>Отмеченные пункты: </td><td>' . $msend_chk . '</td></tr>' : '';
+		$msend_chk = ($msend_chk) ? '<tr><td>РћС‚РјРµС‡РµРЅРЅС‹Рµ РїСѓРЅРєС‚С‹: </td><td>' . $msend_chk . '</td></tr>' : '';
 //	print_r($_POST['mailform_customfield_chk']);
 	
 		$msend_message = '<table border="0" cellpadding="0" cellspacing="3">'.
@@ -141,22 +141,23 @@ if ( !defined('IN_R2D2') )
 
 
 	if (mail($msend_to, $msend_subject, $msend_message, $msend_headers)) {
-		$msend_result = "<p><div align='center'><strong>Сообщение отправлено</strong></p></div>";
+		$msend_result = "<p><div align='center'><strong>РЎРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ</strong></p></div>";
 		$show_article = FALSE;
 	}
 	else {
-		$add = "\n" . $msend_to . "\n" . $msend_subject . "\n" . $msend_message . "\n" . $msend_headers;
-		message_die(GENERAL_ERROR, '<strong><span style="color: #FF0000;">Ошибка отправки сообщения.</span> Будем разбираться.</strong><p>' . $add, '</p>', __LINE__, __FILE__, $sql);
+		$add = ($debug_mode) ? "\n" . $msend_to . "\n" . $msend_subject . "\n" . $msend_message . "\n" . $msend_headers : "";
+		message_die(GENERAL_ERROR, '<strong><span style="color: #FF0000;">РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ.</span> Р‘СѓРґРµРј СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ.</strong><p>' . $add, '</p>', __LINE__, __FILE__, $sql);
 		$show_article = FALSE;
 	};
 
 
-//$msend_result = "<p><div align='center'><strong>Сообщение отправлено</strong></p></div>" . $msend_message;
+//$msend_result = "<p><div align='center'><strong>РЎРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ</strong></p></div>" . $msend_message;
 //$show_article = FALSE;
 
 
 $template->assign_block_vars('switch_form_sended', array(
 	'TEXT' => $msend_result
+//	'TEXT' => "dd"
 ));
 
 

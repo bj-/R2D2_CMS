@@ -1,12 +1,20 @@
 <?php
 
 if (@$_POST['save']) {
+
+	$Block_text = str_encode_char($_POST['page_text']);
+	$Block_Id = str_encode_char($_POST['article_id']);
+	
+
 	$sql = "UPDATE `".TABLE_BLOCKS."` SET 
-`block_text` = '".$_POST['page_text']."'
- WHERE `block_id` = '".$_POST['article_id']."';";
+`block_text` = '".$Block_text."'
+ WHERE `block_id` = '".$Block_Id."';";
+
+
+//echo $sql;
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'Ошибка сохранения пункта меню', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ Р‘Р»РѕРєР°', '', __LINE__, __FILE__, $sql);
 		}
 	Else {
 		$template->assign_block_vars('swich_save', array());
@@ -16,13 +24,13 @@ if (@$_POST['save']) {
 
 
 //
-// выбираем все блоки из бд
+// РІС‹Р±РёСЂР°РµРј РІСЃРµ Р±Р»РѕРєРё РёР· Р±Рґ
 //
 $sql = "SELECT * FROM `" . 
 TABLE_BLOCKS . '`';
 
 if ( !($result = $db->sql_query($sql)) ) {
-	message_die(GENERAL_ERROR, 'Дополнительные блоки отсутствуют', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ Р±Р»РѕРєРё РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚', '', __LINE__, __FILE__, $sql);
 	};
 
 
@@ -32,7 +40,7 @@ while( $row = $db->sql_fetchrow($result) ) {
 	};
 
 //if (!$blocks_edit_data[0]["block_id"]) {
-//	message_die(GENERAL_ERROR, 'Запрошенный блок не найден ' . @$add, '', __LINE__, __FILE__, $sql);
+//	message_die(GENERAL_ERROR, 'Р—Р°РїСЂРѕС€РµРЅРЅС‹Р№ Р±Р»РѕРє РЅРµ РЅР°Р№РґРµРЅ ' . @$add, '', __LINE__, __FILE__, $sql);
 //};
 
 if (@$_GET['block']) {
@@ -45,7 +53,7 @@ if (@$_GET['block']) {
 			$page_id = $blocks_edit_data[$i]["block_id"];
 			$page_text = $blocks_edit_data[$i]["block_text"];
 
-			$rows_edit = "40"; // кол-во строк в редакторе
+			$rows_edit = "40"; // РєРѕР»-РІРѕ СЃС‚СЂРѕРє РІ СЂРµРґР°РєС‚РѕСЂРµ
 
 			include $DRoot . "/includes/edit.php";
 

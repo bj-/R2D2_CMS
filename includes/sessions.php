@@ -26,16 +26,16 @@
 //
 
 function ipchecker($userdata) {
-	// Защита от хацкеров для админов и модераторов
+	// Р—Р°С‰РёС‚Р° РѕС‚ С…Р°С†РєРµСЂРѕРІ РґР»СЏ Р°РґРјРёРЅРѕРІ Рё РјРѕРґРµСЂР°С‚РѕСЂРѕРІ
 	if ($userdata["user_level"]>0) {
-		// Для админов
+		// Р”Р»СЏ Р°РґРјРёРЅРѕРІ
 		if ($userdata["user_level"]==1) {
 			if (strpos($userdata["list"],";")) {
 				$user_ip_list =  explode(";", $userdata["list"]);
 				if (!in_array($_SERVER["REMOTE_ADDR"], $user_ip_list)) {
 					$_SERVER["phpbb_username"] = $userdata["username"];
 					$_SERVER["phpbb_user_id"] = $userdata["user_id"];
-					message_die(CRITICAL_ERROR, 'СПАСИБО за взлом, постараюсь заткнуть и эту дырку...', '', '', __FILE__, "");
+					message_die(CRITICAL_ERROR, 'РЎРџРђРЎРР‘Рћ Р·Р° РІР·Р»РѕРј, РїРѕСЃС‚Р°СЂР°СЋСЃСЊ Р·Р°С‚РєРЅСѓС‚СЊ Рё СЌС‚Сѓ РґС‹СЂРєСѓ...', '', '', __FILE__, "");
 					};
 				}
 			Else {
@@ -43,13 +43,13 @@ function ipchecker($userdata) {
 				if ($_SERVER["REMOTE_ADDR"]<>$user_ip_list) {
 					$_SERVER["phpbb_username"] = $userdata["username"];
 					$_SERVER["phpbb_user_id"] = $userdata["user_id"];
-					message_die(CRITICAL_ERROR, 'СПАСИБО за взлом, постараюсь заткнуть и эту дырку...', '', '', __FILE__, "");
+					message_die(CRITICAL_ERROR, 'РЎРџРђРЎРР‘Рћ Р·Р° РІР·Р»РѕРј, РїРѕСЃС‚Р°СЂР°СЋСЃСЊ Р·Р°С‚РєРЅСѓС‚СЊ Рё СЌС‚Сѓ РґС‹СЂРєСѓ...', '', '', __FILE__, "");
 					};
 				};
 //			$user_ip_list =  ? explode(";", $userdata["list"]) : $userdata["list"];
 //			echo "=" . $userdata["list"] . "=". array_search($_SERVER["HTTP_HOST"], $user_ip_list) . "=";
 			};
-		// Для модеров
+		// Р”Р»СЏ РјРѕРґРµСЂРѕРІ
 		};
 };
 

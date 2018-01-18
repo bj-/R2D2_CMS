@@ -1,5 +1,5 @@
 <?php
-// тесттьесттест
+// С‚РµСЃС‚С‚СЊРµСЃС‚С‚РµСЃС‚
 /***************************************************************************
  *                               functions.php
  *                            -------------------
@@ -106,9 +106,9 @@ function get_userdata($user, $force_str = false)
 }
 
 
-// формирование URL
+// С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ URL
 function gen_url($url) {
-// парсим урл для домашнего и серверного использования с и без мод-реврайта
+// РїР°СЂСЃРёРј СѓСЂР» РґР»СЏ РґРѕРјР°С€РЅРµРіРѕ Рё СЃРµСЂРІРµСЂРЅРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ СЃ Рё Р±РµР· РјРѕРґ-СЂРµРІСЂР°Р№С‚Р°
 	global $localhost;
 	$ret = '';
 	if ($localhost) {
@@ -126,15 +126,15 @@ function gen_url($url) {
 	return $ret;
 };
 
-// Проверяем права пользователя. если нет - выкидываем
+// РџСЂРѕРІРµСЂСЏРµРј РїСЂР°РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РµСЃР»Рё РЅРµС‚ - РІС‹РєРёРґС‹РІР°РµРј
 function privilegies_check($groups, $users) {
-	//  $groups - массив с юзерлевелами которым разрешен доступ
-	//  $users - массив с конкретными ID юзеров которым разрешен доступ, 
-	// либо All если всем подряд
+	//  $groups - РјР°СЃСЃРёРІ СЃ СЋР·РµСЂР»РµРІРµР»Р°РјРё РєРѕС‚РѕСЂС‹Рј СЂР°Р·СЂРµС€РµРЅ РґРѕСЃС‚СѓРї
+	//  $users - РјР°СЃСЃРёРІ СЃ РєРѕРЅРєСЂРµС‚РЅС‹РјРё ID СЋР·РµСЂРѕРІ РєРѕС‚РѕСЂС‹Рј СЂР°Р·СЂРµС€РµРЅ РґРѕСЃС‚СѓРї, 
+	// Р»РёР±Рѕ All РµСЃР»Рё РІСЃРµРј РїРѕРґСЂСЏРґ
 	global $userdata;
 	
 	if (!in_array($userdata['user_level'],$groups) and (!array_search($userdata['user_id'], $users) or !$users[0]=="all")) {
-		message_die(GENERAL_ERROR, 'Пользователь не имеет прав', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РёРјРµРµС‚ РїСЂР°РІ', '', __LINE__, __FILE__, $sql);
 		exit;
 	};
 };
@@ -305,7 +305,7 @@ function create_date($format, $gmepoch, $tz)
 	return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz)), $translate) : @gmdate($format, $gmepoch + (3600 * $tz));
 }
 
-// считаем количество минут/дней/месяцев/лет с последнего посещения
+// СЃС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РјРёРЅСѓС‚/РґРЅРµР№/РјРµСЃСЏС†РµРІ/Р»РµС‚ СЃ РїРѕСЃР»РµРґРЅРµРіРѕ РїРѕСЃРµС‰РµРЅРёСЏ
 function listvisit($date, $format) {
 	global $lang;
 
@@ -501,6 +501,7 @@ function message_die($msg_code, $msg_text = '', $msg_title = '', $err_line = '',
 	global $user_ip, $session_length;
 	global $starttime, $zone;
 
+//echo $msg_text;
 //echo "x-" . @$_SERVER["phpbb_username"] . @$_SERVER["phpbb_user_id"];
 
 	$overall = (@$zone=="board" || !isset($zone)) ? True : False;
@@ -673,7 +674,7 @@ function message_die($msg_code, $msg_text = '', $msg_title = '', $err_line = '',
 		}
 		$template->assign_vars(array(
 			'MESSAGE_TITLE' => $msg_title,
-			'MESSAGE_TEXT' => @$user_error_text,
+			'MESSAGE_TEXT' => @$user_error_text . $msg_text,
 			
 			'SQL_ERROR' => $debug_text_sql_error,
 			'SQL_QUERY' => $sql_store,
@@ -791,7 +792,7 @@ function redirect($url)
 }
 
 //
-// собираем путь главного меню в раздел с путями родителей
+// СЃРѕР±РёСЂР°РµРј РїСѓС‚СЊ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ РІ СЂР°Р·РґРµР» СЃ РїСѓС‚СЏРјРё СЂРѕРґРёС‚РµР»РµР№
 //
 function get_full_url($id) {
 	global $topmenu_data;
@@ -805,7 +806,7 @@ function get_full_url($id) {
 };
 
 //
-// Дерево главного меню.
+// Р”РµСЂРµРІРѕ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ.
 //
 function buildtopmenuonelvl($pid, $menu_desc) {
 	global $topmenu_pids, $topmenu_data, $url_lang;
@@ -815,12 +816,12 @@ function buildtopmenuonelvl($pid, $menu_desc) {
 	$url = "";
 	$menu_desc = "";
 	while ($topmenu_pids[$pid][$i]) {
-		$c_id = $topmenu_pids[$pid][$i];								// длину названия переменной уменьшаем (удобства ради)
+		$c_id = $topmenu_pids[$pid][$i];								// РґР»РёРЅСѓ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅРѕР№ СѓРјРµРЅСЊС€Р°РµРј (СѓРґРѕР±СЃС‚РІР° СЂР°РґРё)
 		
 		$url = "/" .$url_lang."/".get_full_url($c_id);
 		
 		$tree .= '<p><a href="'.$url.'/" style="color: #426394; text-decoration: none;" title="'.@$topmenu_data[$c_id]['menu_desc'].'">' . $topmenu_data[$c_id]['menu_name'] . "</a></p>";
-		if (@$topmenu_data[$c_id]['menu_desc']) {	// если есть описание - готовим переменную с текстом для передачи в дочернюю функцию
+		if (@$topmenu_data[$c_id]['menu_desc']) {	// РµСЃР»Рё РµСЃС‚СЊ РѕРїРёСЃР°РЅРёРµ - РіРѕС‚РѕРІРёРј РїРµСЂРµРјРµРЅРЅСѓСЋ СЃ С‚РµРєСЃС‚РѕРј РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ РґРѕС‡РµСЂРЅСЋСЋ С„СѓРЅРєС†РёСЋ
 			$menu_desc = $topmenu_data[$c_id]['menu_desc'];
 		};
 		$tree .= "\n";
@@ -831,23 +832,23 @@ function buildtopmenuonelvl($pid, $menu_desc) {
 };
 
 //
-// Дерево главного меню.
+// Р”РµСЂРµРІРѕ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ.
 //
 function buildtopmenu($pid, $menu_desc) {
 	global $topmenu_pids, $topmenu_data, $url_lang, $localhost, $blank_tree_top_menu;
-	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // метка для конструктора меню 1 - это топ меню и первый вход в функцию, 2 - это топ меню (требуется для добавления доп элементов разделителей и пр.)
-	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // если надо вывести меню просто списком.
+	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // РјРµС‚РєР° РґР»СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РјРµРЅСЋ 1 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ Рё РїРµСЂРІС‹Р№ РІС…РѕРґ РІ С„СѓРЅРєС†РёСЋ, 2 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ (С‚СЂРµР±СѓРµС‚СЃСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕРї СЌР»РµРјРµРЅС‚РѕРІ СЂР°Р·РґРµР»РёС‚РµР»РµР№ Рё РїСЂ.)
+	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // РµСЃР»Рё РЅР°РґРѕ РІС‹РІРµСЃС‚Рё РјРµРЅСЋ РїСЂРѕСЃС‚Рѕ СЃРїРёСЃРєРѕРј.
 	$i = 0;
 	$ret = "";
 	$tree = "";
 	$url = "";
-	if ($menu_desc) {							// если есть описание для данного пункта меню - вставлем его первой строкой
+	if ($menu_desc) {							// РµСЃР»Рё РµСЃС‚СЊ РѕРїРёСЃР°РЅРёРµ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р° РјРµРЅСЋ - РІСЃС‚Р°РІР»РµРј РµРіРѕ РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРѕР№
 		$menu_desc_style = ($menu_top_first) ? ' style="color:#000000; PADDING: 8px;"' : "";
 		$tree .= "<li".$menu_desc_style.">".$menu_desc."</li>";
 	};
 	$menu_desc = "";
 	while ($topmenu_pids[$pid][$i]) {
-		$c_id = $topmenu_pids[$pid][$i];								// длину названия переменной уменьшаем (удобства ради)
+		$c_id = $topmenu_pids[$pid][$i];								// РґР»РёРЅСѓ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅРѕР№ СѓРјРµРЅСЊС€Р°РµРј (СѓРґРѕР±СЃС‚РІР° СЂР°РґРё)
 		
 		
 		if ($localhost) {
@@ -861,14 +862,14 @@ function buildtopmenu($pid, $menu_desc) {
 		$tree .= ($pid == 0 & @!$blank_tree_top_menu) ? '<li><img src="/pic/tmenusep.gif" alt="" width="2" height="30" border="0" /></li>' : "";
 		
 		$tree .= '<li><a href="'.$url.'/">' . $topmenu_data[$c_id]['menu_name'] . "</a>";
-		if (@$topmenu_data[$c_id]['menu_desc']) {	// если есть описание - готовим переменную с текстом для передачи в дочернюю функцию
+		if (@$topmenu_data[$c_id]['menu_desc']) {	// РµСЃР»Рё РµСЃС‚СЊ РѕРїРёСЃР°РЅРёРµ - РіРѕС‚РѕРІРёРј РїРµСЂРµРјРµРЅРЅСѓСЋ СЃ С‚РµРєСЃС‚РѕРј РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ РґРѕС‡РµСЂРЅСЋСЋ С„СѓРЅРєС†РёСЋ
 			$menu_desc = $topmenu_data[$c_id]['menu_desc'];
 		};
 		$tree .= buildtopmenu($c_id, $menu_desc);
 		$tree .= "</li>\n";
 		$i++;
 	};
-	if ($tree) {			// если небыло детей, то и группировка не нужна.
+	if ($tree) {			// РµСЃР»Рё РЅРµР±С‹Р»Рѕ РґРµС‚РµР№, С‚Рѕ Рё РіСЂСѓРїРїРёСЂРѕРІРєР° РЅРµ РЅСѓР¶РЅР°.
 		if ($menu_top_first == 1 and $pid == 0) {
 			$top_menu_script = ' id="nav"';
 			$menu_top_first = 2;
@@ -879,24 +880,24 @@ function buildtopmenu($pid, $menu_desc) {
 };
 
 //
-// Дерево главного меню.
+// Р”РµСЂРµРІРѕ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ.
 //
 function buildparagraflist($pid,$level,$exclude=FALSE) {
 
-	// $exclude - ID пункта который необходимо исключить из списка.
+	// $exclude - ID РїСѓРЅРєС‚Р° РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РёСЃРєР»СЋС‡РёС‚СЊ РёР· СЃРїРёСЃРєР°.
 
-	// Добавляем главную страницу
-//	$selected = ($article_data[0]["paragraf_id"] == 0) ? " selected" : ""; // автовыбор нужного раздела
+	// Р”РѕР±Р°РІР»СЏРµРј РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
+//	$selected = ($article_data[0]["paragraf_id"] == 0) ? " selected" : ""; // Р°РІС‚РѕРІС‹Р±РѕСЂ РЅСѓР¶РЅРѕРіРѕ СЂР°Р·РґРµР»Р°
 //	$tree .= "<option value='".$topmenu_data[$c_id]['menu_id']."'" . $selected .">".$sep.$topmenu_data[$c_id]['menu_name']."</option>";
 
 	global $topmenu_pids, $topmenu_data, $url_lang, $localhost, $blank_tree_top_menu, $article_data, $menu_edit_data;
-	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // метка для конструктора меню 1 - это топ меню и первый вход в функцию, 2 - это топ меню (требуется для добавления доп элементов разделителей и пр.)
-	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // если надо вывести меню просто списком.
+	$menu_top_first = (@$menu_top_first) ? $menu_top_first = $menu_top_first : $menu_top_first = 1; // РјРµС‚РєР° РґР»СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РјРµРЅСЋ 1 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ Рё РїРµСЂРІС‹Р№ РІС…РѕРґ РІ С„СѓРЅРєС†РёСЋ, 2 - СЌС‚Рѕ С‚РѕРї РјРµРЅСЋ (С‚СЂРµР±СѓРµС‚СЃСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕРї СЌР»РµРјРµРЅС‚РѕРІ СЂР°Р·РґРµР»РёС‚РµР»РµР№ Рё РїСЂ.)
+	$menu_top_first = (@$blank_tree_top_menu) ? 0 : $menu_top_first; // РµСЃР»Рё РЅР°РґРѕ РІС‹РІРµСЃС‚Рё РјРµРЅСЋ РїСЂРѕСЃС‚Рѕ СЃРїРёСЃРєРѕРј.
 	$i = 0;
 	$ret = "";
 	$tree = "";
 	while ($topmenu_pids[$pid][$i]) {
-		$c_id = $topmenu_pids[$pid][$i];								// длину названия переменной уменьшаем (удобства ради)
+		$c_id = $topmenu_pids[$pid][$i];								// РґР»РёРЅСѓ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅРѕР№ СѓРјРµРЅСЊС€Р°РµРј (СѓРґРѕР±СЃС‚РІР° СЂР°РґРё)
 		
 		$i_lev = 0;
 		$sep = "";
@@ -904,7 +905,7 @@ function buildparagraflist($pid,$level,$exclude=FALSE) {
 			$sep .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			$i_lev++;
 			};
-		$selected = ($article_data[0]["paragraf_id"] == $topmenu_data[$c_id]['menu_id'] or $menu_edit_data["menu_pid"] == $topmenu_data[$c_id]['menu_id']) ? " selected" : ""; // автовыбор нужного раздела
+		$selected = ($article_data[0]["paragraf_id"] == $topmenu_data[$c_id]['menu_id'] or $menu_edit_data["menu_pid"] == $topmenu_data[$c_id]['menu_id']) ? " selected" : ""; // Р°РІС‚РѕРІС‹Р±РѕСЂ РЅСѓР¶РЅРѕРіРѕ СЂР°Р·РґРµР»Р°
 		$tree .= ($exclude == $topmenu_data[$c_id]['menu_id']) ? "" : "<option value='".$topmenu_data[$c_id]['menu_id']."'" . $selected .">".$sep.$topmenu_data[$c_id]['menu_name']."</option>";
 		$level++;
 		$tree .= buildparagraflist($c_id,$level, $exclude);
@@ -912,7 +913,7 @@ function buildparagraflist($pid,$level,$exclude=FALSE) {
 		$tree .= "\n";
 		$i++;
 	};
-	if ($tree) {			// если небыло детей, то и группировка не нужна.
+	if ($tree) {			// РµСЃР»Рё РЅРµР±С‹Р»Рѕ РґРµС‚РµР№, С‚Рѕ Рё РіСЂСѓРїРїРёСЂРѕРІРєР° РЅРµ РЅСѓР¶РЅР°.
 		$ret = "\n" . $tree . "";
 	};
 	return $ret;
@@ -920,7 +921,7 @@ function buildparagraflist($pid,$level,$exclude=FALSE) {
 
 
 //
-// убираем вражеские символы из пути
+// СѓР±РёСЂР°РµРј РІСЂР°Р¶РµСЃРєРёРµ СЃРёРјРІРѕР»С‹ РёР· РїСѓС‚Рё
 //
 function str_remove_enemy_char($str) {
 	$str = trim($str);
@@ -932,7 +933,7 @@ function str_remove_enemy_char($str) {
 };
 
 //
-// Экранируем апостров
+// Р­РєСЂР°РЅРёСЂСѓРµРј Р°РїРѕСЃС‚СЂРѕРІ
 //
 function str_encode_char($str) {
 	$str = str_replace("'", "''",$str);
@@ -942,57 +943,57 @@ function str_encode_char($str) {
 
 /*----------------------------------------------------------------------------------+
 |
-|   Функция создающая уменьшенную копию фотографии $filename,
-|   которая помещается в файл $smallimage
-|   Уменьшенная копия имеет ширину и высоту равную
-|   $w и $h пикселам, соответственно. Это максимально возможные значения.
-|   Они будут пересчитаны чтобы сохранить пропорции масштабируемого изображения.
+|   Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°СЋС‰Р°СЏ СѓРјРµРЅСЊС€РµРЅРЅСѓСЋ РєРѕРїРёСЋ С„РѕС‚РѕРіСЂР°С„РёРё $filename,
+|   РєРѕС‚РѕСЂР°СЏ РїРѕРјРµС‰Р°РµС‚СЃСЏ РІ С„Р°Р№Р» $smallimage
+|   РЈРјРµРЅСЊС€РµРЅРЅР°СЏ РєРѕРїРёСЏ РёРјРµРµС‚ С€РёСЂРёРЅСѓ Рё РІС‹СЃРѕС‚Сѓ СЂР°РІРЅСѓСЋ
+|   $w Рё $h РїРёРєСЃРµР»Р°Рј, СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ. Р­С‚Рѕ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.
+|   РћРЅРё Р±СѓРґСѓС‚ РїРµСЂРµСЃС‡РёС‚Р°РЅС‹ С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ РїСЂРѕРїРѕСЂС†РёРё РјР°СЃС€С‚Р°Р±РёСЂСѓРµРјРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ.
 |	
 +-----------------------------------------------------------------------------------*/
 function resizeimg($filename, $smallimage, $w, $h) {
-	// Имя файла с масштабируемым изображением 
+	// РРјСЏ С„Р°Р№Р»Р° СЃ РјР°СЃС€С‚Р°Р±РёСЂСѓРµРјС‹Рј РёР·РѕР±СЂР°Р¶РµРЅРёРµРј 
 	$filename = $filename; 
-	// Имя файла с уменьшенной копией. 
+	// РРјСЏ С„Р°Р№Р»Р° СЃ СѓРјРµРЅСЊС€РµРЅРЅРѕР№ РєРѕРїРёРµР№. 
 	$smallimage = $smallimage;
-	// определим коэффициент сжатия изображения, которое будем генерить 
+	// РѕРїСЂРµРґРµР»РёРј РєРѕСЌС„С„РёС†РёРµРЅС‚ СЃР¶Р°С‚РёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ, РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµРј РіРµРЅРµСЂРёС‚СЊ 
 	$ratio = $w/$h; 
-	// получим размеры исходного изображения 
+	// РїРѕР»СѓС‡РёРј СЂР°Р·РјРµСЂС‹ РёСЃС…РѕРґРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
 	$size_img = getimagesize($filename); 
-	// Если размеры меньше, то масштабирования не нужно и копируем файл (некрасиво, зато просто :)
+	// Р•СЃР»Рё СЂР°Р·РјРµСЂС‹ РјРµРЅСЊС€Рµ, С‚Рѕ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ РЅРµ РЅСѓР¶РЅРѕ Рё РєРѕРїРёСЂСѓРµРј С„Р°Р№Р» (РЅРµРєСЂР°СЃРёРІРѕ, Р·Р°С‚Рѕ РїСЂРѕСЃС‚Рѕ :)
 	if (($size_img[0]<$w) && ($size_img[1]<$h)) {
 		move_uploaded_file($filename,$smallimage);
 		return "original"; 
 	};
-	// получим коэффициент сжатия исходного изображения 
+	// РїРѕР»СѓС‡РёРј РєРѕСЌС„С„РёС†РёРµРЅС‚ СЃР¶Р°С‚РёСЏ РёСЃС…РѕРґРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
 	$src_ratio=$size_img[0]/$size_img[1]; 
-		// Здесь вычисляем размеры уменьшенной копии, чтобы при масштабировании сохранились 
-	// пропорции исходного изображения 
+		// Р—РґРµСЃСЊ РІС‹С‡РёСЃР»СЏРµРј СЂР°Р·РјРµСЂС‹ СѓРјРµРЅСЊС€РµРЅРЅРѕР№ РєРѕРїРёРё, С‡С‚РѕР±С‹ РїСЂРё РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРё СЃРѕС…СЂР°РЅРёР»РёСЃСЊ 
+	// РїСЂРѕРїРѕСЂС†РёРё РёСЃС…РѕРґРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
 	if ($ratio<$src_ratio) { 
 		$h = $w/$src_ratio; 
 	} 
 	else { 
 		$w = $h*$src_ratio; 
 	} 
-	// создадим пустое изображение по заданным размерам 
+	// СЃРѕР·РґР°РґРёРј РїСѓСЃС‚РѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїРѕ Р·Р°РґР°РЅРЅС‹Рј СЂР°Р·РјРµСЂР°Рј 
 	$dest_img = imagecreatetruecolor($w, $h);
 	$white = imagecolorallocate($dest_img, 255, 255, 255);
 	if ($size_img[2]==2)  $src_img = imagecreatefromjpeg($filename);
 	else if ($size_img[2]==1) $src_img = imagecreatefromgif($filename);
 	else if ($size_img[2]==3) $src_img = imagecreatefrompng($filename); 
 
-	// масштабируем изображение     функцией imagecopyresampled() 
-	// $dest_img - уменьшенная копия 
-	// $src_img - исходной изображение 
-	// $w - ширина уменьшенной копии 
-	// $h - высота уменьшенной копии         
-	// $size_img[0] - ширина исходного изображения 
-	// $size_img[1] - высота исходного изображения 
+	// РјР°СЃС€С‚Р°Р±РёСЂСѓРµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ     С„СѓРЅРєС†РёРµР№ imagecopyresampled() 
+	// $dest_img - СѓРјРµРЅСЊС€РµРЅРЅР°СЏ РєРѕРїРёСЏ 
+	// $src_img - РёСЃС…РѕРґРЅРѕР№ РёР·РѕР±СЂР°Р¶РµРЅРёРµ 
+	// $w - С€РёСЂРёРЅР° СѓРјРµРЅСЊС€РµРЅРЅРѕР№ РєРѕРїРёРё 
+	// $h - РІС‹СЃРѕС‚Р° СѓРјРµРЅСЊС€РµРЅРЅРѕР№ РєРѕРїРёРё         
+	// $size_img[0] - С€РёСЂРёРЅР° РёСЃС…РѕРґРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
+	// $size_img[1] - РІС‹СЃРѕС‚Р° РёСЃС…РѕРґРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
 	imagecopyresampled($dest_img, $src_img, 0, 0, 0, 0, $w, $h, $size_img[0], $size_img[1]);
-	// сохраняем уменьшенную копию в файл 
+	// СЃРѕС…СЂР°РЅСЏРµРј СѓРјРµРЅСЊС€РµРЅРЅСѓСЋ РєРѕРїРёСЋ РІ С„Р°Р№Р» 
 	if ($size_img[2]==2)  imagejpeg($dest_img, $smallimage, 90);
 	else if ($size_img[2]==1) imagegif($dest_img, $smallimage);
 	else if ($size_img[2]==3) imagepng($dest_img, $smallimage, 1);
-	// чистим память от созданных изображений 
+	// С‡РёСЃС‚РёРј РїР°РјСЏС‚СЊ РѕС‚ СЃРѕР·РґР°РЅРЅС‹С… РёР·РѕР±СЂР°Р¶РµРЅРёР№ 
 	imagedestroy($dest_img); 
 	imagedestroy($src_img);
 	return "resized";

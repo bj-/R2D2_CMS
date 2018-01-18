@@ -8,20 +8,20 @@
 	<input name="galtype" type="hidden" value="{GALTYPE}">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
-			<td width="130px">Название</td>
+			<td width="130px">РќР°Р·РІР°РЅРёРµ</td>
 			<td><input type="text" name="video_name" value="{VIDEO_TITLE}" size="93"></td>
 			<!--td rowspan="2">
 				<img src="" border="0" />
 			</td-->
 		</tr>
-		<tr><td>Описание</td><td><textarea cols="70" rows="5" name="video_desc">{VIDEO_CONTENT}</textarea></td></tr>
+		<tr><td>РћРїРёСЃР°РЅРёРµ</td><td><textarea cols="70" rows="5" name="video_desc">{VIDEO_CONTENT}</textarea></td></tr>
 		<!--tr>
-			<td>Код ролика</td>
+			<td>РљРѕРґ СЂРѕР»РёРєР°</td>
 			<td>
 				<textarea cols="70" rows="5" name="video_code"></textarea>
 			</td>
 		</tr-->
-		<tr><td></td><td><input type="submit" name="video_add" value="Добавить"></td></tr>
+		<tr><td></td><td><input type="submit" name="video_add" value="Р”РѕР±Р°РІРёС‚СЊ"></td></tr>
 		<tr>
 			<td></td>
 			<td>
@@ -35,12 +35,12 @@
 
 <!-- BEGIN set_url -->
 	<!-- BEGIN url_not_resolved -->
-		Данные о ролике отсутсвуют. Вероятно указан неверно URL ролика.
+		Р”Р°РЅРЅС‹Рµ Рѕ СЂРѕР»РёРєРµ РѕС‚СЃСѓС‚СЃРІСѓСЋС‚. Р’РµСЂРѕСЏС‚РЅРѕ СѓРєР°Р·Р°РЅ РЅРµРІРµСЂРЅРѕ URL СЂРѕР»РёРєР°.
 	<!-- END url_not_resolved -->
 <form action="/admin/index.php?edit=video&cat={PAGE_ID}" method="post" id="yt_parse_url" onSubmit="parse_yt_video('yt_video_url', 'yt')">
 	<table>
-		<tr><td>Адрес ролика:</td><td><input type="text" name="video_url" id="yt_video_url" value="{VIDEO_URL}" size="93"></td></tr>
-		<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="Получить данные о ролике" /></td></tr>
+		<tr><td>РђРґСЂРµСЃ СЂРѕР»РёРєР°:</td><td><input type="text" name="video_url" id="yt_video_url" value="{VIDEO_URL}" size="93"></td></tr>
+		<tr><td></td><td><input name="video_add" id="video_add" type="button" onclick="parse_yt_video('yt_video_url', 'yt')" value="РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЂРѕР»РёРєРµ" /></td></tr>
 	</table>
 </form>
 <!-- END set_url -->

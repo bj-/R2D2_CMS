@@ -1,5 +1,5 @@
 <?php
-// Редактирование текстов (статей)
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‚РµРєСЃС‚РѕРІ (СЃС‚Р°С‚РµР№)
 
 if ( !defined('IN_R2D2') )
 {
@@ -36,7 +36,7 @@ $template->assign_vars(array(
 	'PAGE_CLASSIFICATION' => $page_classification,
 	'S_CONTENT_DIRECTION' => $page_content_direction,
 	'PAGE_PARAGRAF' => $page_paragraf,
-	'PAGE_PRIMARY' => (($primary_article) ? "<br><small>Основная статья раздела</small>" : ""),
+	'PAGE_PRIMARY' => (($primary_article) ? "<br><small>РћСЃРЅРѕРІРЅР°СЏ СЃС‚Р°С‚СЊСЏ СЂР°Р·РґРµР»Р°</small>" : ""),
 	'PAGE_PATH' => $page_path,
 	'PAGE_EMAIL' => $page_form_email,
 	'PAGE_EMAIL_SUBJ' => $page_form_subj,

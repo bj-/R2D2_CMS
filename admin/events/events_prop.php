@@ -35,22 +35,22 @@ init_userprefs($userdata);
 // End session management
 //
 
-// Проверяем права пользователя. если нет - выкидываем
+// РџСЂРѕРІРµСЂСЏРµРј РїСЂР°РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РµСЃР»Рё РЅРµС‚ - РІС‹РєРёРґС‹РІР°РµРј
 if ($userdata['user_level'] < 1) {
-	message_die(GENERAL_ERROR, 'Пользователь не имеет прав', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РёРјРµРµС‚ РїСЂР°РІ', '', __LINE__, __FILE__, $sql);
 	exit;
 };
 
-// Входящие переменные
+// Р’С…РѕРґСЏС‰РёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ
 $get_id = substr($_GET['id'],0,11);
 
 
-//метка для построителя хидера, меню и редактора галереи - что включать
+//РјРµС‚РєР° РґР»СЏ РїРѕСЃС‚СЂРѕРёС‚РµР»СЏ С…РёРґРµСЂР°, РјРµРЅСЋ Рё СЂРµРґР°РєС‚РѕСЂР° РіР°Р»РµСЂРµРё - С‡С‚Рѕ РІРєР»СЋС‡Р°С‚СЊ
 $event_prop = TRUE;
 
-// НАЧАЛО сохранения
+// РќРђР§РђР›Рћ СЃРѕС…СЂР°РЅРµРЅРёСЏ
 
-// подрезаем и проверяем входные переменные на спецсимволы и пр казусы вроде инжекшенов
+// РїРѕРґСЂРµР·Р°РµРј Рё РїСЂРѕРІРµСЂСЏРµРј РІС…РѕРґРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РЅР° СЃРїРµС†СЃРёРјРІРѕР»С‹ Рё РїСЂ РєР°Р·СѓСЃС‹ РІСЂРѕРґРµ РёРЅР¶РµРєС€РµРЅРѕРІ
 if ($_POST['save']) {
 	$save_page_title = str_encode_char(substr($_POST['page_title'],0,240));
 	$save_page_desc = str_encode_char(substr($_POST['page_desc'],0,240));
@@ -77,7 +77,7 @@ if ($_POST['save']) {
 		$article_date = time();
 		}
 	Else {
-		// переводим дату в юникс формат
+		// РїРµСЂРµРІРѕРґРёРј РґР°С‚Сѓ РІ СЋРЅРёРєСЃ С„РѕСЂРјР°С‚
 		$article_date = substr($_POST['page_date'], 0 , 10);
 		$article_date_arr = explode(".", $article_date);
 		$article_date = mktime(12, 0, 0, $article_date_arr[1], $article_date_arr[0], $article_date_arr[2]);
@@ -85,14 +85,14 @@ if ($_POST['save']) {
 
 };
 
-// Сохраняем отредактированную статью
+// РЎРѕС…СЂР°РЅСЏРµРј РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅСѓСЋ СЃС‚Р°С‚СЊСЋ
 if ($_POST['save'] and $_POST['new'] and ($userdata['user_level'] >0)) { 
 
-	// выбираем последний ID статьи
+	// РІС‹Р±РёСЂР°РµРј РїРѕСЃР»РµРґРЅРёР№ ID СЃС‚Р°С‚СЊРё
 	$sql = "SELECT MAX(`event_id`) AS `max_article_id` FROM `" . TABLE_EVENTS . "`";
 
 	if ( !($result = $db->sql_query($sql)) ) {
-		message_die(GENERAL_ERROR, 'Ошибка выяснения максимального ID статьи', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° РІС‹СЏСЃРЅРµРЅРёСЏ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ ID СЃС‚Р°С‚СЊРё', '', __LINE__, __FILE__, $sql);
 		};
 	$new_article_id_data = array();
 	$new_article_id_data = $db->sql_fetchrow($result);
@@ -116,7 +116,7 @@ if ($_POST['save'] and $_POST['new'] and ($userdata['user_level'] >0)) {
 		};
 	}
 	Else {
-		message_die(GENERAL_ERROR, 'Ошибка сохранения календаря', '', __LINE__, __FILE__, $sql);
+		message_die(GENERAL_ERROR, 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РєР°Р»РµРЅРґР°СЂСЏ', '', __LINE__, __FILE__, $sql);
 	};
 
 }
@@ -136,22 +136,22 @@ if ($db->sql_query($sql)) {
 	$saved = '<strong>' . $lang['Saved'] . '</strong>';
 	}
 	Else {
-	message_die(GENERAL_ERROR, 'Ошибка сохранения статьи', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃС‚Р°С‚СЊРё', '', __LINE__, __FILE__, $sql);
 	};
 
 };
 
 
-// КОНЕЦ сохранения
+// РљРћРќР•Р¦ СЃРѕС…СЂР°РЅРµРЅРёСЏ
 
 
 
 
 define('SHOW_ONLINE', true);
 //
-// включение/выключение модулей до загрузки страницы.
+// РІРєР»СЋС‡РµРЅРёРµ/РІС‹РєР»СЋС‡РµРЅРёРµ РјРѕРґСѓР»РµР№ РґРѕ Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹.
 //
-if ($_GET['sgallery'] or $_GET['svgallery']) { // галерея
+if ($_GET['sgallery'] or $_GET['svgallery']) { // РіР°Р»РµСЂРµСЏ
 	include $DRoot . "/admin/includes/module_swich.php";
 }
 
@@ -161,17 +161,17 @@ $sql = "SELECT * FROM `" .
 TABLE_EVENTS . '` WHERE `event_id` = "'.$get_id.'"';
 
 if ( !($result = $db->sql_query($sql)) ) {
-	message_die(GENERAL_ERROR, 'Статья отсутствует', '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'РЎС‚Р°С‚СЊСЏ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚', '', __LINE__, __FILE__, $sql);
 	};
 $event_data = array();
 $event_data = $db->sql_fetchrow($result);
 
 if (!$event_data["event_id"]) {
 	$no_article = TRUE;
-	message_die(GENERAL_ERROR, 'Запрошенное событие не найдено' . $add, '', __LINE__, __FILE__, $sql);
+	message_die(GENERAL_ERROR, 'Р—Р°РїСЂРѕС€РµРЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РЅРµ РЅР°Р№РґРµРЅРѕ' . $add, '', __LINE__, __FILE__, $sql);
 };
 
-// загоняем в переменные данные о статье
+// Р·Р°РіРѕРЅСЏРµРј РІ РїРµСЂРµРјРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ Рѕ СЃС‚Р°С‚СЊРµ
 $page_title = $event_data["event_name"];
 $page_classification = "";
 $page_desc = "";
@@ -184,12 +184,12 @@ $page_unix_date = $event_data["event_date"];
 $page_date = create_date($board_config['article_dateformat'], $page_unix_date, $board_config['board_timezone']);
 
 
-$page_text = (@$no_article) ? "<p><h2>Запрошенная событие не найдено</h2></p><p>Жалоба администратору сайта уже написана автоматически, спасибо за помощь.</p>" : $event_data["event_text"];
+$page_text = (@$no_article) ? "<p><h2>Р—Р°РїСЂРѕС€РµРЅРЅР°СЏ СЃРѕР±С‹С‚РёРµ РЅРµ РЅР°Р№РґРµРЅРѕ</h2></p><p>Р–Р°Р»РѕР±Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЃР°Р№С‚Р° СѓР¶Рµ РЅР°РїРёСЃР°РЅР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё, СЃРїР°СЃРёР±Рѕ Р·Р° РїРѕРјРѕС‰СЊ.</p>" : $event_data["event_text"];
 
 $smGal_status = $event_data["event_foto"];
-$smgal_onoff = ($smGal_status) ? '<font style="color:green">подключена</font>' : '<font style="color:red">отключена</font>';
+$smgal_onoff = ($smGal_status) ? '<font style="color:green">РїРѕРґРєР»СЋС‡РµРЅР°</font>' : '<font style="color:red">РѕС‚РєР»СЋС‡РµРЅР°</font>';
 $smVideoGal_status = $event_data["event_video"];
-$smVideoGal_onoff = ($smVideoGal_status) ? '<font style="color:green">подключена</font>' : '<font style="color:red">отключена</font>';
+$smVideoGal_onoff = ($smVideoGal_status) ? '<font style="color:green">РїРѕРґРєР»СЋС‡РµРЅР°</font>' : '<font style="color:red">РѕС‚РєР»СЋС‡РµРЅР°</font>';
 
 
 $article_path = "/".$url_lang."/events/" . $page_date;
@@ -203,19 +203,19 @@ $template->set_filenames(array(
 
 
 //
-// какую страницу показывать
+// РєР°РєСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РїРѕРєР°Р·С‹РІР°С‚СЊ
 //
-if ($_GET['sgallery']) { // галерея
+if ($_GET['sgallery']) { // РіР°Р»РµСЂРµСЏ
 	include $DRoot . "/admin/includes/sgallery.php";
 }
-elseIf ($_GET['svgallery']) { // галерея
+elseIf ($_GET['svgallery']) { // РіР°Р»РµСЂРµСЏ
 	include $DRoot . "/admin/includes/sgallery.php";
 }
 Else {
 	include $DRoot . "/admin/includes/article_prop_list.php";
 };
 
-// обходной маневр для показывания дефолтной страницы после выполнении малозначительных операций
+// РѕР±С…РѕРґРЅРѕР№ РјР°РЅРµРІСЂ РґР»СЏ РїРѕРєР°Р·С‹РІР°РЅРёСЏ РґРµС„РѕР»С‚РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёРё РјР°Р»РѕР·РЅР°С‡РёС‚РµР»СЊРЅС‹С… РѕРїРµСЂР°С†РёР№
 if ($show_prop) {
 	include $DRoot . "/admin/includes/article_prop_list.php";
 }

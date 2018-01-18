@@ -6,7 +6,7 @@
 <meta name="Copyright" content='{SITE_DESCRIPTION} -- {SITENAME}' />
 <!--link REL="SHORTCUT ICON" href="/favicon.ico" /-->
 
-	<!-- Сохранено с сайта {SITE_DESCRIPTION} - http://{SITENAME} -->
+	<!-- РЎРѕС…СЂР°РЅРµРЅРѕ СЃ СЃР°Р№С‚Р° {SITE_DESCRIPTION} - http://{SITENAME} -->
 
 <link href="/templates/{TEMPLATE_NAME}/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/script/jquery/css/smoothness/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" />
@@ -25,6 +25,8 @@
 <script type="text/javascript" src="/script/jquery/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="/script/jquery/js/jquery-ui-1.8.6.custom.min.js"></script>
 <script type="text/javascript" src="/script/jquery/ui/i18n/jquery.ui.datepicker-ru.js"></script>
+<script type="text/javascript" src="/script/jquery/js/jquery-3.2.1.min.js"></script>
+
 <!-- BEGIN switch_enable_pm_popup -->
 <script type="text/javascript">
 <!--
@@ -45,12 +47,24 @@
 			<table border="0" cellspacing="0" cellpadding="0" align="right" bgcolor="#FFFFFF">
 				<tr>
 					<td class="lr_padding">
+
+			<!-- BEGIN switch_user_logged_out -->
+			<a href="{S_LOGIN_ACTION}"><img src="/pic/ico/person_16x16.png" width="16" height="16" alt="Drivers" /></a>
+			<!-- END switch_user_logged_out -->
+
+
 			<!-- BEGIN switch_user_logged_in -->
-			<a href="/admin/" style="color:black; text-decoration:none;">Администрирование</a>&nbsp;&nbsp;<br />
+			<a href="/admin/" style="color:black; text-decoration:none;">Administration</a>&nbsp;&nbsp;<br />
 			<a href="/{U_LOGIN_LOGOUT}" style="color:black; text-decoration:none;">{L_LOGIN_LOGOUT}</a>&nbsp;&nbsp;
 			<!-- END switch_user_logged_in -->
 					</td>
 				</tr>
+			</table>
+			<br /><br /><br />
+			<table border="0" cellspacing="0" cellpadding="0" align="right" bgcolor="#FFFFFF" width="200px">
+				<tr><td>
+				{BLOCK_2}
+				</td></tr>
 			</table>
 		</td>
 	</tr>
@@ -89,14 +103,14 @@
 <!-- BEGIN body_header -->
 <!-- Page START -->
 
-<!-- старт Контент -->
+<!-- СЃС‚Р°СЂС‚ РљРѕРЅС‚РµРЅС‚ -->
 <!-- END body_header -->
 
 <!-- BEGIN admin_body_header -->
 <!--
 *===================================*
 *                                   *
-*      дизайн админской части       *
+*      РґРёР·Р°Р№РЅ Р°РґРјРёРЅСЃРєРѕР№ С‡Р°СЃС‚Рё       *
 *                                   *
 *===================================*
 -->
@@ -107,86 +121,86 @@
 <td style="width: 200px; border-right-color: Gray; border-right-width: 1px; border-right-style: solid;">
 
 	<!-- BEGIN switch_article_prop_menu -->
-		<strong><a href="/admin/article_prop.php?id={PAGE_ID}">Атрибуты статьи</a></strong><br>
+		<strong><a href="/admin/article_prop.php?id={PAGE_ID}">РђС‚СЂРёР±СѓС‚С‹ СЃС‚Р°С‚СЊРё</a></strong><br>
 		<br>
-		<strong>Галерея</strong>&nbsp;&nbsp;&nbsp;
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Загрузка" border="0" /></a>&nbsp;
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Редактирование" border="0" /></a><br>
-		Галерея {GALLERY_ONOFF}
+		<strong>Р“Р°Р»РµСЂРµСЏ</strong>&nbsp;&nbsp;&nbsp;
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Р—Р°РіСЂСѓР·РєР°" border="0" /></a>&nbsp;
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ" border="0" /></a><br>
+		Р“Р°Р»РµСЂРµСЏ {GALLERY_ONOFF}
 		<!-- BEGIN switch_smgal_on -->
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=on" title="Включить галлерею"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Включить" /></a><br>
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=on" title="Р’РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Р’РєР»СЋС‡РёС‚СЊ" /></a><br>
 		<!-- END switch_smgal_on -->
 		<!-- BEGIN switch_smgal_off -->
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=off" title="Отключить галлерею"><img src="/pic/ico/delete.png" width="16" height="16" alt="Отключить" border="0" /></a><br>
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery=off" title="РћС‚РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/delete.png" width="16" height="16" alt="РћС‚РєР»СЋС‡РёС‚СЊ" border="0" /></a><br>
 		<!-- END switch_smgal_off -->
 		
 		<br>
-		<strong>Форма обратной связи</strong><br>
-		Форма {FORM_ONOFF}
+		<strong>Р¤РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё</strong><br>
+		Р¤РѕСЂРјР° {FORM_ONOFF}
 		<!-- BEGIN switch_form_on -->
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery={SGALLERY_EDITTYPE}&gallery=on"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Включить" /></a><br>
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery={SGALLERY_EDITTYPE}&gallery=on"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Р’РєР»СЋС‡РёС‚СЊ" /></a><br>
 		<!-- END switch_form_on -->
 		<!-- BEGIN switch_form_off -->
-		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery={SGALLERY_EDITTYPE}&gallery=off"><img src="/pic/ico/delete.png" width="16" height="16" alt="Отключить" border="0" /></a><br>
+		<a href="/admin/article_prop.php?id={PAGE_ID}&sgallery={SGALLERY_EDITTYPE}&gallery=off"><img src="/pic/ico/delete.png" width="16" height="16" alt="РћС‚РєР»СЋС‡РёС‚СЊ" border="0" /></a><br>
 		<!-- END switch_form_off -->
 		<br>
 		<br>
-		<a href="{ARTICLE_PATH}">К статье</a><br>		
+		<a href="{ARTICLE_PATH}">Рљ СЃС‚Р°С‚СЊРµ</a><br>		
 	<!-- END switch_article_prop_menu -->
 
 	<!-- BEGIN switch_event_prop_menu -->
-		<strong><a href="/admin/events_prop.php?id={PAGE_ID}">Атрибуты</a></strong><br>
+		<strong><a href="/admin/events_prop.php?id={PAGE_ID}">РђС‚СЂРёР±СѓС‚С‹</a></strong><br>
 		<br>
-		<strong>Фото Галерея</strong>&nbsp;&nbsp;&nbsp;<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Загрузка" border="0" /></a>&nbsp;
-		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Редактирование" border="0" /></a><br>
+		<strong>Р¤РѕС‚Рѕ Р“Р°Р»РµСЂРµСЏ</strong>&nbsp;&nbsp;&nbsp;<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Р—Р°РіСЂСѓР·РєР°" border="0" /></a>&nbsp;
+		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ" border="0" /></a><br>
 		{GALLERY_ONOFF}
 		<!-- BEGIN switch_smgal_on -->
-		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=on" title="Включить галлерею"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Включить" /></a><br>
+		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=on" title="Р’РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Р’РєР»СЋС‡РёС‚СЊ" /></a><br>
 		<!-- END switch_smgal_on -->
 		<!-- BEGIN switch_smgal_off -->
-		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=off" title="Отключить галлерею"><img src="/pic/ico/delete.png" width="16" height="16" alt="Отключить" border="0" /></a><br>
+		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=off" title="РћС‚РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/delete.png" width="16" height="16" alt="РћС‚РєР»СЋС‡РёС‚СЊ" border="0" /></a><br>
 		<!-- END switch_smgal_off -->
 		<br>
-		<strong>Видео Галерея</strong>&nbsp;&nbsp;&nbsp;<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=v-upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Загрузка" border="0" /></a>&nbsp;
-		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=v-edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Редактирование" border="0" /></a><br>
+		<strong>Р’РёРґРµРѕ Р“Р°Р»РµСЂРµСЏ</strong>&nbsp;&nbsp;&nbsp;<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=v-upload"><img src="/pic/ico/upload.png" width="16" height="16" alt="Р—Р°РіСЂСѓР·РєР°" border="0" /></a>&nbsp;
+		<a href="/admin/events_prop.php?id={PAGE_ID}&sgallery=v-edit"><img src="/pic/ico/edit.gif" width="16" height="16" alt="Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ" border="0" /></a><br>
 		{VGALLERY_ONOFF}
 		<!-- BEGIN switch_smvideogal_on -->
-		<a href="/admin/events_prop.php?id={PAGE_ID}&svgallery=on" title="Включить галлерею"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Включить" /></a><br>
+		<a href="/admin/events_prop.php?id={PAGE_ID}&svgallery=on" title="Р’РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/stock_form-checkbox.png" width="16" height="16" border="0" alt="Р’РєР»СЋС‡РёС‚СЊ" /></a><br>
 		<!-- END switch_smvideogal_on -->
 		<!-- BEGIN switch_smvideogal_off -->
-		<a href="/admin/events_prop.php?id={PAGE_ID}&svgallery=off" title="Отключить галлерею"><img src="/pic/ico/delete.png" width="16" height="16" alt="Отключить" border="0" /></a><br>
+		<a href="/admin/events_prop.php?id={PAGE_ID}&svgallery=off" title="РћС‚РєР»СЋС‡РёС‚СЊ РіР°Р»Р»РµСЂРµСЋ"><img src="/pic/ico/delete.png" width="16" height="16" alt="РћС‚РєР»СЋС‡РёС‚СЊ" border="0" /></a><br>
 		<!-- END switch_smvideogal_off -->
 		<br>
 		<br>
 
 		<br>
 		<br>
-		<a href="{ARTICLE_PATH}">К статье</a><br>
+		<a href="{ARTICLE_PATH}">Рљ СЃС‚Р°С‚СЊРµ</a><br>
 	<!-- END switch_event_prop_menu -->
 
 	<!-- BEGIN siteadmin_left_menu -->
 	<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr><td>
-	<a href="/admin/index.php?edit=prop">Настройки сайта</a><br>
-	<a href="/admin/index.php?edit=menu">Редактирование меню</a><br>
-	<a href="/admin/index.php?edit=blocks">Блоки</a><br>
+	<a href="/admin/index.php?edit=prop">РќР°СЃС‚СЂРѕР№РєРё СЃР°Р№С‚Р°</a><br>
+	<a href="/admin/index.php?edit=menu">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РјРµРЅСЋ</a><br>
+	<a href="/admin/index.php?edit=blocks">Р‘Р»РѕРєРё</a><br>
 	<br>
-	Статьи:<br>
-	<a href="/admin/article_edit.php?add=1&adm=1">Создать новую статью</a><br>
-	<a href="/admin/index.php?edit=articles">Список всех статей</a><br>
+	РЎС‚Р°С‚СЊРё:<br>
+	<a href="/admin/article_edit.php?add=1&adm=1">РЎРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ СЃС‚Р°С‚СЊСЋ</a><br>
+	<a href="/admin/index.php?edit=articles">РЎРїРёСЃРѕРє РІСЃРµС… СЃС‚Р°С‚РµР№</a><br>
 	<br>
-	Фотогалерея:<br>
-	<a href="/admin/index.php?edit=gallery">Доступные галереи</a><br>
-	<a href="/admin/index.php?edit=gallery&cat_type=hidden">Служебные галереи</a><br>
-	<a href="/admin/index.php?edit=gallery&cat_type=del">Удаленные галереи</a><br>
+	Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ:<br>
+	<a href="/admin/index.php?edit=gallery">Р”РѕСЃС‚СѓРїРЅС‹Рµ РіР°Р»РµСЂРµРё</a><br>
+	<a href="/admin/index.php?edit=gallery&cat_type=hidden">РЎР»СѓР¶РµР±РЅС‹Рµ РіР°Р»РµСЂРµРё</a><br>
+	<a href="/admin/index.php?edit=gallery&cat_type=del">РЈРґР°Р»РµРЅРЅС‹Рµ РіР°Р»РµСЂРµРё</a><br>
 
 	<br />
-	Церковный календарь<br />
-	<a href="/admin/cruch_calendar.php">Обслуживание</a><br />
+	Р¦РµСЂРєРѕРІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ<br />
+	<a href="/admin/cruch_calendar.php">РћР±СЃР»СѓР¶РёРІР°РЅРёРµ</a><br />
 	
 <br /><br /><br /><hr />
-	<a href="/ru/about_r2d2-3.html">Об авторе</a><br />
-	<a href="/ru/license-2.html">Лицензия</a><br />
-	<a href="/ru/debug-1.html">Исправления</a><br />
+	<a href="/ru/about_r2d2-3.html">РћР± Р°РІС‚РѕСЂРµ</a><br />
+	<a href="/ru/license-2.html">Р›РёС†РµРЅР·РёСЏ</a><br />
+	<a href="/ru/debug-1.html">РСЃРїСЂР°РІР»РµРЅРёСЏ</a><br />
 	</td></tr></table>
 <!-- END siteadmin_left_menu -->
 </td>
@@ -194,11 +208,12 @@
 <!-- END admin_body_header -->
 
 <!-- BEGIN page_header -->
-<!-- прочие страницы хидер -->
+<!-- РїСЂРѕС‡РёРµ СЃС‚СЂР°РЅРёС†С‹ С…РёРґРµСЂ -->
 			<table width="962" border="0" cellspacing="0" cellpadding="0" align="center" class="maintable">
 				<tr>
-					<td width="200" bgcolor="#CCCCCC" style="background-image: url(/pic/vpatten.gif); background-position: top; background-repeat: repeat-x;">
+					<td width="200" bgcolor="#CCCCCC" valign="top" style="background-image: url(/pic/vpatten.gif); background-position: top; background-repeat: repeat-x;">
 						<!-- {_LEFT_MENU} -->
+						{BLOCK_1}
 					</td>
 					<td width="1" bgcolor="#043198"></td>
 					<td style="padding:10px;">

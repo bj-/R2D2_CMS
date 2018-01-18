@@ -265,17 +265,17 @@ $template->set_filenames(array(
 */
 
 //=========================================================================================================================
-// Модуль админской части.
+// РњРѕРґСѓР»СЊ Р°РґРјРёРЅСЃРєРѕР№ С‡Р°СЃС‚Рё.
 // 
-// переключатель шаблона страницы админ/не админ
+// РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ С€Р°Р±Р»РѕРЅР° СЃС‚СЂР°РЅРёС†С‹ Р°РґРјРёРЅ/РЅРµ Р°РґРјРёРЅ
 if ( $adm and $userdata['user_level'] >0)
 {
 	$template->assign_block_vars('admin_body_header', array());
 
-	// Статьи
+	// РЎС‚Р°С‚СЊРё
 	if ($article_prop) {
 		$template->assign_block_vars('admin_body_header.switch_article_prop_menu', array());
-		// меню включить/выключить галерею
+		// РјРµРЅСЋ РІРєР»СЋС‡РёС‚СЊ/РІС‹РєР»СЋС‡РёС‚СЊ РіР°Р»РµСЂРµСЋ
 		if ($smGal_status) {
 			$template->assign_block_vars('admin_body_header.switch_article_prop_menu.switch_smgal_off', array());
 		}
@@ -303,9 +303,9 @@ if ( $adm and $userdata['user_level'] >0)
 	};
 
 	if ($event_prop) {
-		// для календарика событий кажись...
+		// РґР»СЏ РєР°Р»РµРЅРґР°СЂРёРєР° СЃРѕР±С‹С‚РёР№ РєР°Р¶РёСЃСЊ...
 		$template->assign_block_vars('admin_body_header.switch_event_prop_menu', array());
-		// меню включить/выключить галерею
+		// РјРµРЅСЋ РІРєР»СЋС‡РёС‚СЊ/РІС‹РєР»СЋС‡РёС‚СЊ РіР°Р»РµСЂРµСЋ
 		if ($smGal_status) {
 			$template->assign_block_vars('admin_body_header.switch_event_prop_menu.switch_smgal_off', array());
 		}
@@ -342,7 +342,7 @@ else {
 $search_text_default = $search_text;
 $search_text = ($_GET["searchid"]) ? $_GET["text"] : $search_text;
 
-// подмена картинок в дизайне в зависимости от погоды (значения см в gis-weather.php)
+// РїРѕРґРјРµРЅР° РєР°СЂС‚РёРЅРѕРє РІ РґРёР·Р°Р№РЅРµ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїРѕРіРѕРґС‹ (Р·РЅР°С‡РµРЅРёСЏ СЃРј РІ gis-weather.php)
 $weather_type = explode(";", $board_config["weather"]);
 $weather_id = ($weather_type[1]) ? $weather_type[1] : "0";
 
@@ -461,15 +461,15 @@ else
 	}
 }
 
-// Для редактирования страницы добавляем доп элементы (стили и пр.)
+// Р”Р»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЃС‚СЂР°РЅРёС†С‹ РґРѕР±Р°РІР»СЏРµРј РґРѕРї СЌР»РµРјРµРЅС‚С‹ (СЃС‚РёР»Рё Рё РїСЂ.)
 if(@$_GET['edit'] or @$_GET['add']) {
 	$template->assign_block_vars('switch_edit', array());
 };
 
-// модуль day_events.php
+// РјРѕРґСѓР»СЊ day_events.php
 include $DRoot . "/mod/day_events.php";
 
-// модуль церковного календаря
+// РјРѕРґСѓР»СЊ С†РµСЂРєРѕРІРЅРѕРіРѕ РєР°Р»РµРЅРґР°СЂСЏ
 if (@$mod_cruch_calendar) {
 	$cruch_calendar_action = "show";
 	include $DRoot . "/mod/cruch_calendar.php";
@@ -480,9 +480,10 @@ if (@$mod_cruch_calendar) {
 
 
 //
-// Блоки вставляем в страницы.
+// Р‘Р»РѕРєРё РІСЃС‚Р°РІР»СЏРµРј РІ СЃС‚СЂР°РЅРёС†С‹.
 //
 //var_dump($blocks_xdata);
+//echo $mod_blocks;
 if ($mod_blocks) {
 	$i = 0;
 	while ($blocks_xdata[$i]["id"]) {
