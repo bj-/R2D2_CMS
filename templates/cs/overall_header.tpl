@@ -9,7 +9,7 @@
 	<!-- Сохранено с сайта {SITE_DESCRIPTION} - http://{SITENAME} -->
 
 <link href="/templates/{TEMPLATE_NAME}/css/common.css" rel="stylesheet" type="text/css" />
-<link href="/script/jquery/css/smoothness/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" />
+<!--link href="/script/jquery/css/smoothness/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" /-->
 <link href="/script/jquery/css/uploadify.css" rel="stylesheet" type="text/css" />
 <link href="/script/highslide/highslide.css" rel="stylesheet" type="text/css" />
 <!-- BEGIN switch_edit -->
@@ -22,9 +22,9 @@
 <!--html dir="{S_CONTENT_DIRECTION}" /-->
 {META}
 <script type="text/javascript" src="/script/r2d2_functions.js"></script>
-<script type="text/javascript" src="/script/jquery/js/jquery-1.4.3.min.js"></script>
+<!--script type="text/javascript" src="/script/jquery/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="/script/jquery/js/jquery-ui-1.8.6.custom.min.js"></script>
-<script type="text/javascript" src="/script/jquery/ui/i18n/jquery.ui.datepicker-ru.js"></script>
+<script type="text/javascript" src="/script/jquery/ui/i18n/jquery.ui.datepicker-ru.js"></script-->
 <script type="text/javascript" src="/script/jquery/js/jquery-3.2.1.min.js"></script>
 
 <!-- BEGIN switch_enable_pm_popup -->
