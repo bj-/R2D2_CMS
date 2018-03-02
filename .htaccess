@@ -1,3 +1,7 @@
+#Order deny,allow
+#allow from 192.168. 172.16.30. all
+#deny from all
+
 # debug mode
 php_flag display_startup_errors off
 php_flag display_errors off
@@ -24,6 +28,8 @@ RewriteEngine On
 #Redirect /google.html http://www.google.ru
 #RewriteRule ^(.*)$ article.php?lang=ru&article=country/legislation/
 #mod vg on
+RewriteRule ^\..*$ /index.php
+
 RewriteRule ^(.[a-z])/vgbase/scan/(.*)$ /mod/vg/vg_add_fleet.php?lang=$1&$2
 RewriteRule ^(.[a-z])/vgbase/(.*)$ /vgbase.php?lang=$1&id=$2
 #mod vg off

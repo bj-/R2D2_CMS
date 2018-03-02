@@ -36,6 +36,7 @@ init_userprefs($userdata);
 //
 
 $show_article = TRUE; // флаг задающий показ текста статьи
+//$show_article = FALSE; // флаг задающий показ текста статьи
 
 //
 // собираем страницу со статьей
@@ -146,6 +147,10 @@ if ($userdata['user_level'] >0) {
 	$edit .= ($article_data[0]["article_id"]) ? '<a href="/admin/article_prop.php?&id='.$article_data[0]["article_id"].'" title="Настройки статьи"><img src="/pic/ico/document-properties.png" alt="Настройки статьи" width="16" height="16" border="0"></a> ' : "";
 };
 
+//echo "<pre>";
+//echo var_dump($userdata);
+//echo "</pre>";
+
 //
 // Start output of page
 //
@@ -173,6 +178,7 @@ $page_form_subj = $article_data[0]["form_subject"];
 
 $page_path = $article_data[0]["article_name"];
 $page_text = (@$no_article) ? "<p><h2>Запрошенная статья не найдена</h2></p><p>Жалоба администратору сайта уже написана автоматически, спасибо за помощь.</p>" : $article_data[0]["article_text"];
+//$page_text = (@$no_article) ? "<p><h2>Запрошенная статья не найдена</h2></p><p>Жалоба администратору сайта уже написана автоматически, спасибо за помощь.</p>" : $article_data[0]["article_text"];
 
 $smGal_status = $article_data[0]["article_sgal_on"];
 

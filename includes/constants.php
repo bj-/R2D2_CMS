@@ -155,7 +155,7 @@ define('BANLIST_TABLE', $table_prefix.'banlist');
 define('CONFIG_TABLE', $table_prefix.'config');
 //define('DISALLOW_TABLE', $table_prefix.'disallow');
 //define('FORUMS_TABLE', $table_prefix.'forums');
-define('GROUPS_TABLE', $table_prefix.'site_groups');
+define('GROUPS_TABLE', $table_prefix.'site_groups');				//нигде не используется
 //define('POSTS_TABLE', $table_prefix.'posts');
 //define('POSTS_TEXT_TABLE', $table_prefix.'posts_text');
 //define('PRIVMSGS_TABLE', $table_prefix.'privmsgs');
@@ -173,6 +173,8 @@ define('THEMES_TABLE', $table_prefix.'themes');
 //define('TOPICS_TABLE', $table_prefix.'topics');
 //define('TOPICS_WATCH_TABLE', $table_prefix.'topics_watch');
 //define('USER_GROUP_TABLE', $table_prefix.'user_group');
+define('USER_GROUP_TABLE', $table_prefix.'users_groups');
+define('USER_GROUP_MEMBER_TABLE', $table_prefix.'users_group_members');
 define('USERS_TABLE', 'users_global');
 //define('AWARDS_TABLE', 'users_award');
 //define('WORDS_TABLE', $table_prefix.'words');
@@ -182,25 +184,25 @@ define('USERS_TABLE', 'users_global');
 //define('CLUB_USER_CAR_TABLE', 'clubuserscar');
 //define('USERS_TABLE_TEMP', 'users_global_temp');					// новый юзер сначала идет в эту таблицу.
 define('TABLE_ARTICLE', $table_prefix.'articles'); 					// статьи
-define('TABLE_ARTILE_GALLERY', $table_prefix.'mini_gallery');	// личная галерея статьи
+define('TABLE_ARTILE_GALLERY', $table_prefix.'mini_gallery');				// личная галерея статьи
 define('TABLE_NEWS', $table_prefix.'news'); 						// новости
-define('TABLE_LANG', $table_prefix.'lang');							// язык
-define('TABLE_TOPMENU', $table_prefix.'menu');					// главное меню
+define('TABLE_LANG', $table_prefix.'lang');						// язык
+define('TABLE_TOPMENU', $table_prefix.'menu');						// главное меню
 define('TABLE_BLOCKS', $table_prefix.'blocks');						// дополнительные блоки
-define('TABLE_GALLERY_CAT', $table_prefix.'gallery_cat');			// Галерея	(категории)
-define('TABLE_GALLERY_IMG', $table_prefix.'gallery_img');			// (фотографии)
+define('TABLE_GALLERY_CAT', $table_prefix.'gallery_cat');				// Галерея	(категории)
+define('TABLE_GALLERY_IMG', $table_prefix.'gallery_img');				// (фотографии)
 define('TABLE_EVENTS', $table_prefix.'events');						// календарь событий
 
 define('TABLE_FORMS', $table_prefix.'forms');						// Формы отправки сообщений
 define('TABLE_FORMS_FIELDS', $table_prefix.'forms_fields');						// 
 
-define('TABLE_EMPLOYERS', $table_prefix.'employers');				// работодатели
-define('TABLE_EMPLOYERS_VACANCY', $table_prefix.'employers_vacancy');				// вакансии работодателей
+define('TABLE_EMPLOYERS', $table_prefix.'employers');					// работодатели
+define('TABLE_EMPLOYERS_VACANCY', $table_prefix.'employers_vacancy');			// вакансии работодателей
 
-define('TABLE_NNZ_PEOPLE', $table_prefix.'nnz_people');				// Сотрудники Ниеншанца
+define('TABLE_NNZ_PEOPLE', $table_prefix.'nnz_people');					// Сотрудники Ниеншанца
 
 
-define('TABLE_CRUCH_CALENDAR', $table_prefix.'cruch_calendar');	// православный календарь
+define('TABLE_CRUCH_CALENDAR', $table_prefix.'cruch_calendar');				// православный календарь
 
 // электро компаненты
 define('TABLE_ELECTRO_DIODES', $table_prefix.'electrocat_diod');	// православный календарь
