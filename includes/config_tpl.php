@@ -4,21 +4,21 @@ if ( !defined('IN_R2D2') )
 	die("Hacking attempt");
 }
 
-// ïóòü ê àäìèíñêîé ïàíåëè.
+// Ð¿ÑƒÑ‚ÑŒ Ðº Ð°Ð´Ð¼Ð¸Ð½ÑÐºÐ¾Ð¹ Ð¿Ð°Ð½ÐµÐ»Ð¸.
 $admin_patch = "/admin";
 
-$site_url = 'http://SiteName.com';
-$table_prefix = 'prefix_';
+$site_url = 'http://sitename.com';      // SET NAME
+$table_prefix = 'prefix_';              // SET NAME
 
 // database information
 $database['name'] = 'mysql';
 $database['host'] = 'localhost';
-$database['database'] = 'db_name';
-//$database['user'] = 'user';
-$database['password'] = 'password';
+$database['database'] = 'DatabaseName'; // SET NAME
+$database['user'] = 'UserName';   	// SET NAME
+$database['password'] = 'password';   	// SET NAME
 
 
-// çàìåùåíèå ïåðåìåííûõ (äëÿ äåâåëîïìåíòà)
+// Ð·Ð°Ð¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… (Ð´Ð»Ñ Ð´ÐµÐ²ÐµÐ»Ð¾Ð¿Ð¼ÐµÐ½Ñ‚Ð°)
 $fakecfg =  substr($_SERVER["DOCUMENT_ROOT"], 0, strpos($_SERVER["DOCUMENT_ROOT"],"www")) . "db.php";
 if (is_file($fakecfg)) {
 	include $fakecfg;
@@ -26,7 +26,7 @@ if (is_file($fakecfg)) {
 	$database['database'] = $site_db;
 };
 
-// ñîâìåñòèìîñòü ñ phpbb äâèæêîì
+// ÑÐ¾Ð²Ð¼ÐµÑÑ‚Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ phpbb Ð´Ð²Ð¸Ð¶ÐºÐ¾Ð¼
 $dbms = $database['name'];
 
 $dbhost = $database['host'];
@@ -37,55 +37,55 @@ $dbpasswd = $database['password'];
 $phpEx = "php";
 
 //
-// Íàñòðîéêè çàãðóçêè ôîòî-âèäèî
+// ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð¾Ñ‚Ð¾-Ð²Ð¸Ð´Ð¸Ð¾
 //
-// ìèíèãàëåðåÿ ñòàòüè
-$miniGal_path = "/img/smgal/";				// Ïóòü ê ìèíèãàëåðåå
-$miniGal_width = 133;						// ðàçìåð ñîçäàâàåìîé ïðåâüþøêè
+// Ð¼Ð¸Ð½Ð¸Ð³Ð°Ð»ÐµÑ€ÐµÑ ÑÑ‚Ð°Ñ‚ÑŒÐ¸
+$miniGal_path = "/img/smgal/";				// ÐŸÑƒÑ‚ÑŒ Ðº Ð¼Ð¸Ð½Ð¸Ð³Ð°Ð»ÐµÑ€ÐµÐµ
+$miniGal_width = 133;						// Ñ€Ð°Ð·Ð¼ÐµÑ€ ÑÐ¾Ð·Ð´Ð°Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ð¿Ñ€ÐµÐ²ÑŒÑŽÑˆÐºÐ¸
 $miniGal_height = 100;
 $miniGal_item_per_page = 20;
-// Áàçîâàÿ ãàëåðåÿ
-$gallery_path = "/img/gallery/";			// Ïóòü ê îñíîâíîé ãàëåðåå
+// Ð‘Ð°Ð·Ð¾Ð²Ð°Ñ Ð³Ð°Ð»ÐµÑ€ÐµÑ
+$gallery_path = "/img/gallery/";			// ÐŸÑƒÑ‚ÑŒ Ðº Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ð³Ð°Ð»ÐµÑ€ÐµÐµ
 $gallery_video_path = "/video/gallery/";
-$gallery_width = 175;						// ðàçìåð ñîçäàâàåìîé ïðåâüþøêè
+$gallery_width = 175;						// Ñ€Ð°Ð·Ð¼ÐµÑ€ ÑÐ¾Ð·Ð´Ð°Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ð¿Ñ€ÐµÐ²ÑŒÑŽÑˆÐºÐ¸
 $gallery_height = 131;
 $gallery_item_per_page = 5;
-// íîâîñòè
-$config["news"]["img_path"] = "/img/news/";	// Ïóòü ê êàðòèíêàì íîâîñòåé
-$config["news"]["img_width"] = 150;				// ðàçìåð ñîçäàâàåìîé ïðåâüþøêè (äåôîëòíûé äëÿ âñåõ ðàçäåëîâ íîâîñòíûõ)
+// Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+$config["news"]["img_path"] = "/img/news/";	// ÐŸÑƒÑ‚ÑŒ Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ°Ð¼ Ð½Ð¾Ð²Ð¾ÑÑ‚ÐµÐ¹
+$config["news"]["img_width"] = 150;				// Ñ€Ð°Ð·Ð¼ÐµÑ€ ÑÐ¾Ð·Ð´Ð°Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ð¿Ñ€ÐµÐ²ÑŒÑŽÑˆÐºÐ¸ (Ð´ÐµÑ„Ð¾Ð»Ñ‚Ð½Ñ‹Ð¹ Ð´Ð»Ñ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð½Ð¾Ð²Ð¾ÑÑ‚Ð½Ñ‹Ñ…)
 $config["news"]["img_height"] = 113;
-$config["news"]["img_src3_width"] = 202;		// ïåðñîíàëüíûå íàñòðîéêè äëÿ îïðåäåëåííûõ ðàçäåëîâ.
+$config["news"]["img_src3_width"] = 202;		// Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð´Ð»Ñ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð².
 $config["news"]["img_src3_height"] = 175;
 $newsImg_path = "/img/news/";				
 $newsImg_width = 150;						
 $newsImg_height = 113;
 
-//$upload_img_path[0] = "/img/events/";				// Ïóòü ê 
-$upload_img_path[0] = "/img/news/";				// Ïóòü ê çàãðóæàåìûì
-// äîïóñòèìûå òèïû ôàéëîâ äëÿ çàãðóæàåìûõ êàðòèíîê
-$imgFileExt = '*.jpg;*.png;*.gif';		// ôîðìàò *.jpg;*.png; è ò.ä.
-$imgFileDesc = '*.jpg;*.png;*.gif';		// îòîáðàæååòñÿ â äèàëîãå "Browse..." â äîïóñòèìûõ òèïàõ ôàéëîâ. óêàçûâàòü ìîæíî â ëþáîì âèäå
+//$upload_img_path[0] = "/img/events/";				// ÐŸÑƒÑ‚ÑŒ Ðº 
+$upload_img_path[0] = "/img/news/";				// ÐŸÑƒÑ‚ÑŒ Ðº Ð·Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼Ñ‹Ð¼
+// Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ðµ Ñ‚Ð¸Ð¿Ñ‹ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð´Ð»Ñ Ð·Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼Ñ‹Ñ… ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
+$imgFileExt = '*.jpg;*.png;*.gif';		// Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ *.jpg;*.png; Ð¸ Ñ‚.Ð´.
+$imgFileDesc = '*.jpg;*.png;*.gif';		// Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐµÑ‚ÑÑ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³Ðµ "Browse..." Ð² Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ñ‚Ð¸Ð¿Ð°Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð². ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¼Ð¾Ð¶Ð½Ð¾ Ð² Ð»ÑŽÐ±Ð¾Ð¼ Ð²Ð¸Ð´Ðµ
 
-$img_ext_list = array(".jpg", ".gif", ".png", ".jpeg", ".flv");	// äîïóñòèìûå ðàñøèðåíèÿ äëÿ çàãðóæàåìûõ ôàéëîâ.
+$img_ext_list = array(".jpg", ".gif", ".png", ".jpeg", ".flv");	// Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ðµ Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ñ Ð´Ð»Ñ Ð·Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð².
 
 $starttime = 0;
 
 //
-// Ïðî÷èå íàñòðîéêè
+// ÐŸÑ€Ð¾Ñ‡Ð¸Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
 //
-$config["paragraf_title_sep"] = ' - '; // Ðàçäåëèòåëü äëÿ ñòðî÷êè ñ íàçâàíèåì òåêóùåãî ðàçäåëà
+$config["paragraf_title_sep"] = ' - '; // Ð Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ð»Ñ ÑÑ‚Ñ€Ð¾Ñ‡ÐºÐ¸ Ñ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°
 
-// õîñòîçàâèñèìûå íàñòðîéêè
+// Ñ…Ð¾ÑÑ‚Ð¾Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
 $localhost = false;
 if ($_SERVER["HTTP_HOST"] == 'deputat') {
-	$DRoot = $_SERVER["DOCUMENT_ROOT"]; // ëîêàëüíî
+	$DRoot = $_SERVER["DOCUMENT_ROOT"]; // Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ð¾
 //	$localhost = true;
 	}
 Else {
- 	$DRoot = $_SERVER["DOCUMENT_ROOT"] ; // íà ñåðâåðå
+ 	$DRoot = $_SERVER["DOCUMENT_ROOT"] ; // Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€Ðµ
 };
 
-// Àäìèíèñòðèðîâàíèå
+// ÐÐ´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ
 $adm = false;
 if (strpos(substr($_SERVER["REQUEST_URI"],0,6), 'admin')) {
 	$adm = True;
@@ -96,15 +96,15 @@ else {
 };
 
 
-// âêëþ÷åíèå äîïîëíèòåëüíûõ ìîäîâ: ðàñêîìåíòèðóéòå èëè óêàæèòå TRUE/FALSE â ñîîòâåòñòâóþùåé ñòðîêå
+// Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð¼Ð¾Ð´Ð¾Ð²: Ñ€Ð°ÑÐºÐ¾Ð¼ÐµÐ½Ñ‚Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ Ð¸Ð»Ð¸ ÑƒÐºÐ°Ð¶Ð¸Ñ‚Ðµ TRUE/FALSE Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ¹ ÑÑ‚Ñ€Ð¾ÐºÐµ
 //$mod_news = "last";
 $mod_article_list = TRUE;
 $mod_blocks = TRUE;
 $mod_cruch_calendar = FALSE;
 
 // for debug
-$debug_mode = TRUE;
-//$debug_mode = FALSE;
+//$debug_mode = TRUE;
+$debug_mode = FALSE;
 
-$search_text = "ßíäåêñ: ïîèñê...";
+$search_text = "Ð¯Ð½Ð´ÐµÐºÑ: Ð¿Ð¾Ð¸ÑÐº...";
 ?>
