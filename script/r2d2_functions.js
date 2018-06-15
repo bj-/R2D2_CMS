@@ -8,6 +8,18 @@ function HideDiv (div_id) {
 		document.getElementById(div_id).style.display="none"; 
 };
 
+function ShowHideDiv (div_id) {
+	if ( document.getElementById(div_id).style.display=="none" )
+	{
+		document.getElementById(div_id).style.display="block"; 
+	}
+	else
+	{
+		document.getElementById(div_id).style.display="none"; 
+	}
+	
+};
+
 //
 // загрузка контента в div
 //

@@ -12,6 +12,7 @@ $rnd = rand ( 0 , 1000000000 );
 
 if ($Page == "spbMetro3sBlock" )     { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/spbMetro3sBlocks.php?rnd='.$rnd.''); }
 elseif ($Page == "spbMetro4sBlock" ) { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/spbMetro4sBlocks.php?rnd='.$rnd.''); }
+elseif ($Page == "spbMetroBlocks" ) { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/spbMetroBlocks.php?rnd='.$rnd.''); }
 elseif ($Page == "spbMetroServersState" ) { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/serversstate.php?rnd='.$rnd.''); }
 elseif ($Page == "spbMetroServersStateCompact" ) { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/serversstatecompact.php?rnd='.$rnd.''); }
 elseif ($Page == "spbMetroServersInfo" ) { echo $homepage = file_get_contents('http://192.168.51.92/dynamic/serversinfo.php?rnd='.$rnd.''); }
