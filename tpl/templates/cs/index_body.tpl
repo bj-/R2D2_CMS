@@ -1,3 +1,0 @@
-{ARTICLE}
-
-{TEMP}

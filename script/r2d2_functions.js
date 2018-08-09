@@ -39,15 +39,6 @@ function show_content(page_url, div_id) {
 //*/
 };
 
-//
-// сброс контента в div
-//
-function clear_content(div_id) {
-//	alert(div_id);
-	$(div_id).html('...');
-};
-
-
 function assembly_filter_data(page_url, div_id, form_id)
 {
 

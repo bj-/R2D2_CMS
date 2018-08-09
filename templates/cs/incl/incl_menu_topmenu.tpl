@@ -2,7 +2,7 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="height:30px;">
 	<tr>
 		<td class="menu_top_{topmenu.menulist.menu_sep.CLASS}_s" style="width:2px;">
-			<img src="/templates/cs/images/tmenusep.gif" width="2" height="30" border="0" />
+			<img src="/templates/images/tmenusep.gif" width="2" height="30" border="0" />
 		</td>		<!-- BEGIN menulist -->
 		<td nowrap="nowrap" class="topmenu">
 			<a href="{topmenu.menulist.PATH}" title="{topmenu.menulist.MENU}" class="topmenu">{topmenu.menulist.MENU}</a>
@@ -13,7 +13,7 @@
 		</td>
 			<!-- BEGIN menu_sep -->
 		<td class="menu_top_{topmenu.menulist.menu_sep.CLASS}_s" style="width:2px;">
-			<img src="/templates/cs/images/tmenusep.gif" width="2" height="30" border="0" />
+			<img src="/templates/images/tmenusep.gif" width="2" height="30" border="0" />
 		</td>
 			<!-- END menu_sep -->
 		<!-- END menulist -->
