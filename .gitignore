@@ -220,3 +220,4 @@ msg_die.htm
 restricted/
 includes/config.php
 /temp/
+*.deb
