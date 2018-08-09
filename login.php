@@ -23,6 +23,11 @@ $GLOBALS["ttt"]=microtime();
 $GLOBALS["ttt"]=((double)strstr($GLOBALS["ttt"], ' ')+(double)substr($GLOBALS["ttt"],0,strpos($GLOBALS["ttt"],' ')));
 
 
+//echo "<pre>";
+//var_dump($_SERVER);
+//SERVER_NAME
+//SERVER_PORT
+//echo "</pre>";
 //
 // Allow people to reach login page if
 // board is shut down
@@ -132,7 +137,7 @@ if( isset($_POST['login']) || isset($_GET['login']) || isset($_POST['logout']) |
 
 		if (!empty($_POST['redirect']) || !empty($_GET['redirect']))
 		{
-			$url = (!empty($_POST['redirect'])) ? $_POST['redirect'] : $_GET['redirect'];
+ 			$url = (!empty($_POST['redirect'])) ? $_POST['redirect'] : $_GET['redirect'];
 			redirect(append_sid($url, true));
 		}
 		else

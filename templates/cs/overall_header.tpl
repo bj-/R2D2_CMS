@@ -10,7 +10,7 @@
 
 <link href="/templates/{TEMPLATE_NAME}/css/common.css" rel="stylesheet" type="text/css" />
 <!--link href="/script/jquery/css/smoothness/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" /-->
-<link href="/script/jquery/css/uploadify.css" rel="stylesheet" type="text/css" />
+<!--link href="/script/jquery/css/uploadify.css" rel="stylesheet" type="text/css" /-->
 <link href="/script/highslide/highslide.css" rel="stylesheet" type="text/css" />
 <!-- BEGIN switch_edit -->
 <link type="text/css" href="/script/jquery/css/timepicker.css" rel="stylesheet" />
@@ -56,6 +56,8 @@
 			<!-- BEGIN switch_user_logged_in -->
 			<a href="/admin/" style="color:black; text-decoration:none;">Administration</a>&nbsp;&nbsp;<br />
 			<a href="/{U_LOGIN_LOGOUT}" style="color:black; text-decoration:none;">{L_LOGIN_LOGOUT}</a>&nbsp;&nbsp;
+<a href="{U_PROFILE}"><img src="/pic/ico/document-properties.png" width="18" height="14" alt="Drivers" /></a>
+
 			<!-- END switch_user_logged_in -->
 					</td>
 				</tr>
@@ -81,7 +83,7 @@
 <!-- Menu TOP START -->
 {TOP_MENU}
 <!-- Menu TOP END -->
-						<img src="quest_files/spacer.gif" height="0" alt="" />
+						<!--img src="quest_files/spacer.gif" height="0" alt="" /-->
 					</td>
 				</tr>
 			</tbody>
@@ -211,7 +213,7 @@
 <!-- прочие страницы хидер -->
 			<table width="962" border="0" cellspacing="0" cellpadding="0" align="center" class="maintable">
 				<tr>
-					<td width="200" bgcolor="#CCCCCC" valign="top" style="background-image: url(/pic/vpatten.gif); background-position: top; background-repeat: repeat-x;">
+					<td width="200" bgcolor="#CCCCCC" valign="top" style="background-image: url(/templates/cs/images/vpatten.gif); background-position: top; background-repeat: repeat-x;">
 						<!-- {_LEFT_MENU} -->
 						{BLOCK_1}
 					</td>

@@ -83,6 +83,8 @@ if ( $userdata['session_logged_in'] )
 {
 	$u_login_logout = 'login.'.$phpEx.'?logout=true&amp;sid=' . $userdata['session_id'];
 	$l_login_logout = $lang['Logout'] . ' [ ' . $userdata['username'] . ' ]';
+//	$user_profile_link = '<a href="' . append_sid("userp.php?mode=editprofile">' . $row['username'] . '</a>';
+
 }
 else
 {
@@ -126,7 +128,7 @@ if (defined('SHOW_ONLINE'))
 		if ( $row['session_logged_in'] ) {
 			// Skip multiple sessions for one user
 			if ( $row['user_id'] != $prev_user_id ) {
-				$user_online_link = '<a href="' . append_sid("userp.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=" . $row['user_id']) . '">' . $row['username'] . '</a>';
+				$user_online_link = '<a href="' . append_sid("/userp.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=" . $row['user_id']) . '">' . $row['username'] . '</a>';
 				$logged_visible_online++;
 				$online_userlist .= ( $online_userlist != '' ) ? ', ' . $user_online_link : $user_online_link;
 				};
@@ -414,8 +416,8 @@ $template->assign_vars(array(
 	'U_SEARCH_SELF' => append_sid('search.'.$phpEx.'?search_id=egosearch'),
 	'U_SEARCH_NEW' => append_sid('search.'.$phpEx.'?search_id=newposts'),
 	'U_INDEX' => append_sid('index.'.$phpEx),
-	'U_REGISTER' => append_sid('userp.'.$phpEx.'?mode=register'),
-	'U_PROFILE' => append_sid('userp.'.$phpEx.'?mode=editprofile'),
+	'U_REGISTER' => append_sid('/userp.'.$phpEx.'?mode=register'),
+	'U_PROFILE' => append_sid('/userp.'.$phpEx.'?mode=editprofile'),
 	'U_PRIVATEMSGS' => append_sid('privmsg.'.$phpEx.'?folder=inbox'),
 	'U_PRIVATEMSGS_POPUP' => append_sid('privmsg.'.$phpEx.'?mode=newpm'),
 	'U_SEARCH' => append_sid('search.'.$phpEx),

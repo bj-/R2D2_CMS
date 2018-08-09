@@ -1,0 +1,19 @@
+<table>
+	<tr>
+		<td>{L_USERNAME}</td>
+		<td>{USERNAME}</td>
+	</tr>
+	<tr>
+		<td>E-Mail</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{L_PASSWORD}</td>
+		<td>*******
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><td>
+	</tr>
+</table>
