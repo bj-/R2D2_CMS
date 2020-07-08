@@ -221,3 +221,4 @@ restricted/
 includes/config.php
 /temp/
 *.deb
+SmartSite/includes/config_shturman.php
