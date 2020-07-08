@@ -9,7 +9,7 @@
  *
  *
  ***************************************************************************/
-$ver["serverstarte3"] = "1.0.3"; // Version of script
+$ver["serverstarte3"] = "1.0.4"; // Version of script
 /***************************************************************************
  *
 1.0.3
@@ -45,6 +45,7 @@ $Srv_FrendlyNames = array("SRV-SHTURMAN" => "Root4/Root4H4","SRV-SHTURMAN-C" => 
 
 $rnd = rand ( 0 , 1000000000 );
 
+/*
 // Лимиты
 $Limit["LastErr"] = 60*60*24*1; // Ошибки старше этого времени - не показывать
 //$Limit["LastErr"] = 60*60*24*7*5; // Ошибки старше этого времени - не показывать
@@ -72,7 +73,9 @@ $Limit["Msg"] = 500; // Messages
 //$Limit["Msg"] = 5; // Messages
 $Limit["Frames"] = 500; // Frames
 //$Limit["Frames"] = 0; // Frames
+*/
 
+//var_dump($CONFIG_SHTURMAN);
 
 $sql_server = "Diag";
 $db = "DiagSrv";
@@ -670,7 +673,7 @@ foreach ( $data AS $Srv )
 	$Srv_Guid = $Srv["Guid"];
 	$Srv_ComputerName = $Srv["ComputerName"];
 
-	$Srv_ComputerFrendlyName = ($Srv_FrendlyNames[$Srv_ComputerName]) ? $Srv_FrendlyNames[$Srv_ComputerName] : $Srv_ComputerName;
+	$Srv_ComputerFrendlyName = (@$Srv_FrendlyNames[$Srv_ComputerName]) ? $Srv_FrendlyNames[$Srv_ComputerName] : $Srv_ComputerName;
 
 	$Srv_Ips = $Srv["IpAddress"];
 	//$Srv_Ips = "10.200.24.85;169.254.107.96;172.16.30.254";
