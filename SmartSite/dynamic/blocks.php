@@ -9,7 +9,7 @@
  *
  *
  ***************************************************************************/
-
+$ver["blocks"] = "1.0.1"; // Version of script
 /***************************************************************************
  *
  *   License
@@ -1303,7 +1303,8 @@ while ( @$BlockList[$i] )
 					case "USBLostSimTechCnt":
 						$style_item = style_by_val($dValueF-$dValueS, $direction = "UP", $Scale_Up = 20);
 						//$diag_stat["9"] = "<img src='/pic/ico/st-2_18x18.png' title='Отвалы SimTech: [$dValueF] раз, что на [$dDiff%] больше второго [$dValueS]; за последние 7 дней повторялось [$dCount] раз' style='padding-left:2px;padding-right:2px;$style_item' width='16' height='16' />";
-						$diag_stat_Arr[] = "<img src='/pic/ico/st-2_18x18.png' title='Отвалы SimTech: [$dValueF] раз, что на [$dDiff%] больше второго [$dValueS]; за последние 7 дней повторялось [$dCount] раз' style='padding-left:2px;padding-right:2px;$style_item' width='16' height='16' />";
+						//$diag_stat_Arr[] = "<img src='/pic/ico/st-2_18x18.png' title='Отвалы SimTech: [$dValueF] раз, что на [$dDiff%] больше второго [$dValueS]; за последние 7 дней повторялось [$dCount] раз' style='padding-left:2px;padding-right:2px;$style_item' width='16' height='16' />";
+						$diag_stat_Arr[] = "<img src='/pic/ico/chip_20x20.png' title='Отвалы SimTech: [$dValueF] раз, что на [$dDiff%] больше второго [$dValueS]; за последние 7 дней повторялось [$dCount] раз' style='padding-left:2px;padding-right:2px;$style_item' width='16' height='16' />";
 						break;
 					case "USBLostSimTechGPSCnt":
 						$style_item = style_by_val($dValueF-$dValueS, $direction = "UP", $Scale_Up = 20);

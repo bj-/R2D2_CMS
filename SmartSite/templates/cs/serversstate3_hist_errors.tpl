@@ -1,3 +1,4 @@
+<!-- $Version["serversstate3_hist_errors.tpl"] = '1.0.1'; -->
 <h3>История падений сервиса [{SERVICE}] на сервере [{SERVER}] в [{CLIENT}]</h3>
 
 <table width="100%" class="tbl">

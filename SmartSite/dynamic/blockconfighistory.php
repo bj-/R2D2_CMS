@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
- *                                blockdetails.php
+ *                                dynamic\blockconfighistory.php
  *                            -------------------
  *   begin                : Jun 13, 2018
  *   copyright            : (C) 2010 The R2D2 Group
@@ -9,7 +9,7 @@
  *
  *
  ***************************************************************************/
-
+$ver['dynamic\\blockconfighistory.php'] = "1.0.1"; // Version of script
 /***************************************************************************
  *
  *   License
@@ -356,7 +356,7 @@ $VersionStyle = '';
 $Finished = "";
 $LastCorrectValue = "" ;
 $CreatedLinesCnt = 0;
-while ( @$data[$i] and $CreatedLinesCnt < 100 )
+while ( @$data[$i] and $CreatedLinesCnt < 300 )
 {
         $Date = $data[$i]["Date"];
 //        $PropertyName = $data[$i]["PropertyName"];
@@ -531,107 +531,5 @@ while ( @$data[$i] and $CreatedLinesCnt < 100 )
 }
 
 $template->pparse('body');
-
-
-
-
-
-
-
-
-
-
-
-
-exit;
-
-echo "<table>
-	<tr>
-		<th>Date</th>
-		<!--th>Name</th-->
-		<th>BOVI</th>
-		<th>Route</th>
-		<th>Servers Pool</th>
-		<th>IPAddress</th>
-		<th>Packets</th>
-		<th>Config Pack</th>
-	</tr>
-";
-
-$i = 0;
-while ( @$datesList[$i] )
-{
-	$date = $datesList[$i];
-
-	$BlockSerialNo = $data[$datesList[$i]]["BlockSerialNo"];
-	$Hostname = $data[$datesList[$i]]["Hostname"];
-	$BlockName = ( $BlockSerialNo == $Hostname ) ? $BlockSerialNo : "$BlockSerialNo / $Hostname";
-
-	$BlockOrientation = $data[$datesList[$i]]["BlockOrientation"];
-	$FirmwareEINKver = $data[$datesList[$i]]["FirmwareEINKver"];
-//	$FirmwareEINKver = 
-	$FirmwareEINKverVer = substr($FirmwareEINKver, 0, strpos($FirmwareEINKver, ";"));
-	$FirmwareEINKverVerHex = ( $FirmwareEINKverVer != "" ) ? strtoupper(dechex($FirmwareEINKverVer)) : "";
-	$FirmwareEINKverVerShort = ( $FirmwareEINKverVer != "" ) ? " " . substr($FirmwareEINKverVerHex, 5) : "";
-//	$BlockCfg_FirmwareEINKverVerShort = ( ( $BlockCfg_FirmwareEINKverVer == "" || $BlockCfg_FirmwareEINKverVer == "N/A" ) && $BlockCfg_Orientation != "" ) ? " ??" : $BlockCfg_FirmwareEINKverVerShort;
-
-	
-	$BaseRoute = $data[$datesList[$i]]["BaseRoute"];
-	$CurrentRoute = $data[$datesList[$i]]["CurrentRoute"];
-	$MaxRoute = $data[$datesList[$i]]["MaxRoute"];
-
-	$ServersPool = $data[$datesList[$i]]["ServersPool"];
-	$ServersPool = str_replace("192.168.51.","*.", $ServersPool);
-	$PacketInstalled = $data[$datesList[$i]]["PacketInstalled"];
-	$PacketInstalled = str_replace("shturman","sh",$PacketInstalled);
-	$PacketInstalled = str_replace("config-spbmetro4thline","cfg-4s ",$PacketInstalled);
-	$PacketInstalled = str_replace(";","); ",$PacketInstalled);
-	$PacketInstalled = str_replace("|"," (",$PacketInstalled);
-
-	$ServicesRunning = $data[$datesList[$i]]["ServicesRunning"];
-	$ServicesStopped = $data[$datesList[$i]]["ServicesStopped"];
-	$ConfigurrationPacket = $data[$datesList[$i]]["ConfigurrationPacket"];
-	$ConfigurrationPacket = str_replace("shturman","sh",$ConfigurrationPacket);
-	$ConfigurrationPacket = str_replace("config-spbmetro4thline","cfg-4s ",$ConfigurrationPacket);
-	$ConfigurrationPacket = str_replace(";"," (",$ConfigurrationPacket);
-	$ConfigurrationPacket .= ( $ConfigurrationPacket != "" ) ? ")" : "";
-
-	$IPAddress = $data[$datesList[$i]]["IPAddress"];
-	$IPAddress = str_replace("192.168.2.1;", "", $IPAddress);
-	$IPAddress = str_replace("192.168.2.1", "", $IPAddress);
-	$IPAddress = str_replace("10.110.", "*0.", $IPAddress);
-	$IPAddress = str_replace("10.168.", "*8.", $IPAddress);
-	$SoftwareVer = $data[$datesList[$i]]["SoftwareVer"];
-
-	echo "<tr>
-			<td>$date</td>
-			<!--td>$BlockName</td-->
-			<td>$BlockOrientation $FirmwareEINKverVerShort</td>
-			<td>$BaseRoute/$CurrentRoute/$MaxRoute</td>
-			<td>$ServersPool</td>
-			<td>$IPAddress</td>
-			<td>$PacketInstalled</td>
-			<td>$ConfigurrationPacket</td>
-		</tr>";
-	$i++;
-}
-echo "</table>";
-
-/*
-
-Hostname
-BlockOrientation
-BaseRoute
-CurrentRoute
-MaxRoute
-ServersPool
-PacketInstalled
-ServicesRunning
-ServicesStopped
-ConfigurrationPacket
-IPAddress
-FirmwareEINKver
-SoftwareVer
-*/
 
 ?>

@@ -510,7 +510,7 @@
 		<td>--//--</td>
 	</tr>
 	<tr>
-		<td>&nbsp;<img src='/pic/ico/st-2_18x18.png' width='16' height='16' Title='Кол-во отвалов SimTech по логу ОБ по блокам сцепки.' />&nbsp;</td>
+		<td>&nbsp;<img src='/pic/ico/chip_20x20.png' width='16' height='16' Title='Кол-во отвалов SimTech по логу ОБ по блокам сцепки.' />&nbsp;</td>
 		<td>Кол-во отвалов SimTech по логу ОБ по блокам сцепки; Тревога если за последние 7 дней повторялось несколько раз.</td>
 		<td>--//--</td>
 	</tr>

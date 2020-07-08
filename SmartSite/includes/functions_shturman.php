@@ -4,6 +4,13 @@
 *                  Shturman functions
 *
 *******************************************************************/
+$ver["functions_shturman"] = "1.0.1"; // Version of script
+/*
+1.0.1
+	- add function: check_config_property($Config, $Name, $Value, $Group_Id, $Description)
+*/
+
+
 /*
 function encode_ip($dotquad_ip)
 {
@@ -530,6 +537,36 @@ function style_by_val($Value, $direction = "DOWN", $Scale_Up = 10, $Scale_Dn = 1
 	$Style_item = ( !$diff ) ? "color: darkgrey;" : $Style_item;
 
 	return $Style_item;
+}
+
+
+function check_config_property($Config, $Name, $Value, $Group_Id, $Description)
+{
+	// Проверка Существования конфигурационной проперти и создание ее если ее нет.
+	global $CONFIG_SHTURMAN;
+	// Check exuisting property in board configuration 
+	if ( strtoupper($Config) == "SHTURMAN" ) 
+	{
+		if ( !isset($CONFIG_SHTURMAN[$Name]) )
+		{
+			$conn_cfg = MSSQLconnect( "Config", "Config" );
+
+			$SQL = "
+INSERT INTO [dbo].[Config]
+	([Name],[Value],[Group_Id],[Description])
+VALUES
+	('$Name','$Value','$Group_Id','$Description')
+";
+			//echo "<pre>$SQL</pre>";
+			//MSSQLsiletnQuery($SQL);
+			$stmt = sqlsrv_query( $conn_cfg, $SQL );
+			if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+			sqlsrv_close($conn_cfg) ;
+			
+			echo "<pre>DBG: Added [$Name] to Configuration table</pre>";
+		}
+	}
 }
 
 ?>

@@ -15,8 +15,10 @@
  *   License
  *
  ***************************************************************************/
+set_time_limit ( 60 );
 $GLOBALS["ttt"]=microtime();
 $GLOBALS["ttt"]=((double)strstr($GLOBALS["ttt"], ' ')+(double)substr($GLOBALS["ttt"],0,strpos($GLOBALS["ttt"],' ')));
+
 
 define('IN_R2D2', true);
 include("../includes/config.php");
@@ -40,6 +42,16 @@ $conn = MSSQLconnect( "SpbMetro-Anal", "Block" );
 
 $SQL = $SQL_QUERY["ServersInDiagAll"];
 
+$SQL = "
+SELECT [BlockSerialNo]
+FROM [Servers]
+WHERE ServerType_Guid NOT in ('F2585ED4-8D03-4E82-A895-3982E93B860C', 'BAA085FE-9091-415E-99AF-16932A3F3967', 'F63848B9-F300-4955-ACCD-AFB8DC20DE6A')
+";
+
+//echo "<pre>$SQL</pre>";
+
+//exit;
+
 $stmt = sqlsrv_query( $conn, $SQL );
 if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
 
@@ -55,6 +67,8 @@ $ColumnCount = ( $ViewType == "ERRORS" ) ? "2": $ServersCount+1;
 $SQL = $SQL_QUERY["ServerDiagInfo"];
 
 //echo "<pre>$SQL</pre>";
+//echo "ffff233"; exit;
+//exit;
 
 $stmt = sqlsrv_query( $conn, $SQL );
 if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
@@ -67,7 +81,6 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 //echo "<pre>"; var_dump($data); echo "</pre>";
 
 sqlsrv_close($conn) ;
-
 
 
 //$currentdate = date("Y-m-d", time());
@@ -248,7 +261,8 @@ while ( @$data[$i] )
 		{
 /////////////
 
-		while ( $BlockSerialNo != @$ServersList[$ServerId] )
+		//while ( $BlockSerialNo != @$ServersList[$ServerId] )  // вызывает бесконечное поедание памяти, но только иногда.
+		if ( $BlockSerialNo != @$ServersList[$ServerId] )
 		{
 			$template->assign_block_vars('group.row.col', array(
 				'STYLE' => "background-color:#EDEDED;",

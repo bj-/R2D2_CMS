@@ -1,3 +1,4 @@
+<!-- $Version["serversstate3.tpl"] = '1.0.1'; -->
 <div class="textwrapper">
 	<a href="include-long.htm" onclick="return hs.htmlExpand(this, { objectType: 'ajax', contentId: 'highslide-html-8' } )"
 			class="highslide">

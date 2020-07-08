@@ -38,6 +38,7 @@ $bp["wagon_in_train_not_connected_Diff"] = 300; // minutes (Disconnected time Di
 $bp["wagon_alone_not_connected"] = 4320; // minutes
 $bp["wagon_left_connected"] = 10; // блоки пропавшие со связи менее [минут] назад.
 $bp["position_changed_time"] = 10; // блоки не менявшие местоположение более [минут].
+$bp["position_changed_time_reboot"] = 20; // блоки не менявшие местоположение более [минут].
 $bp["svc_working_time_diff"] = 3600; // Разница во времени работы сервисов на блоках [секунд].
 
 $rnd = rand ( 0 , 1000000000 );
@@ -196,7 +197,7 @@ while ( @$BlockList[$i] )
 //	$ConnTimeAgoDIFF = $ConnTimeAgo-$ConnTimeAgoSecond;
 
 	$StationName = iconv("Windows-1251", "UTF-8", $data[$BlockSerialNo]["StationName"]);
-	$StationNameSecond = ( $WagonSecond != "" ) ? iconv("Windows-1251", "UTF-8", $data[$BlockSerialNoSecond]["StationName"]) : "";
+	$StationNameSecond = ( $WagonSecond != "" ) ? @iconv("Windows-1251", "UTF-8", $data[$BlockSerialNoSecond]["StationName"]) : "";
 	$StationNameIdentical = ( $StationName == $StationNameSecond ) ? TRUE : FALSE;
 
 	$Stations_Types_Id = $data[$BlockSerialNo]["Stations_Types_Id"];
@@ -221,11 +222,15 @@ while ( @$BlockList[$i] )
 				and $PosChangedTimeAgo > $bp["position_changed_time"] 
 				and $Stations_Types_Id == 1 and ($PosChangedTimeAgo - $PosChangedTimeAgoSecond) > $bp["position_changed_time"]
 				and $Stations_Types_Id_Second == 1
-				and ( ($PosChangedTimeAgo - $ConnTimeAgo) > $bp["position_changed_time"] or $Is_Connected )
+				and ( ($PosChangedTimeAgo - $ConnTimeAgo) > $bp["position_changed_time"] or $Is_Connected ) // выходил на связь, но так и не обновил станцию.
 				and !$StationNameIdentical
 				and !$TEMP_PosIsPrimorskayaX3Alert // TODO костыль для приморской. там поезда не видят станции 21-25 минут
 				//$Is_Connected and 
 				) ? TRUE : FALSE;
+
+	// В ребут отправляем только тех у кого в 2 раза больше разница во времени между станциями
+	$PosChangedAlertReboot = ( $PosChangedAlert and ($PosChangedTimeAgo - $PosChangedTimeAgoSecond) > $bp["position_changed_time_reboot"] and $Is_Connected ) ? TRUE : FALSE;
+
 	//$PosChangedTimeAgoStr = ($PosChangedTimeAgo > 59) ? round(($PosChangedTimeAgo / 60),0) . "h" : $PosChangedTimeAgo . "m";
 	$PosChangedTimeAgoStr = ($PosChangedTimeAgoActual > 59) ? round(($PosChangedTimeAgoActual / 60),0) . "h" : $PosChangedTimeAgoActual . "m";
 	$PosChangedTimeAgoStr = ($PosChangedTimeAgoActual >= (60*24)) ? round(($PosChangedTimeAgoActual / (60*24)),0) . "d" : $PosChangedTimeAgoStr;
@@ -268,6 +273,7 @@ while ( @$BlockList[$i] )
 
 	if ( $StylePositionAlert and ! $StyleConnectedAlert )
 	{
+		if ( $PosChangedAlertReboot ) { $toRebootBlock[] = $BlockSerialNo; }
 		$SQL_WagonSecond = ( strlen($BlockSerialNoSecond) ) ? "'$BlockSerialNoSecond'" : "NULL";
 		$SQL_ConnectedSecondFull = ( strlen($ConnectedSecondFullSQL) ) ? "'$ConnectedSecondFullSQL'" : "NULL";
 		$SQL_StationNameSecond = ( strlen($StationNameSecond) ) ? "'$StationNameSecond'" : "NULL";
@@ -389,6 +395,108 @@ ALTER TABLE dbo.[BlockPositionChangeHistory] ADD [Second_TimeAgoFormated] [nvarc
 
 	sqlsrv_close($conn) ;
 }
+
+
+if ( 1 )
+{
+	$conn = MSSQLconnect( "SpbMetro-Anal", "Block" );	
+	// create reboot task if block did not change position a lot of time
+	if ( @count($toRebootBlock) > 0 )
+	//if ( 1 )
+	{
+		//$toRebootBlock[] = "STB0001";
+		//$toRebootBlock[] = "STB0007";
+		//$toRebootBlock[] = "STB0045";
+
+		// Get Action Guid
+		$SQL = "SELECT [Guid], [ActionType] FROM [Actions] where ActionType = 'reboot'";
+
+		$stmt = sqlsrv_query( $conn, $SQL );
+		if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+		while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+			$ActionGuid = $row["Guid"];
+		}		
+
+		// Get User Guid
+		$SQL = "SELECT TOP 1 [Guid], [UserName] FROM [Users] WHERE [UserName] = 'php'";
+
+		$stmt = sqlsrv_query( $conn, $SQL );
+		if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+		while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+			$UserGuid = $row["Guid"];
+		}		
+
+		// Get User Guid
+		$SQL = "SELECT TOP 1 [Guid] ,[StatusId] FROM [Statuses] WHERE [StatusId] = 'active'";
+		//$SQL = "SELECT TOP 1 [Guid] ,[StatusId] FROM [Statuses] WHERE [StatusId] = 'new'";
+
+		$stmt = sqlsrv_query( $conn, $SQL );
+		if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+		while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+			$TaskStatusGuid = $row["Guid"];
+		}		
+
+		//Get Exist tasks ( дабы не плодить множество тасок на один блок)
+		$SQL = "SELECT [Server_Guid] AS [Guid] FROM [Instructions] WHERE 
+([TaskStatus_Guid] = '$TaskStatusGuid' AND [Action_Guid] = '$ActionGuid')
+OR [Changed] > DATEADD(minute, -60, sysdatetime())
+";
+
+		$stmt = sqlsrv_query( $conn, $SQL );
+		if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+		while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+			$TaskExistList[] = $row["Guid"];
+		}		
+
+
+
+		// BlockList
+		$SQL = "SELECT [Guid], [BlockSerialNo] FROM [Servers]";
+
+		$stmt = sqlsrv_query( $conn, $SQL );
+		if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
+
+		while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+			$BlockList[$row["BlockSerialNo"]] = $row["Guid"];
+		}		
+		
+		//echo "<pre>"; var_dump($toRebootBlock); echo "</pre>";
+
+//		$SQLInsert = "";
+		foreach ( $toRebootBlock as $item )
+		{
+			$BlockGuid = ( @$BlockList[$item] ) ? $BlockList[$item] : "00000000-0000-0000-0000-000000000000";
+
+			//echo "<pre>"; var_dump($TaskExistList); echo "</pre>";
+			
+			if ( !@in_array($BlockGuid, @$TaskExistList) )
+			{
+				$InsertArr[] = "\n('$TaskStatusGuid', '$BlockGuid', '$ActionGuid', '$UserGuid')";
+			}
+		}
+
+		if ( @count($InsertArr) > 0 )
+		{
+			$SQL = "INSERT INTO [Instructions] 
+	([TaskStatus_Guid], [Server_Guid], [Action_Guid], [User_Guid])
+VALUES " . implode(",", $InsertArr );
+
+			$SQL = iconv("UTF-8","Windows-1251", $SQL);
+			//echo "<pre>$SQL</pre>";
+
+			MSSQLsiletnQuery($SQL);
+
+		}
+	}
+	sqlsrv_close($conn) ;
+
+}
+
+//	MSSQLsiletnQuery($SQL);
 
 
 

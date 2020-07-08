@@ -9,9 +9,11 @@
  *
  *
  ***************************************************************************/
-$ver["serverstarte3"] = "1.0.1"; // Version of script
+$ver["serverstarte3"] = "1.0.3"; // Version of script
 /***************************************************************************
  *
+1.0.3
+	- костыль для ликвидации дублирующихся серверов
  *   License
  *
  ***************************************************************************/
@@ -158,9 +160,14 @@ function compare_ver($ver1, $ver2)
 
 function get_VersionControlServices()
 {
+	// массив сервисов (по серверам, у которых не надо проверять версию на актуальность
 	global $CONFIG_SHTURMAN;
 	//var_dump($CONFIG_SHTURMAN);
 	//$CONFIG_SHTURMAN["IgnoreVersionControl_Services"];
+
+	//$x = Limit_check($Metric, $value, $Service, $Instance)
+
+	check_config_property("shturman", "IgnoreVersionControl_Services", "", "1", "Игнорировать устарвшие версии сервисов (Hosrname:Srvc1:Srvc2;Host2:Srvc1:Srvc2)");
 	
 	$servers = explode(";", $CONFIG_SHTURMAN["IgnoreVersionControl_Services"]);
 	# Hostname1:Service1:Service2;Hostname2:Service1:Service2;
@@ -183,6 +190,10 @@ function get_VersionControlServices()
 }
 $VersionControl = get_VersionControlServices();
 //var_dump($VersionControl);
+
+//function get_identical_instances
+//	check_config_property("shturman", "IgnoreVersionControl_Services", "", "1", "Игнорировать устарвшие версии сервисов (Hosrname:Srvc1:Srvc2;Host2:Srvc1:Srvc2)");
+
 
 //echo "4.21.0.0 3.21.0.0 - " . compare_ver("4.21.0.0", "3.21.0.0") . "<br>";
 //echo "3.21.0.0 3.21.0.0 - " . compare_ver("3.21.0.0", "3.21.0.0") . "<br>";
@@ -231,12 +242,13 @@ if( $stmt === false ) {die( print_r( sqlsrv_errors(), true));}
 $ServersList = array();
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 	$ServersList[$row["Guid"]] = $row;
+	$ServerInstances[$row["ComputerName"]][] = $row["Guid"];
 	$data[$row["Guid"]] = $row;
 }
 //$ServersCount = count($ServersList);
 //$ColumnCount = ( $ViewType == "ERRORS" ) ? "2": $ServersCount+1;
-
 //echo "<pre>"; var_dump($ServersList); echo "</pre>";
+//echo "<pre>"; var_dump($ServerInstances); echo "</pre>";
 
 /*     Disk Drive state and spaces    */
 $SQL = "-- Disk Drive state and spaces 
@@ -657,6 +669,7 @@ foreach ( $data AS $Srv )
 	
 	$Srv_Guid = $Srv["Guid"];
 	$Srv_ComputerName = $Srv["ComputerName"];
+
 	$Srv_ComputerFrendlyName = ($Srv_FrendlyNames[$Srv_ComputerName]) ? $Srv_FrendlyNames[$Srv_ComputerName] : $Srv_ComputerName;
 
 	$Srv_Ips = $Srv["IpAddress"];
@@ -704,6 +717,34 @@ foreach ( $data AS $Srv )
 	
 	//$Style_Srv_MemoryAvailBytes = ( $Srv_MemoryTotalBytes < Limit_check("MemFree", ) $Limit["MemFree"] ) ? $style["bg-ll-red"] : "";
 	$Style_Srv_MemoryAvailBytes = ( Limit_check("MemoryFree", $Srv_MemoryAvailBytes, "", $Srv_Guid) ) ? $style["bg-ll-red"] : "";
+
+	// Костыль для скипанья дуликатов серверов 
+	// вфыбирается тот у которого время последнего одновления меньше. 
+	if ( count($ServerInstances[$Srv_ComputerName]) > 1 )
+	{
+		$actualSrv = "";
+		$minTimeAgo = 99999999999999;
+		foreach ( $ServerInstances[$Srv_ComputerName] as $item )
+		{
+			$g = $item;
+			$time = $data[$item]["MemoryReceived_sAgo"];
+			if ( $time < $minTimeAgo )
+			{
+				$minTimeAgo = $time;
+				$actualSrv = $item;
+			}
+			//echo $item . " $time "  . "<br>";
+			//if 
+			
+			
+		}
+		if ( $actualSrv != $Srv_Guid )
+		{
+			//echo "$actualSrv skipp";
+			continue;
+		}
+	}
+
 	
 	$template->assign_block_vars('server', array(
 		'SRV_GUID' => $Srv_Guid,
@@ -800,7 +841,7 @@ foreach ( $data AS $Srv )
 			$srvc_RequireUpgrade = (
 									compare_ver($srvc_FileVersion, $srvc_LastVersion) != $srvc_FileVersion  // версия не максимальна
 									AND strtoupper($srvc_ServiceState) == "RUNNING"							// сервис зщапущен
-									AND !in_array($srvc_Service_Name, $VersionControl[$Srv_ComputerName])	// Сервиса нет в списке игнорируемый по вершн контролю
+									AND !@in_array($srvc_Service_Name, $VersionControl[$Srv_ComputerName])	// Сервиса нет в списке игнорируемый по вершн контролю
 									) ? TRUE : FALSE;
 			//compare_ver($srvc_FileVersion, $srvc_LastVersion);
 			//echo "$srvc_Service_Name - " . compare_ver($srvc_FileVersion, $srvc_LastVersion) . " - $srvc_LastVersion <br>";

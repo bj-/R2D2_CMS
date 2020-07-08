@@ -1,5 +1,7 @@
 <?php
 
+/** parseblockconfreport.php **/
+
 define('IN_R2D2', true);
 include("../includes/config.php");
 //include($DRoot . '/includes/common.php');
@@ -105,17 +107,27 @@ foreach ( $Files as $file )
 //		$prop = "";
 //		$val = "";
 		$prop = substr($line, 0, $dpos);
-		$val = substr($line, $dpos+1);
+		$val = substr(substr($line, $dpos+1),0,200);
 		if ( $prop == "ReportDateTime" )
 		{
 			$ReportDateTime = str_replace(";", " ", $val);
 			$ReportDateTime = ( strpos($ReportDateTime, ".") == 2 ) ? "20" . $ReportDateTime : $ReportDateTime;
+			$ReportDateTime = str_replace(".", "-", $ReportDateTime);
 //			$ReportDateTime = 
 //			$ReportDateTime = implode($val, " ");
 		}
+		elseif ( $prop == "ReportDateTimeGMT" )
+		{
+			$ReportDateTimeGMT = str_replace(";", " ", $val);
+			$ReportDateTimeGMT = ( strpos($ReportDateTimeGMT, ".") == 2 ) ? "20" . $ReportDateTimeGMT : $ReportDateTimeGMT;
+			$ReportDateTimeGMT = str_replace(".", "-", $ReportDateTimeGMT);
+			$ReportDateGMT = substr($val, 0, strpos($val, ";"));
+			$ReportDateGMT = ( strpos($ReportDateGMT, ".") == 2 ) ? "20" . $ReportDateGMT : $ReportDateGMT;
+			$ReportDateGMT = str_replace(".", "-", $ReportDateGMT);
+		}
 		elseif ( $prop != "EndOfFile" )
 		{
-			$a[] = "('" . $ServerGuid . "', '" . $prop . "', '" . $val . "', '%REPORTDATE%')";
+			$a[] = "('" . $ServerGuid . "', '" . $prop . "', '" . $val . "', '%REPORTDATE%', %REPORTDATETIMEGMT%, %REPORTDATEGMT%)";
 		}
 		elseif ( $prop == "EndOfFile" )
 		{
@@ -124,19 +136,21 @@ foreach ( $Files as $file )
 	}
 	$insert = implode($a, ",\n");
 	$insert = str_replace("%REPORTDATE%", $ReportDateTime, $insert);
+	$insert = ( strlen(@$ReportDateTimeGMT) ) ? str_replace("%REPORTDATETIMEGMT%", "'$ReportDateTimeGMT'", $insert) : str_replace("%REPORTDATETIMEGMT%", "NULL", $insert);
+	$insert = ( strlen(@$ReportDateGMT) ) ? str_replace("%REPORTDATEGMT%", "'$ReportDateGMT'", $insert) : str_replace("%REPORTDATEGMT%", "NULL", $insert);
 
-//	echo $file . "<br />";
+	//echo $file . "<br />";
 
 	if ( $FileCorrectlyEnded )
 	{
 		$SQL="
 INSERT INTO [dbo].[ServersConfig]
-	([ServerGuid],[PropertyName],[PropertyValue],[Reported])
+	([ServerGuid],[PropertyName],[PropertyValue],[Reported],[Reported_GMT],[Date])
 	VALUES 
 		$insert
 ";
 
-//		echo $SQL;
+		//echo $SQL;
 
 		MSSQLsiletnQuery($SQL);
 
